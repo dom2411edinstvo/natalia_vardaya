@@ -1,0 +1,2051 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Наталья Вардая — Интеллект-тренер | Super Jump</title>
+  <meta name="description" content="Наталья Вардая — интеллект-тренер, основатель команды Жёлтые Подсолнухи. 10-дневные интенсивы по системе Super Jump. Свет, энергия, ясность, рост." />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #fffdf5;
+      color: #2c1d00;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== VARIABLES ===== */
+    :root {
+      --gold: #f5c518;
+      --gold-light: #fde96d;
+      --gold-pale: #fff8d6;
+      --gold-warm: #f9a825;
+      --gold-deep: #e6a800;
+      --brown: #5c3d00;
+      --brown-light: #8b6000;
+      --cream: #fffdf5;
+      --white: #ffffff;
+      --text-dark: #2c1d00;
+      --text-mid: #5c4020;
+      --text-light: #8b7040;
+      --shadow-sm: 0 2px 12px rgba(200,140,0,0.10);
+      --shadow-md: 0 8px 32px rgba(200,140,0,0.14);
+      --shadow-lg: 0 20px 60px rgba(200,140,0,0.18);
+      --radius: 18px;
+      --radius-sm: 10px;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4, h5 {
+      font-family: 'Georgia', serif;
+      line-height: 1.2;
+      font-weight: normal;
+    }
+    .section-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-warm);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,253,245,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(245,197,24,0.18);
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: box-shadow 0.3s;
+    }
+    .navbar.scrolled { box-shadow: var(--shadow-md); }
+    .nav-brand {
+      font-size: 1.08rem;
+      font-weight: bold;
+      color: var(--brown);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-brand .sun-icon { font-size: 1.4rem; }
+    .nav-links {
+      display: flex;
+      gap: 1.6rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--gold-warm); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%);
+      color: var(--brown) !important;
+      padding: 0.42rem 1.1rem;
+      border-radius: 24px;
+      font-weight: 700 !important;
+      box-shadow: 0 2px 10px rgba(245,197,24,0.3);
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 18px rgba(245,197,24,0.45) !important; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--brown);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: rgba(255,253,245,0.98);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(245,197,24,0.2);
+      padding: 1.2rem 1.5rem;
+      z-index: 999;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(245,197,24,0.12);
+      font-weight: 500;
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 90px 0; }
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .section-head {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .section-head h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--brown);
+      margin-bottom: 0.8rem;
+    }
+    .section-head p {
+      font-size: 1.08rem;
+      color: var(--text-mid);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 64px;
+      background: linear-gradient(145deg, #fffef0 0%, #fff9d0 40%, #fffdf5 100%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(253,233,109,0.35) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(249,168,37,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, rgba(245,197,24,0.22), rgba(249,168,37,0.12));
+      border: 1px solid rgba(245,197,24,0.35);
+      color: var(--brown);
+      font-family: 'Arial', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.38rem 0.9rem;
+      border-radius: 20px;
+      margin-bottom: 1.4rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+    .hero h1 .name-highlight {
+      background: linear-gradient(135deg, var(--gold-warm) 0%, var(--gold-deep) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+      color: var(--text-mid);
+      margin-bottom: 1.8rem;
+      line-height: 1.55;
+    }
+    .hero-tagline {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 2.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-tagline::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 2px;
+      background: var(--gold);
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.78rem 1.7rem;
+      border-radius: 50px;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%);
+      color: var(--brown);
+      box-shadow: 0 4px 18px rgba(245,197,24,0.38);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,197,24,0.5); }
+    .btn-outline {
+      background: transparent;
+      color: var(--brown);
+      border: 2px solid var(--gold);
+    }
+    .btn-outline:hover { background: var(--gold-pale); transform: translateY(-2px); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.7);
+      color: var(--brown);
+      border: 1px solid rgba(245,197,24,0.3);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-ghost:hover { background: #fff; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+    /* Hero image */
+    .hero-image-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-image-frame {
+      position: relative;
+      border-radius: 40px 40px 120px 40px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      max-width: 420px;
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #fde96d22, #f9a82533);
+    }
+    .hero-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      /* REPLACE: Replace 1.jpg with your main portrait photo */
+    }
+    .hero-decor-ring {
+      position: absolute;
+      top: -18px; right: -18px;
+      width: 120px; height: 120px;
+      border: 3px solid rgba(245,197,24,0.4);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-decor-dot {
+      position: absolute;
+      bottom: 30px; left: -20px;
+      width: 54px; height: 54px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%);
+      border-radius: 50%;
+      box-shadow: 0 4px 18px rgba(245,197,24,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+    .hero-stat-card {
+      position: absolute;
+      background: white;
+      border-radius: 14px;
+      padding: 0.9rem 1.2rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: 'Arial', sans-serif;
+    }
+    .hero-stat-card.top-left {
+      top: 20px; left: -50px;
+      font-size: 0.78rem;
+    }
+    .hero-stat-card.bottom-right {
+      bottom: 60px; right: -40px;
+      font-size: 0.78rem;
+    }
+    .stat-icon { font-size: 1.5rem; }
+    .stat-text strong { display: block; font-size: 0.95rem; color: var(--brown); }
+    .stat-text span { color: var(--text-light); font-size: 0.72rem; }
+
+    /* ===== SUNFLOWER DIVIDER ===== */
+    .divider {
+      text-align: center;
+      padding: 1.5rem 0;
+      overflow: hidden;
+    }
+    .divider-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: rgba(245,197,24,0.5);
+    }
+    .divider-line::before, .divider-line::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245,197,24,0.4), transparent);
+    }
+    .divider-flower { font-size: 1.6rem; }
+
+    /* ===== ABOUT ===== */
+    .about { background: var(--white); }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-img {
+      border-radius: 30px 30px 30px 100px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #fff3cc, #fde96d44);
+    }
+    .about-img img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%);
+      color: var(--brown);
+      border-radius: 20px;
+      padding: 1rem 1.4rem;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      line-height: 1.4;
+    }
+    .about-content h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      color: var(--brown);
+      margin-bottom: 1.2rem;
+    }
+    .about-lead {
+      font-size: 1.13rem;
+      color: var(--text-mid);
+      margin-bottom: 1.8rem;
+      line-height: 1.75;
+    }
+    .benefits-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .benefits-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: 0.97rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+    .benefit-icon {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      margin-top: 2px;
+    }
+
+    /* ===== TEST / FOR WHOM ===== */
+    .test-section {
+      background: linear-gradient(145deg, #fffef0 0%, #fff9d0 60%, #fffdf5 100%);
+    }
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .test-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.1rem 1.3rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(245,197,24,0.12);
+      cursor: pointer;
+      transition: all 0.22s;
+      user-select: none;
+    }
+    .test-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .test-card.checked {
+      background: linear-gradient(135deg, #fff9d0, #fff3aa);
+      border-color: var(--gold);
+      box-shadow: 0 4px 18px rgba(245,197,24,0.25);
+    }
+    .check-box {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      border-radius: 6px;
+      border: 2px solid rgba(245,197,24,0.5);
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      margin-top: 2px;
+      transition: all 0.2s;
+    }
+    .test-card.checked .check-box {
+      background: linear-gradient(135deg, var(--gold), var(--gold-warm));
+      border-color: var(--gold-warm);
+      color: white;
+    }
+    .test-card p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.45;
+    }
+    .test-result {
+      background: white;
+      border-radius: var(--radius);
+      padding: 2rem 2.4rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--gold-light);
+      display: none;
+    }
+    .test-result.visible { display: block; animation: fadeInUp 0.5s ease; }
+    .test-result h3 {
+      font-size: 1.4rem;
+      color: var(--brown);
+      margin-bottom: 0.7rem;
+    }
+    .test-result p {
+      font-size: 1rem;
+      color: var(--text-mid);
+      margin-bottom: 1.4rem;
+    }
+    .test-result .result-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: center;
+    }
+    .test-counter {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    .test-counter span {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--gold-warm);
+    }
+
+    /* ===== INTENSIVE ===== */
+    .intensive { background: var(--white); }
+    .intensive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.4rem;
+    }
+    .intensive-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.4rem;
+      text-align: center;
+      border: 1px solid rgba(245,197,24,0.16);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s;
+    }
+    .intensive-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .int-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-pale), #fff3aa);
+      border: 2px solid rgba(245,197,24,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      margin: 0 auto 1rem;
+    }
+    .intensive-card h4 {
+      font-size: 1rem;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+    }
+    .intensive-card p {
+      font-size: 0.87rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+    .intensive-card .int-num {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--gold-warm);
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ===== INTELLECT TRAINER ===== */
+    .trainer-section {
+      background: linear-gradient(145deg, #2c1d00 0%, #3d2800 60%, #2c1d00 100%);
+      color: white;
+    }
+    .trainer-section .section-label { color: var(--gold-light); }
+    .trainer-section .section-head h2 { color: white; }
+    .trainer-section .section-head p { color: rgba(255,255,255,0.7); }
+    .trainer-lead {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(245,197,24,0.25);
+      border-radius: var(--radius);
+      padding: 2rem 2.4rem;
+      margin-bottom: 2.5rem;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    .trainer-lead p {
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.88);
+    }
+    .trainer-roles {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+    .role-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(245,197,24,0.2);
+      border-radius: var(--radius-sm);
+      padding: 1.4rem 1rem;
+      text-align: center;
+      transition: all 0.25s;
+    }
+    .role-card:hover {
+      background: rgba(245,197,24,0.1);
+      border-color: rgba(245,197,24,0.45);
+      transform: translateY(-3px);
+    }
+    .role-emoji { font-size: 2rem; margin-bottom: 0.5rem; }
+    .role-card h4 { font-size: 0.92rem; color: var(--gold-light); margin-bottom: 0.3rem; }
+    .role-card p { font-size: 0.78rem; color: rgba(255,255,255,0.6); }
+    .trainer-why {
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      padding: 2rem 2.4rem;
+      border: 1px solid rgba(245,197,24,0.18);
+    }
+    .trainer-why h3 {
+      font-size: 1.25rem;
+      color: white;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .why-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .why-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+    }
+    .why-dot {
+      width: 8px;
+      height: 8px;
+      min-width: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 7px;
+    }
+
+    /* ===== WHY CHOOSE ===== */
+    .why-choose { background: var(--cream); }
+    .why-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.4rem;
+    }
+    .why-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 2rem 1.6rem;
+      border: 1px solid rgba(245,197,24,0.15);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-warm));
+    }
+    .why-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .why-card .card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .why-card h4 { font-size: 1rem; color: var(--brown); margin-bottom: 0.5rem; }
+    .why-card p { font-size: 0.87rem; color: var(--text-light); line-height: 1.55; }
+
+    /* ===== TEAM SUNFLOWERS ===== */
+    .team-section {
+      background: linear-gradient(135deg, #fff9d0 0%, #fffef5 50%, #fff3aa 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .team-section::before {
+      content: '🌻';
+      position: absolute;
+      font-size: 14rem;
+      opacity: 0.06;
+      top: -40px; right: -40px;
+      pointer-events: none;
+    }
+    .team-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .team-content h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      color: var(--brown);
+      margin-bottom: 0.8rem;
+    }
+    .team-title {
+      font-family: 'Arial', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gold-warm);
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .team-content p {
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .team-values {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+    .team-tag {
+      background: white;
+      border: 1.5px solid rgba(245,197,24,0.4);
+      color: var(--brown);
+      font-family: 'Arial', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .team-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .team-stat {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(245,197,24,0.2);
+      transition: transform 0.25s;
+    }
+    .team-stat:hover { transform: translateX(5px); }
+    .team-stat-icon { font-size: 2rem; }
+    .team-stat-text strong { display: block; font-size: 1rem; color: var(--brown); font-family: 'Arial', sans-serif; }
+    .team-stat-text span { font-size: 0.82rem; color: var(--text-light); }
+
+    /* ===== GALLERY ===== */
+    .gallery-section { background: white; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.9rem;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #fff9d0, #fde96d33);
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s;
+    }
+    .gallery-item:hover { transform: scale(1.03); box-shadow: var(--shadow-md); z-index: 2; }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .gallery-item:hover img { transform: scale(1.07); }
+    .gallery-item .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(44,29,0,0.5) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 0.7rem;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay span {
+      color: white;
+      font-size: 0.78rem;
+      font-family: 'Arial', sans-serif;
+    }
+    /* placeholder style */
+    .gallery-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 1.8rem;
+      color: rgba(245,197,24,0.4);
+    }
+    .gallery-placeholder span {
+      font-size: 0.7rem;
+      color: var(--text-light);
+      font-family: 'Arial', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ===== VIDEOS ===== */
+    .videos-section {
+      background: linear-gradient(145deg, #fffef0 0%, #fff9d0 100%);
+    }
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+    }
+    .video-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(245,197,24,0.15);
+      transition: all 0.25s;
+    }
+    .video-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .video-wrapper {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: #1a1200;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: none;
+    }
+    .video-wrapper iframe.active { display: block; }
+    .video-thumb {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .video-play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(245,197,24,0.5);
+      transition: all 0.25s;
+      z-index: 5;
+    }
+    .video-play-btn:hover { transform: translate(-50%, -50%) scale(1.12); }
+    .video-play-btn svg {
+      width: 24px; height: 24px;
+      fill: var(--brown);
+      margin-left: 4px;
+    }
+    .video-overlay-bg {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+      transition: opacity 0.3s;
+    }
+    .video-card-body {
+      padding: 1.2rem 1.4rem;
+    }
+    .video-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-warm);
+      margin-bottom: 0.3rem;
+    }
+    .video-card-body h4 {
+      font-size: 0.97rem;
+      color: var(--brown);
+      line-height: 1.4;
+    }
+
+    /* ===== CTA BLOCK ===== */
+    .cta-section {
+      background: linear-gradient(135deg, #2c1d00 0%, #3d2800 50%, #2c1d00 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(245,197,24,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-section .section-label { color: var(--gold-light); }
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: white;
+      margin-bottom: 0.8rem;
+    }
+    .cta-section p {
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2.5rem;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .btn-white {
+      background: white;
+      color: var(--brown);
+      font-weight: 700;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.2);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.28); }
+    .btn-gold-outline {
+      background: transparent;
+      color: var(--gold-light);
+      border: 2px solid rgba(245,197,24,0.5);
+    }
+    .btn-gold-outline:hover { background: rgba(245,197,24,0.1); transform: translateY(-2px); }
+
+    /* ===== CONTACTS ===== */
+    .contacts-section { background: var(--cream); }
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 1rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(245,197,24,0.15);
+      text-align: center;
+      transition: all 0.25s;
+      text-decoration: none;
+      color: var(--text-dark);
+    }
+    .contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .contact-card-icon { font-size: 2rem; }
+    .contact-card-title {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+    .contact-card-name {
+      font-size: 0.92rem;
+      color: var(--brown);
+      font-weight: 600;
+      font-family: 'Arial', sans-serif;
+    }
+    /* Telegram style */
+    .contact-card.tg { border-top: 3px solid #2AABEE; }
+    .contact-card.tg:hover { box-shadow: 0 8px 28px rgba(42,171,238,0.2); }
+    /* WhatsApp style */
+    .contact-card.wa { border-top: 3px solid #25D366; }
+    .contact-card.wa:hover { box-shadow: 0 8px 28px rgba(37,211,102,0.2); }
+    /* Instagram style */
+    .contact-card.ig { border-top: 3px solid #E1306C; }
+    .contact-card.ig:hover { box-shadow: 0 8px 28px rgba(225,48,108,0.2); }
+    /* Register */
+    .contact-card.reg { border-top: 3px solid var(--gold-warm); }
+    .contact-card.reg:hover { box-shadow: 0 8px 28px rgba(249,168,37,0.25); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1a1000;
+      color: rgba(255,255,255,0.75);
+      padding: 2.5rem 1.5rem;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: 1140px;
+      margin: 0 auto 1.4rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-copy { color: rgba(255,255,255,0.6); }
+    .footer-copy strong { color: rgba(255,255,255,0.85); }
+    .footer-right { color: rgba(255,255,255,0.6); }
+    .footer-bottom {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 2rem;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .footer-dev {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-dev a {
+      color: #2AABEE;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-dev a:hover { color: #5bc8f5; }
+    .footer-max {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-max a {
+      color: #6C5CE7;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-max a:hover { color: #a29bf5; }
+    .footer-vk {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-vk a {
+      color: #4C75A3;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-vk a:hover { color: #7ba4cf; }
+
+    /* ===== BACK TO TOP ===== */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 1.5rem;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-warm));
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(245,197,24,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 900;
+      color: var(--brown);
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: all; }
+    .back-to-top:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(245,197,24,0.55); }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-28px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .animate-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .animate-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s !important; }
+    .delay-2 { transition-delay: 0.2s !important; }
+    .delay-3 { transition-delay: 0.3s !important; }
+    .delay-4 { transition-delay: 0.4s !important; }
+    .delay-5 { transition-delay: 0.5s !important; }
+    .delay-6 { transition-delay: 0.6s !important; }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.22); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-image-wrap { order: -1; }
+      .hero-image-frame { max-width: 320px; margin: 0 auto; }
+      .hero-stat-card.top-left { left: 0; top: -10px; }
+      .hero-stat-card.bottom-right { right: 0; bottom: 20px; }
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-badge { position: static; margin-top: 1rem; }
+      .about-img { max-width: 360px; }
+      .team-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .videos-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .trainer-roles { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 640px) {
+      section { padding: 60px 0; }
+      .navbar { padding: 0 1rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .trainer-roles { grid-template-columns: repeat(2, 1fr); }
+      .hero-cta { flex-direction: column; align-items: flex-start; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .footer-top { flex-direction: column; text-align: center; }
+      .hero-stat-card { display: none; }
+      .footer-bottom { flex-direction: column; }
+      .contact-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-brand">
+    <span class="sun-icon">🌻</span>
+    <span>Наталья Вардая</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">Обо мне</a></li>
+    <li><a href="#test">Тест</a></li>
+    <li><a href="#intensive">Интенсив</a></li>
+    <li><a href="#trainer">Методика</a></li>
+    <li><a href="#gallery">Галерея</a></li>
+    <li><a href="#videos">Видео</a></li>
+    <li><a href="#contacts" class="nav-cta">Консультация</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobileMenu()">Обо мне</a>
+  <a href="#test" onclick="closeMobileMenu()">Тест</a>
+  <a href="#intensive" onclick="closeMobileMenu()">Интенсив</a>
+  <a href="#trainer" onclick="closeMobileMenu()">Методика</a>
+  <a href="#team" onclick="closeMobileMenu()">Команда</a>
+  <a href="#gallery" onclick="closeMobileMenu()">Галерея</a>
+  <a href="#videos" onclick="closeMobileMenu()">Видео</a>
+  <a href="#contacts" onclick="closeMobileMenu()">Контакты</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text animate-in">
+        <div class="hero-badge">🌻 Интеллект-тренер · Super Jump</div>
+        <h1>
+          <span class="name-highlight">Наталья<br>Вардая</span>
+        </h1>
+        <div class="hero-subtitle">
+          Солнечный путь к внутренней опоре —<br>
+          свет, энергия, ясность и рост в каждой сфере жизни
+        </div>
+        <div class="hero-tagline">
+          Интеллект-тренер и проводник к гармоничной жизни
+        </div>
+        <div class="hero-cta">
+          <a href="#test" class="btn btn-primary">🌟 Пройти тест</a>
+          <a href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-outline">💬 Хочу консультацию</a>
+          <a href="https://account.superjump.com/register/118814" target="_blank" class="btn btn-ghost">📅 Узнать даты интенсива</a>
+        </div>
+      </div>
+      <div class="hero-image-wrap animate-in delay-2">
+        <div class="hero-stat-card top-left">
+          <div class="stat-icon">🌍</div>
+          <div class="stat-text">
+            <strong>Онлайн</strong>
+            <span>По всему миру</span>
+          </div>
+        </div>
+        <div class="hero-image-frame">
+          <!-- REPLACE: src="1.jpg" — главное фото Натальи -->
+          <img src="1.jpg" alt="Наталья Вардая — интеллект-тренер" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;background:linear-gradient(135deg,#fff9d0,#fde96d44);\'><div style=\'font-size:5rem;\'>🌻</div><div style=\'font-family:Arial,sans-serif;font-size:0.85rem;color:#8b7040;text-align:center;padding:0 1rem;\'>Наталья Вардая<br>Интеллект-тренер</div></div>'" />
+        </div>
+        <div class="hero-decor-ring"></div>
+        <div class="hero-decor-dot">🌻</div>
+        <div class="hero-stat-card bottom-right">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-text">
+            <strong>10 дней</strong>
+            <span>Интенсив</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line">
+    <span class="divider-flower">🌻</span>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-visual animate-in">
+        <div class="about-img">
+          <!-- REPLACE: src="2.jpg" — фото Натальи (другое, рабочее или крупный план) -->
+          <img src="2.jpg" alt="Наталья Вардая" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;background:linear-gradient(135deg,#fff9d0,#fde96d44);\'><div style=\'font-size:4rem;\'>🌻</div><div style=\'font-family:Arial,sans-serif;font-size:0.8rem;color:#8b7040;\'>Фото 2</div></div>'" />
+        </div>
+        <div class="about-badge">
+          🏅 Основатель<br>
+          всемирной ассоциации<br>
+          интеллект-тренеров
+        </div>
+      </div>
+      <div class="about-content animate-in delay-2">
+        <span class="section-label">Обо мне и моём продукте</span>
+        <h2>Я Наталья Вардая —<br>чем могу быть тебе полезна?</h2>
+        <p class="about-lead">
+          Являюсь одним из основателей всемирной ассоциации и тренером новейшей системы развития взрослого человека и эмоционального интеллекта. Моя фамилия Вардая в переводе с грузинского — <em>«солнечный цветок»</em>. Это не случайность: я несу свет, тепло и трансформацию в жизнь каждого, кто приходит ко мне.
+        </p>
+        <p style="font-size:1rem; color:var(--text-mid); margin-bottom:1.4rem;">
+          Я провожу <strong>10-дневные интенсивы</strong>, на которых даю самые простые и действенные упражнения — проверенные, работающие и дающие результат уже в процессе:
+        </p>
+        <ul class="benefits-list">
+          <li>
+            <div class="benefit-icon">💪</div>
+            <span>Укрепляют физическое и ментальное здоровье</span>
+          </li>
+          <li>
+            <div class="benefit-icon">⚡</div>
+            <span>Повышают уровень жизненной энергии и мотивации</span>
+          </li>
+          <li>
+            <div class="benefit-icon">❤️</div>
+            <span>Помогают выстраивать гармоничные отношения</span>
+          </li>
+          <li>
+            <div class="benefit-icon">🧠</div>
+            <span>Учат управлять своими мыслями, чувствами и эмоциями</span>
+          </li>
+          <li>
+            <div class="benefit-icon">🎯</div>
+            <span>Дают ясность в целях и планировании своей жизни</span>
+          </li>
+          <li>
+            <div class="benefit-icon">📈</div>
+            <span>Повышают финансовые показатели</span>
+          </li>
+          <li>
+            <div class="benefit-icon">🌟</div>
+            <span>Помогают познать себя и легко балансировать по жизни</span>
+          </li>
+        </ul>
+        <p style="font-size:0.97rem; color:var(--text-mid); font-style:italic; margin-bottom:1.6rem;">
+          Если есть запрос — как изменить жизнь в лучшую сторону во всех сферах — узнай, подойдёт ли интенсив именно тебе.
+        </p>
+        <div class="hero-cta">
+          <a href="#test" class="btn btn-primary">Пройти тест</a>
+          <a href="https://account.superjump.com/register/118814" target="_blank" class="btn btn-outline">Записаться</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line">
+    <span class="divider-flower">✨</span>
+  </div>
+</div>
+
+<!-- ===== TEST / FOR WHOM ===== -->
+<section class="test-section" id="test">
+  <div class="container">
+    <div class="section-head animate-in">
+      <span class="section-label">Тест · Для кого подходит интенсив</span>
+      <h2>Как понять, поможет ли<br>интенсив именно тебе?</h2>
+      <p>Честно ответь себе — отмечай утверждения, которые про тебя. Это займёт 1 минуту.</p>
+    </div>
+    <div class="test-counter">Отмечено: <span id="checkedCount">0</span> из 12</div>
+    <div class="test-grid">
+      <div class="test-card animate-in delay-1" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <p>Я с трудом просыпаюсь по утрам</p>
+      </div>
+      <div class="test-card animate-in delay-1" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <p>Я постоянно что-то подъедаю</p>
+      </div>
+      <div class="test-card animate-in delay-2" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <p>Я не довожу начатое до завершения</p>
+      </div>
+      <div class="test-card animate-in delay-2" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <p>Апатия, тревога, сомнения, беспокойство — то, что я ощущаю</p>
+      </div>
+      <div class="test-card animate-in delay-3" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <p>Я не чувствую удовлетворённость жизнью</p>
+      </div>
+      <div class="test-card animate-in delay-3" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <p>Я знаю, что хочу, но не знаю, с чего начать</p>
+      </div>
+      <div class="test-card animate-in delay-4" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <p>Я цепляюсь за старое, застреваю в прошлом</p>
+      </div>
+      <div class="test-card animate-in delay-4" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <p>У меня нестабильное психоэмоциональное состояние</p>
+      </div>
+      <div class="test-card animate-in delay-5" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <p>Меня не понимают</p>
+      </div>
+      <div class="test-card animate-in delay-5" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <p>Будто не живу, а выживаю</p>
+      </div>
+      <div class="test-card animate-in delay-6" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <p>Не знаю себя, не понимаю, какой мой путь</p>
+      </div>
+      <div class="test-card animate-in delay-6" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <p>Мне не хватает времени в сутках</p>
+      </div>
+    </div>
+    <div class="test-result" id="testResult">
+      <div style="font-size:2.5rem; margin-bottom:0.8rem;">🌻</div>
+      <h3>Интенсив подойдёт тебе!</h3>
+      <p>
+        Ты отметила <strong id="resultCount">0</strong> утверждения — это сигнал, что твоей жизни нужны перемены. Именно для этого создан интенсив «Super Jump». Напиши мне — разберёмся вместе, с чего начать твой путь к свету и гармонии.
+      </p>
+      <div class="result-btns">
+        <a href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-primary">
+          💬 Написать: «Хочу на консультацию»
+        </a>
+        <a href="https://account.superjump.com/register/118814" target="_blank" class="btn btn-outline">
+          📅 Занять место в следующем потоке
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"><span class="divider-flower">🌻</span></div>
+</div>
+
+<!-- ===== INTENSIVE ===== -->
+<section class="intensive" id="intensive">
+  <div class="container">
+    <div class="section-head animate-in">
+      <span class="section-label">Формат работы</span>
+      <h2>Что такое 10-дневный интенсив?</h2>
+      <p>Живое, тёплое и структурированное погружение в трансформацию — с личной поддержкой на каждом шагу</p>
+    </div>
+    <div class="intensive-grid">
+      <div class="intensive-card animate-in delay-1">
+        <div class="int-icon">📅</div>
+        <div class="int-num">10</div>
+        <h4>дней трансформации</h4>
+        <p>Ежедневная работа с собой — последовательно, мягко и результативно</p>
+      </div>
+      <div class="intensive-card animate-in delay-2">
+        <div class="int-icon">💻</div>
+        <h4>Онлайн в Zoom</h4>
+        <p>Ежедневные созвоны с тренером — живое общение, обратная связь, энергия группы</p>
+      </div>
+      <div class="intensive-card animate-in delay-3">
+        <div class="int-icon">📝</div>
+        <h4>Практика каждый день</h4>
+        <p>Простые, действенные упражнения — работающие уже с первого занятия</p>
+      </div>
+      <div class="intensive-card animate-in delay-4">
+        <div class="int-icon">💬</div>
+        <h4>Поддержка в чате</h4>
+        <p>Закрытый чат участников — вопросы, инсайты и вдохновение в течение всего дня</p>
+      </div>
+      <div class="intensive-card animate-in delay-5">
+        <div class="int-icon">🤝</div>
+        <h4>Личное сопровождение</h4>
+        <p>Наталья лично ведёт каждого участника, видит твой прогресс и адаптирует работу</p>
+      </div>
+      <div class="intensive-card animate-in delay-6">
+        <div class="int-icon">👥</div>
+        <div class="int-num">10</div>
+        <h4>человек в группе</h4>
+        <p>Маленькая тёплая группа — максимум внимания каждому участнику</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;" class="animate-in">
+      <a href="https://account.superjump.com/register/118814" target="_blank" class="btn btn-primary" style="font-size:1rem; padding:0.9rem 2.2rem;">
+        🌟 Хочу узнать даты следующего потока
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"><span class="divider-flower">✨</span></div>
+</div>
+
+<!-- ===== INTELLECT TRAINER ===== -->
+<section class="trainer-section" id="trainer">
+  <div class="container">
+    <div class="section-head animate-in">
+      <span class="section-label">Профессия будущего</span>
+      <h2>Кто такой интеллект-тренер?</h2>
+      <p>Новая, запатентованная профессия, основанная на инновационной методике Super Jump</p>
+    </div>
+    <div class="trainer-lead animate-in">
+      <p>
+        Интеллект-тренер — это не просто коуч или психолог. Это специалист нового поколения, который работает с первопричиной проблем — с глубинными программами подсознания. Он сопровождает человека на пути от застревания к ясности, от выживания к полноценной жизни. Самостоятельно идти сложнее: без проводника легко вернуться к старым шаблонам. Интеллект-тренер — твой навигатор в новую реальность.
+      </p>
+    </div>
+    <div class="trainer-roles">
+      <div class="role-card animate-in delay-1">
+        <div class="role-emoji">🧬</div>
+        <h4>Психолог 2.0</h4>
+        <p>Работа с глубинными паттернами и эмоциями</p>
+      </div>
+      <div class="role-card animate-in delay-2">
+        <div class="role-emoji">📚</div>
+        <h4>Педагог 2.0</h4>
+        <p>Обучение через практику и осознанность</p>
+      </div>
+      <div class="role-card animate-in delay-3">
+        <div class="role-emoji">🎯</div>
+        <h4>Коуч 2.0</h4>
+        <p>Чёткие цели и измеримый результат</p>
+      </div>
+      <div class="role-card animate-in delay-4">
+        <div class="role-emoji">👑</div>
+        <h4>Лидер 2.0</h4>
+        <p>Вдохновляет и ведёт к росту своим примером</p>
+      </div>
+      <div class="role-card animate-in delay-5">
+        <div class="role-emoji">🚀</div>
+        <h4>Предприниматель 2.0</h4>
+        <p>Создаёт ценность и строит устойчивый бизнес</p>
+      </div>
+      <div class="role-card animate-in delay-6">
+        <div class="role-emoji">🌱</div>
+        <h4>Ученик 2.0</h4>
+        <p>Постоянно развивается и передаёт знания</p>
+      </div>
+    </div>
+    <div class="trainer-why animate-in">
+      <h3>Почему с тренером — быстрее и глубже?</h3>
+      <div class="why-items">
+        <div class="why-item"><div class="why-dot"></div><span>Тренер видит «слепые зоны», которые ты не замечаешь сама</span></div>
+        <div class="why-item"><div class="why-dot"></div><span>Поддержка в моменты сомнений и откатов</span></div>
+        <div class="why-item"><div class="why-dot"></div><span>Чёткая техника выполнения упражнений</span></div>
+        <div class="why-item"><div class="why-dot"></div><span>Ускорение прогресса в разы</span></div>
+        <div class="why-item"><div class="why-dot"></div><span>Энергия группы и сообщества</span></div>
+        <div class="why-item"><div class="why-dot"></div><span>Измеримый результат с первых дней</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"><span class="divider-flower">🌻</span></div>
+</div>
+
+<!-- ===== WHY CHOOSE ===== -->
+<section class="why-choose" id="why">
+  <div class="container">
+    <div class="section-head animate-in">
+      <span class="section-label">Результаты</span>
+      <h2>Почему люди выбирают этот путь</h2>
+      <p>Реальные изменения, которые происходят с участниками интенсива</p>
+    </div>
+    <div class="why-cards">
+      <div class="why-card animate-in delay-1">
+        <div class="card-icon">🌱</div>
+        <h4>Развитие личности</h4>
+        <p>Ты становишься лучшей версией себя — не по чужим меркам, а по своим истинным ценностям</p>
+      </div>
+      <div class="why-card animate-in delay-2">
+        <div class="card-icon">⚡</div>
+        <h4>Стабильная жизненная энергия</h4>
+        <p>Уходит хроническая усталость. Появляется устойчивый заряд сил и желание действовать</p>
+      </div>
+      <div class="why-card animate-in delay-3">
+        <div class="card-icon">🧠</div>
+        <h4>Тренировка мозга и мышления</h4>
+        <p>Мышление становится чище, быстрее, яснее. Новые идеи рождаются легко</p>
+      </div>
+      <div class="why-card animate-in delay-4">
+        <div class="card-icon">🏔️</div>
+        <h4>Внутренний стержень</h4>
+        <p>Обретаешь опору внутри себя — независимо от обстоятельств вокруг</p>
+      </div>
+      <div class="why-card animate-in delay-5">
+        <div class="card-icon">☀️</div>
+        <h4>Ясность и радость жизни</h4>
+        <p>Понимаешь, чего хочешь и куда идёшь. Жизнь снова наполняется смыслом и удовольствием</p>
+      </div>
+      <div class="why-card animate-in delay-6">
+        <div class="card-icon">💰</div>
+        <h4>Рост в доходе</h4>
+        <p>Финансовые результаты растут — потому что меняется мышление и уверенность в себе</p>
+      </div>
+      <div class="why-card animate-in delay-1">
+        <div class="card-icon">🦋</div>
+        <h4>Жизнь не по старым шаблонам</h4>
+        <p>Выходишь из автопилота. Начинаешь делать выборы осознанно, из силы, а не из страха</p>
+      </div>
+      <div class="why-card animate-in delay-2">
+        <div class="card-icon">❤️</div>
+        <h4>Гармоничные отношения</h4>
+        <p>Качество связей с близкими, коллегами и самой собой выходит на новый уровень</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"><span class="divider-flower">✨</span></div>
+</div>
+
+<!-- ===== TEAM ===== -->
+<section class="team-section" id="team">
+  <div class="container">
+    <div class="team-inner">
+      <div class="team-content animate-in">
+        <span class="section-label">Сообщество</span>
+        <div class="team-title">🌻 Команда Жёлтые Подсолнухи · Super Jump</div>
+        <h2 style="color:#2c1d00;">Расти в окружении<br>тех, кто тебя понимает</h2>
+        <p>
+          Команда «Жёлтые Подсолнухи» — это живое, тёплое сообщество людей, которые выбрали путь роста. Мы тянемся к свету вместе, как подсолнухи — всегда лицом к солнцу.
+        </p>
+        <p>
+          Здесь нет конкуренции — есть поддержка, вдохновение и искренняя радость за победы друг друга. Каждый участник нашей команды — не просто клиент. Это со-путешественник на пути к лучшей версии себя.
+        </p>
+        <p>
+          Наталья Вардая лично ведёт каждого — с теплом, экспертностью и верой в твой потенциал.
+        </p>
+        <div class="team-values">
+          <span class="team-tag">🌻 Рост</span>
+          <span class="team-tag">☀️ Свет</span>
+          <span class="team-tag">❤️ Поддержка</span>
+          <span class="team-tag">⚡ Энергия</span>
+          <span class="team-tag">🌍 По всему миру</span>
+          <span class="team-tag">🤝 Единство</span>
+        </div>
+      </div>
+      <div class="team-visual animate-in delay-2">
+        <div class="team-stat">
+          <div class="team-stat-icon">🤝</div>
+          <div class="team-stat-text">
+            <strong>Поддержка и забота</strong>
+            <span>Каждый участник не один на пути</span>
+          </div>
+        </div>
+        <div class="team-stat">
+          <div class="team-stat-icon">🏆</div>
+          <div class="team-stat-text">
+            <strong>Победы вместе</strong>
+            <span>Радуемся успехам каждого</span>
+          </div>
+        </div>
+        <div class="team-stat">
+          <div class="team-stat-icon">🌍</div>
+          <div class="team-stat-text">
+            <strong>Сообщество по всему миру</strong>
+            <span>Единомышленники из разных стран</span>
+          </div>
+        </div>
+        <div class="team-stat">
+          <div class="team-stat-icon">⚡</div>
+          <div class="team-stat-text">
+            <strong>Энергия группы</strong>
+            <span>Вместе двигаемся быстрее</span>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:0.5rem;">
+          <a href="https://account.superjump.com/register/118814" target="_blank" class="btn btn-primary">
+            Присоединиться к команде 🌻
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"><span class="divider-flower">🌻</span></div>
+</div>
+
+<!-- ===== GALLERY ===== -->
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <div class="section-head animate-in">
+      <span class="section-label">Галерея</span>
+      <h2>Моменты пути</h2>
+      <p>Фото из жизни, интенсивов и команды</p>
+    </div>
+    <div class="gallery-grid">
+      <!-- PHOTO_01: Замените src="1.jpg" на путь к вашему фото -->
+      <div class="gallery-item animate-in delay-1">
+        <img src="1.jpg" alt="Фото 1" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder'); this.parentElement.innerHTML+='<div style=\'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;width:100%;height:100%;\'><div style=\'font-size:2rem;\'>🌻</div><span style=\'font-size:0.68rem;color:#8b7040;font-family:Arial,sans-serif;font-weight:600;letter-spacing:0.1em;\'>PHOTO 01</span></div>'" />
+        <div class="gallery-overlay"><span>Фото 1</span></div>
+      </div>
+      <!-- PHOTO_02 -->
+      <div class="gallery-item animate-in delay-1">
+        <img src="2.jpg" alt="Фото 2" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;width:100%;height:100%;\'><div style=\'font-size:2rem;\'>🌻</div><span style=\'font-size:0.68rem;color:#8b7040;font-family:Arial,sans-serif;font-weight:600;letter-spacing:0.1em;\'>PHOTO 02</span></div>'" />
+        <div class="gallery-overlay"><span>Фото 2</span></div>
+      </div>
+      <!-- PHOTO_03 -->
+      <div class="gallery-item animate-in delay-2">
+        <img src="3.jpg" alt="Фото 3" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;width:100%;height:100%;\'><div style=\'font-size:2rem;\'>🌻</div><span style=\'font-size:0.68rem;color:#8b7040;font-family:Arial,sans-serif;font-weight:600;letter-spacing:0.1em;\'>PHOTO 03</span></div>'" />
+        <div class="gallery-overlay"><span>Фото 3</span></div>
+      </div>
+      <!-- PHOTO_04 -->
+      <div class="gallery-item animate-in delay-2">
+        <img src="4.jpg" alt="Фото 4" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;width:100%;height:100%;\'><div style=\'font-size:2rem;\'>🌻</div><span style=\'font-size:0.68rem;color:#8b7040;font-family:Arial,sans-serif;font-weight:600;letter-spacing:0.1em;\'>PHOTO 04</span></div>'" />
+        <div class="gallery-overlay"><span>Фото 4</span></div>
+      </div>
+      <!-- PHOTO_05 -->
+      <div class="gallery-item animate-in delay-3">
+        <img src="5.jpg" alt="Фото 5" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;width:100%;height:100%;\'><div style=\'font-size:2rem;\'>🌻</div><span style=\'font-size:0.68rem;color:#8b7040;font-family:Arial,sans-serif;font-weight:600;letter-spacing:0.1em;\'>PHOTO 05</span></div>'" />
+        <div class="gallery-overlay"><span>Фото 5</span></div>
+      </div>
+      <!-- PHOTO_06 -->
+      <div class="gallery-item animate-in delay-3">
+        <img src="6.jpg" alt="Фото 6" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;width:100%;height:100%;\'><div style=\'font-size:2rem;\'>🌻</div><span style=\'font-size:0.68rem;color:#8b7040;font-family:Arial,sans-serif;font-weight:600;letter-spacing:0.1em;\'>PHOTO 06</span></div>'" />
+        <div class="gallery-overlay"><span>Фото 6</span></div>
+      </div>
+      <!-- PHOTO_07 -->
+      <div class="gallery-item animate-in delay-4">
+        <img src="7.jpg" alt="Фото 7" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;width:100%;height:100%;\'><div style=\'font-size:2rem;\'>🌻</div><span style=\'font-size:0.68rem;color:#8b7040;font-family:Arial,sans-serif;font-weight:600;letter-spacing:0.1em;\'>PHOTO 07</span></div>'" />
+        <div class="gallery-overlay"><span>Фото 7</span></div>
+      </div>
+      <!-- PHOTO_08 -->
+      <div class="gallery-item animate-in delay-4">
+        <img src="8.jpg" alt="Фото 8" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;width:100%;height:100%;\'><div style=\'font-size:2rem;\'>🌻</div><span style=\'font-size:0.68rem;color:#8b7040;font-family:Arial,sans-serif;font-weight:600;letter-spacing:0.1em;\'>PHOTO 08</span></div>'" />
+        <div class="gallery-overlay"><span>Фото 8</span></div>
+      </div>
+      <!-- PHOTO_09 -->
+      <div class="gallery-item animate-in delay-5">
+        <img src="9.jpg" alt="Фото 9" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;width:100%;height:100%;\'><div style=\'font-size:2rem;\'>🌻</div><span style=\'font-size:0.68rem;color:#8b7040;font-family:Arial,sans-serif;font-weight:600;letter-spacing:0.1em;\'>PHOTO 09</span></div>'" />
+        <div class="gallery-overlay"><span>Фото 9</span></div>
+      </div>
+      <!-- PHOTO_10 -->
+      <div class="gallery-item animate-in delay-5">
+        <img src="10.jpg" alt="Фото 10" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;width:100%;height:100%;\'><div style=\'font-size:2rem;\'>🌻</div><span style=\'font-size:0.68rem;color:#8b7040;font-family:Arial,sans-serif;font-weight:600;letter-spacing:0.1em;\'>PHOTO 10</span></div>'" />
+        <div class="gallery-overlay"><span>Фото 10</span></div>
+      </div>
+      <!-- PHOTO_11 -->
+      <div class="gallery-item animate-in delay-6">
+        <img src="11.jpg" alt="Фото 11" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;width:100%;height:100%;\'><div style=\'font-size:2rem;\'>🌻</div><span style=\'font-size:0.68rem;color:#8b7040;font-family:Arial,sans-serif;font-weight:600;letter-spacing:0.1em;\'>PHOTO 11</span></div>'" />
+        <div class="gallery-overlay"><span>Фото 11</span></div>
+      </div>
+      <!-- PHOTO_12 -->
+      <div class="gallery-item animate-in delay-6">
+        <img src="12.jpg" alt="Фото 12" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;width:100%;height:100%;\'><div style=\'font-size:2rem;\'>🌻</div><span style=\'font-size:0.68rem;color:#8b7040;font-family:Arial,sans-serif;font-weight:600;letter-spacing:0.1em;\'>PHOTO 12</span></div>'" />
+        <div class="gallery-overlay"><span>Фото 12</span></div>
+      </div>
+      <!-- PHOTO_13 -->
+      <div class="gallery-item animate-in delay-1">
+        <img src="13.jpg" alt="Фото 13" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;width:100%;height:100%;\'><div style=\'font-size:2rem;\'>🌻</div><span style=\'font-size:0.68rem;color:#8b7040;font-family:Arial,sans-serif;font-weight:600;letter-spacing:0.1em;\'>PHOTO 13</span></div>'" />
+        <div class="gallery-overlay"><span>Фото 13</span></div>
+      </div>
+      <!-- PHOTO_14 -->
+      <div class="gallery-item animate-in delay-2">
+        <img src="14.jpg" alt="Фото 14" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;width:100%;height:100%;\'><div style=\'font-size:2rem;\'>🌻</div><span style=\'font-size:0.68rem;color:#8b7040;font-family:Arial,sans-serif;font-weight:600;letter-spacing:0.1em;\'>PHOTO 14</span></div>'" />
+        <div class="gallery-overlay"><span>Фото 14</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="" />
+</div>
+
+<div class="divider">
+  <div class="divider-line"><span class="divider-flower">✨</span></div>
+</div>
+
+<!-- ===== VIDEOS ===== -->
+<section class="videos-section" id="videos">
+  <div class="container">
+    <div class="section-head animate-in">
+      <span class="section-label">Видео</span>
+      <h2>Смотри и узнавай больше</h2>
+      <p>Видео о системе, конгрессе и упражнениях для энергии</p>
+    </div>
+    <div class="videos-grid">
+
+      <!-- RUTUBE_VIDEO_1: О системе Super Jump -->
+      <!-- REPLACE: Ссылка для embed: https://rutube.ru/play/embed/c6e4660768cc75a4820cf6d666aff7ca/?p=lhP7YXwOvLdqm2P95LqGUA -->
+      <!-- REPLACE: poster — превью берётся автоматически из Rutube -->
+      <div class="video-card animate-in delay-1">
+        <div class="video-wrapper" id="vw1" onclick="playVideo('vw1','https://rutube.ru/play/embed/c6e4660768cc75a4820cf6d666aff7ca/?p=lhP7YXwOvLdqm2P95LqGUA')">
+          <!-- Превью берётся из первого кадра Rutube. Если нет — замените URL ниже на прямую ссылку на превью -->
+          <img class="video-thumb" src="https://rutube.ru/api/video/c6e4660768cc75a4820cf6d666aff7ca/thumbnail/?redirect=1" alt="О системе Super Jump" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjM2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWExMjAwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2Y1YzUxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPvCfjLsgU3VwZXIgSnVtcDwvdGV4dD48L3N2Zz4='" />
+          <div class="video-overlay-bg"></div>
+          <div class="video-play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <iframe id="vw1-frame" src="" allowfullscreen allow="autoplay"></iframe>
+        </div>
+        <div class="video-card-body">
+          <div class="video-label">Видео 1</div>
+          <h4>О системе Super Jump</h4>
+        </div>
+      </div>
+
+      <!-- RUTUBE_VIDEO_2: О конгрессе интеллект-тренеров -->
+      <!-- REPLACE: Ссылка для embed: https://rutube.ru/play/embed/98f447bc8b926dffc411370f3a79f124/?p=JfOSfLBfV-Ahxw-nAyWu-g -->
+      <div class="video-card animate-in delay-2">
+        <div class="video-wrapper" id="vw2" onclick="playVideo('vw2','https://rutube.ru/play/embed/98f447bc8b926dffc411370f3a79f124/?p=JfOSfLBfV-Ahxw-nAyWu-g')">
+          <img class="video-thumb" src="https://rutube.ru/api/video/98f447bc8b926dffc411370f3a79f124/thumbnail/?redirect=1" alt="Конгресс интеллект-тренеров" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjM2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWExMjAwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2Y1YzUxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPvCfjLsgU3VwZXIgSnVtcDwvdGV4dD48L3N2Zz4='" />
+          <div class="video-overlay-bg"></div>
+          <div class="video-play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <iframe id="vw2-frame" src="" allowfullscreen allow="autoplay"></iframe>
+        </div>
+        <div class="video-card-body">
+          <div class="video-label">Видео 2</div>
+          <h4>О конгрессе интеллект-тренеров</h4>
+        </div>
+      </div>
+
+      <!-- RUTUBE_VIDEO_3: 8 упражнений для управления энергией -->
+      <!-- REPLACE: Ссылка для embed: https://rutube.ru/play/embed/aaf98aadcbf7cdce5c8b0894ff52e4d5/?p=q4EFnnPL5XitKcEHwgXvUQ -->
+      <div class="video-card animate-in delay-3">
+        <div class="video-wrapper" id="vw3" onclick="playVideo('vw3','https://rutube.ru/play/embed/aaf98aadcbf7cdce5c8b0894ff52e4d5/?p=q4EFnnPL5XitKcEHwgXvUQ')">
+          <img class="video-thumb" src="https://rutube.ru/api/video/aaf98aadcbf7cdce5c8b0894ff52e4d5/thumbnail/?redirect=1" alt="8 упражнений для управления энергией" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjM2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWExMjAwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2Y1YzUxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPvCfjLsgU3VwZXIgSnVtcDwvdGV4dD48L3N2Zz4='" />
+          <div class="video-overlay-bg"></div>
+          <div class="video-play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <iframe id="vw3-frame" src="" allowfullscreen allow="autoplay"></iframe>
+        </div>
+        <div class="video-card-body">
+          <div class="video-label">Видео 3</div>
+          <h4>8 упражнений для увеличения энергии</h4>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"><span class="divider-flower">🌻</span></div>
+</div>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" id="cta">
+  <div class="container" style="position:relative; z-index:2;">
+    <span class="section-label">Начни сейчас</span>
+    <h2>Твой солнечный путь<br>начинается здесь</h2>
+    <p>Не жди «правильного момента». Правильный момент — сейчас. Напиши мне, и мы вместе найдём твой первый шаг.</p>
+    <div class="cta-buttons">
+      <a href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-primary" style="font-size:1rem; padding:0.9rem 2rem;">
+        💬 Хочу консультацию
+      </a>
+      <a href="https://account.superjump.com/register/118814" target="_blank" class="btn btn-white" style="font-size:1rem; padding:0.9rem 2rem;">
+        📅 Даты следующего интенсива
+      </a>
+      <a href="https://account.superjump.com/register/118814" target="_blank" class="btn btn-gold-outline" style="font-size:1rem; padding:0.9rem 2rem;">
+        🌻 Присоединиться к команде
+      </a>
+      <a href="#test" class="btn btn-gold-outline" style="font-size:1rem; padding:0.9rem 2rem;">
+        🌟 Пройти тест
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"><span class="divider-flower">✨</span></div>
+</div>
+
+<!-- ===== CONTACTS ===== -->
+<section class="contacts-section" id="contacts">
+  <div class="container">
+    <div class="section-head animate-in">
+      <span class="section-label">Контакты</span>
+      <h2>Свяжись со мной</h2>
+      <p>Выбери удобный способ — отвечу с теплом и заботой</p>
+    </div>
+    <div class="contact-cards">
+      <!-- Telegram -->
+      <a href="https://t.me/NafalyaVardaya" target="_blank" class="contact-card tg animate-in delay-1">
+        <div class="contact-card-icon">✈️</div>
+        <div class="contact-card-title">Telegram</div>
+        <div class="contact-card-name">@NafalyaVardaya</div>
+      </a>
+      <!-- WhatsApp -->
+      <a href="https://Wa.me/+79159151086" target="_blank" class="contact-card wa animate-in delay-2">
+        <div class="contact-card-icon">📱</div>
+        <div class="contact-card-title">WhatsApp</div>
+        <div class="contact-card-name">+7 915 915-10-86</div>
+      </a>
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/p/C6Q_rzAtM5k/?igsh=MXJ0bTB1eTVnanIxYg==" target="_blank" class="contact-card ig animate-in delay-3">
+        <div class="contact-card-icon">📸</div>
+        <div class="contact-card-title">Instagram</div>
+        <div class="contact-card-name">Открыть профиль</div>
+      </a>
+      <!-- Регистрация Super Jump -->
+      <a href="https://account.superjump.com/register/118814" target="_blank" class="contact-card reg animate-in delay-4">
+        <div class="contact-card-icon">🌟</div>
+        <div class="contact-card-title">Регистрация</div>
+        <div class="contact-card-name">Super Jump</div>
+      </a>
+    </div>
+    <div style="text-align:center; margin-top:1rem;" class="animate-in">
+      <a href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-primary" style="font-size:1rem; padding:0.9rem 2.4rem;">
+        🌻 Написать Наталье
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-copy">
+      <strong>Наталья Вардая</strong> &copy; 2026. Все права защищены.
+    </div>
+    <div class="footer-right">
+      Super Jump — онлайн по всему миру ❤️
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-dev">
+      Разработчик сайта —
+      <a href="https://t.me/Samadhi2411" target="_blank">samadhi2411</a>
+    </div>
+    <div class="footer-max">
+      Нужен сайт? Пиши →
+      <a href="https://max.ru/u/f9LHodD0cOKDY1emmUrupKlXJll32btrvJyZe3d0CeMmvy_rHDa2TWoayQc" target="_blank">MAX (МЕССЕНДЖЕР)</a>
+    </div>
+    <div class="footer-vk">
+      <a href="https://vk.com/samadhi2411" target="_blank">ВКонтакте</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Наверх">↑</button>
+
+<script>
+  /* ===== NAVBAR SCROLL ===== */
+  const navbar = document.getElementById('navbar');
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  /* ===== MOBILE MENU ===== */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+  }
+
+  /* ===== BACK TO TOP ===== */
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ===== INTERSECTION OBSERVER (animate-in) ===== */
+  const animEls = document.querySelectorAll('.animate-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  animEls.forEach(el => observer.observe(el));
+
+  /* ===== TEST LOGIC ===== */
+  function toggleCheck(card) {
+    card.classList.toggle('checked');
+    const count = document.querySelectorAll('.test-card.checked').length;
+    document.getElementById('checkedCount').textContent = count;
+    const result = document.getElementById('testResult');
+    if (count >= 3) {
+      result.classList.add('visible');
+      document.getElementById('resultCount').textContent = count;
+      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else {
+      result.classList.remove('visible');
+    }
+  }
+
+  /* ===== VIDEO PLAYER ===== */
+  function playVideo(wrapperId, embedUrl) {
+    const wrapper = document.getElementById(wrapperId);
+    const iframe = document.getElementById(wrapperId + '-frame');
+    const thumb = wrapper.querySelector('.video-thumb');
+    const overlay = wrapper.querySelector('.video-overlay-bg');
+    const playBtn = wrapper.querySelector('.video-play-btn');
+    if (iframe.classList.contains('active')) return;
+    iframe.src = embedUrl + (embedUrl.includes('?') ? '&' : '?') + 'autoplay=1';
+    iframe.classList.add('active');
+    if (thumb) thumb.style.opacity = '0';
+    if (overlay) overlay.style.opacity = '0';
+    if (playBtn) playBtn.style.opacity = '0';
+  }
+
+  /* ===== GALLERY LIGHTBOX ===== */
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      if (!img || img.style.display === 'none') return;
+      document.getElementById('lightboxImg').src = img.src;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+</body>
+</html>
