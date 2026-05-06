@@ -993,8 +993,8 @@
       <!-- Video 1 -->
       <div class="video-card">
         <div class="video-wrapper">
-          <img class="video-thumb" src="https://images.pexels.com/photos/19512693/pexels-photo-19512693.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=200&w=350" alt="Видео 1" />
-          <div class="video-play-btn" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+          <img class="video-thumb" src="img/10.jpg" alt="Что такое Super Jump за 5 минут? Суть методики" />
+          <div class="video-play-btn" onclick="openVideoModal('https://rutube.ru/play/embed/c6e4660768cc75a4820cf6d666aff7ca?p=lhP7YXwOvLdqm2P95LqGUA')">
             <i class="fa-solid fa-play"></i>
           </div>
         </div>
@@ -1006,27 +1006,27 @@
       <!-- Video 2 -->
       <div class="video-card">
         <div class="video-wrapper">
-          <img class="video-thumb" src="https://images.pexels.com/photos/18716726/pexels-photo-18716726.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=200&w=350" alt="Видео 2" />
-          <div class="video-play-btn" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+          <img class="video-thumb" src="img/11.jpg" alt="конгресс интеллект тренеров" />
+          <div class="video-play-btn" onclick="openVideoModal('https://rutube.ru/play/embed/98f447bc8b926dffc411370f3a79f124?p=JfOSfLBfV-Ahxw-nAyWu-g')">
             <i class="fa-solid fa-play"></i>
           </div>
         </div>
         <div class="video-card-body">
-          <span class="video-label">Сила смехотерапии</span>
-          <h4>Как смехозарядка меняет гормональный фон и лечит утомление</h4>
+          <span class="video-label">Событие</span>
+          <h4>конгресс интеллект тренеров</h4>
         </div>
       </div>
       <!-- Video 3 -->
       <div class="video-card">
         <div class="video-wrapper">
-          <img class="video-thumb" src="https://images.pexels.com/photos/33120556/pexels-photo-33120556.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=200&w=350" alt="Видео 3" />
-          <div class="video-play-btn" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+          <img class="video-thumb" src="img/12.jpg" alt="8 упражнений для увеличения энергии" />
+          <div class="video-play-btn" onclick="openVideoModal('https://rutube.ru/play/embed/aaf98aadcbf7cdce5c8b0894ff52e4d5?p=q4EFnnPL5XitKcEHwgXvUQ')">
             <i class="fa-solid fa-play"></i>
           </div>
         </div>
         <div class="video-card-body">
-          <span class="video-label">Обучение профессии</span>
-          <h4>Как стать интеллект-тренером и запустить свой онлайн-бизнес</h4>
+          <span class="video-label">Методика</span>
+          <h4>8 упражнений для увеличения энергии</h4>
         </div>
       </div>
     </div>
@@ -1133,23 +1133,12 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
-    <div class="nav-brand text-white" style="font-size: 1.5rem;">
-      <span>🌻</span>
-    </div>
-    <div class="footer-copy">
+    <div class="flex-direction: column; gap: 0.5rem; text-align: left;">
       © 2026 <strong>Наталья Вардая</strong>. Все права защищены.
     </div>
   </div>
-  <div class="footer-bottom font-sans">
-    <div class="footer-links flex flex-wrap gap-x-6 gap-y-2 justify-center mb-4">
-      <a href="#about" class="hover:text-white transition">Обо мне</a>
-      <a href="#test" class="hover:text-white transition">Тест энергии</a>
-      <a href="#intensive" class="hover:text-white transition">8 жемчужин</a>
-      <a href="#trainer" class="hover:text-white transition">Методика</a>
-      <a href="#team" class="hover:text-white transition">Команда «Жёлтые Подсолнухи»</a>
-      <a href="https://account.superjump.com/register/118814" target="_blank" class="hover:text-white transition">Регистрация Super Jump</a>
-    </div>
-    <div class="footer-dev" style="flex-direction: column; gap: 0.5rem; text-align: center;">
+  <div class="footer-top font-sans">
+    <div class="footer-dev" style="flex-direction: raw; gap: 0.5rem; text-align: right;">
       <div>Разработчик сайта — <a href="https://t.me/Samadhi2411" target="_blank">samadhi2411</a></div>
       <div>Нужен сайт? Пиши → <a href="https://max.ru/u/f9LHodD0cOKDY1emmUrupKlXJll32btrvJyZe3d0CeMmvy_rHDa2TWoayQc" target="_blank">MAX (МЕССЕНДЖЕР)</a></div>
       <div><a href="https://vk.com/samadhi2411" target="_blank">ВКонтакте</a></div>
@@ -1195,38 +1184,7 @@
     mobileMenu.classList.remove('open');
   }
 
-  // Fallback beautiful graphic renders if image files load with error
-  function showImageFallback(img, section = 'hero') {
-    const parent = img.parentElement;
-    if (section === 'hero') {
-      parent.innerHTML = `
-        <div class="w-full h-full flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-[#fffbf0] to-[#fff39c]">
-          <span class="text-7xl">🌻</span>
-          <div class="text-center font-sans">
-            <h4 class="text-[#5c3d00] font-bold text-lg">Наталья Вардая</h4>
-            <p class="text-[#8b7040] text-xs uppercase tracking-widest font-semibold mt-1">Интеллект-тренер Super Jump</p>
-          </div>
-        </div>
-      `;
-    } else {
-      parent.innerHTML = `
-        <div class="w-full h-full flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-[#fffef0] to-[#ffd752] p-6 text-center">
-          <span class="text-5xl">☀️</span>
-          <p class="font-serif italic text-sm text-[#5c3d00]">«В каждом подсолнухе живет солнце, готовое светить другим...»</p>
-        </div>
-      `;
-    }
-  }
 
-  function showGalleryFallback(img, emoji, label) {
-    const parent = img.parentElement;
-    parent.innerHTML = `
-      <div class="gallery-placeholder-art">
-        <span class="text-4xl">${emoji}</span>
-        <span>${label}</span>
-      </div>
-    `;
-  }
 
   // Interactive Test Logic
   let selectedSymptoms = 0;
@@ -1280,8 +1238,7 @@
     text.innerText = adviceText;
 
     // Custom personalized link
-    const prefilledMessage = encodeURIComponent(`Привет, Наталья! Я прошёл тест на сайте. Результат: ${archetype} (${selectedSymptoms} из 8 признаков). Хочу получить разбор моего состояния.`);
-    link.href = `https://t.me/NafalyaVardaya?text=${prefilledMessage}`;
+    link.href = "https://t.me/NafalyaVardaya";
 
     resultBox.style.display = 'block';
     setTimeout(() => {
@@ -1368,8 +1325,7 @@
     document.getElementById('feat3').innerText = data.feat3;
 
     // Custom personalized question text
-    const customMessage = encodeURIComponent(`Привет, Наталья! Интересует формат участия: "${data.title}". Расскажите, пожалуйста, когда стартует ближайшая группа.`);
-    document.getElementById('calcTgLink').href = `https://t.me/NafalyaVardaya?text=${customMessage}`;
+    document.getElementById('calcTgLink').href = "https://t.me/NafalyaVardaya";
   }
 
   // Interactive Goal Selector in prefilled message form
@@ -1384,9 +1340,7 @@
   }
 
   function generateCustomMessage() {
-    const userName = document.getElementById('userName').value.trim() || 'Гость';
-    const msg = `Привет, Наталья! Меня зовут ${userName}. Я посетил твой сайт и выбрал фокус развития: "${selectedGoalText}". Расскажи, пожалуйста, подробнее об интенсиве Super Jump и ближайшем потоке!`;
-    const targetUrl = `https://t.me/NafalyaVardaya?text=${encodeURIComponent(msg)}`;
+    const targetUrl = "https://t.me/NafalyaVardaya";
     window.open(targetUrl, '_blank');
   }
 
