@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Наталья Вардая — Интеллект-тренер | Super Jump</title>
   <meta name="description" content="Наталья Вардая — мастер интеллект-тренер, основатель международной команды Жёлтые Подсолнухи. Энергия, уверенность, баланс и рост на 10-дневных интенсивах Super Jump." />
-  
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  
-  <!-- Font Awesome for beautiful icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
     body { font-family: 'Georgia', 'Times New Roman', serif; background: #fffdf5; color: #2c1d00; line-height: 1.7; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
-
     :root {
       --gold: #f5c518;
       --gold-light: #fde96d;
@@ -36,7 +31,6 @@
       --radius: 20px;
       --radius-sm: 12px;
     }
-
     h1, h2, h3, h4, h5 { font-family: 'Georgia', serif; line-height: 1.25; font-weight: normal; }
     .section-label { font-family: 'Arial', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-warm); display: block; margin-bottom: 0.6rem; }
 
@@ -52,14 +46,12 @@
     .nav-cta { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%); color: var(--brown) !important; padding: 0.5rem 1.3rem !important; border-radius: 24px; font-weight: 700 !important; box-shadow: 0 4px 12px rgba(245,197,24,0.3); border: none !important; transition: all 0.2s; }
     .nav-cta::after { display: none !important; }
     .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(245,197,24,0.45); }
-    
     .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--brown); border-radius: 2px; transition: all 0.3s ease; }
     .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-    .mobile-menu { display: none; position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba(255,253,245,0.98); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 90px 2rem 2rem; z-index: 999; flex-direction: column; gap: 1.2rem; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .mobile-menu { display: none; position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba(255,253,245,0.98); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 90px 2rem 2rem; z-index: 999; flex-direction: column; gap: 1.2rem; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); overflow-y: auto; }
     .mobile-menu.open { display: flex; transform: translateX(0); }
     .mobile-menu a { font-family: 'Arial', sans-serif; font-size: 1.1rem; color: var(--text-mid); padding: 0.8rem 0; border-bottom: 1px solid rgba(245,197,24,0.12); font-weight: 600; text-align: center; }
 
@@ -82,7 +74,6 @@
     .hero-tagline { font-family: 'Arial', sans-serif; font-size: 0.98rem; color: var(--text-light); margin-bottom: 2.8rem; display: flex; align-items: center; gap: 0.8rem; font-weight: 500; }
     .hero-tagline::before { content: ''; display: inline-block; width: 40px; height: 2px; background: var(--gold-warm); }
     .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; }
-
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; padding: 0.85rem 1.8rem; border-radius: 50px; font-family: 'Arial', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; border: none; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); text-decoration: none; white-space: nowrap; }
     .btn-primary { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%); color: var(--brown); box-shadow: 0 6px 20px rgba(245,197,24,0.35); }
     .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(245,197,24,0.5); }
@@ -110,9 +101,49 @@
     .stat-text span { color: var(--text-light); font-size: 0.75rem; font-weight: 500; }
 
     /* DIVIDER */
-    .divider { text-align: center; padding: 2rem 0; position: relative; z-index: 3; }
+    .divider { text-align: center; padding: 2.5rem 0; position: relative; z-index: 3; }
     .divider-line { display: flex; align-items: center; justify-content: center; gap: 1.2rem; }
     .divider-line::before, .divider-line::after { content: ''; flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, rgba(245,197,24,0.5), transparent); }
+
+    /* Animated sunflower divider */
+    .sunflower-divider {
+      text-align: center;
+      padding: 2rem 0;
+      position: relative;
+      z-index: 3;
+    }
+    .sunflower-divider .sf-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .sunflower-divider .sf-line::before,
+    .sunflower-divider .sf-line::after {
+      content: '';
+      flex: 1;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, rgba(245,197,24,0.5), transparent);
+    }
+    .sunflower-big {
+      font-size: 3rem;
+      display: inline-block;
+      filter: drop-shadow(0 0 12px rgba(245,197,24,0.7)) drop-shadow(0 0 24px rgba(249,168,37,0.4));
+      animation: sfPulse 2.5s ease-in-out infinite, sfGlow 2.5s ease-in-out infinite;
+      line-height: 1;
+    }
+    @keyframes sfPulse {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      25% { transform: scale(1.18) rotate(8deg); }
+      50% { transform: scale(1.12) rotate(-5deg); }
+      75% { transform: scale(1.2) rotate(6deg); }
+    }
+    @keyframes sfGlow {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(245,197,24,0.6)) drop-shadow(0 0 18px rgba(249,168,37,0.3)); }
+      50% { filter: drop-shadow(0 0 18px rgba(245,197,24,0.95)) drop-shadow(0 0 36px rgba(249,168,37,0.6)) brightness(1.15); }
+    }
+
+    /* Sparkle divider */
     .divider-flower { font-size: 1.8rem; filter: drop-shadow(0 2px 4px rgba(245,197,24,0.2)); animation: pulse 3s infinite ease-in-out; }
     @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
 
@@ -120,15 +151,64 @@
     .about { background: #fff; }
     .about-inner { display: grid; grid-template-columns: 1fr 1.3fr; gap: 4.5rem; align-items: start; }
     .about-img-wrap { position: relative; }
-    .about-img { border-radius: 40px 40px 40px 120px; overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 4/5; background: linear-gradient(135deg, #fff3cc, #fde96d44); border: 4px solid white; transition: all 0.3s; }
-    .about-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Desktop: scale down photo to show text overlays fully */
+    .about-img {
+      border-radius: 40px 40px 40px 120px;
+      overflow: visible;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #fff3cc, #fde96d44);
+      border: 4px solid white;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transform: scale(0.88);
+      transform-origin: top center;
+      border-radius: 36px 36px 36px 116px;
+    }
     .about-img:hover { transform: translateY(-5px); box-shadow: 0 25px 55px rgba(200,140,0,0.22); }
-    .about-badge { position: absolute; bottom: -20px; right: -10px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%); color: var(--brown); border-radius: 20px; padding: 1.1rem 1.6rem; font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 700; box-shadow: var(--shadow-md); text-align: center; line-height: 1.45; border: 2px solid white; }
+
+    /* Badge - smaller */
+    .about-badge {
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%);
+      color: var(--brown);
+      border-radius: 16px;
+      padding: 0.75rem 1.1rem;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      line-height: 1.4;
+      border: 2px solid white;
+      max-width: 160px;
+      z-index: 10;
+    }
+
     .about-content h2 { font-size: clamp(1.8rem, 3.8vw, 2.6rem); color: var(--brown); margin-bottom: 1.4rem; }
     .about-lead { font-size: 1.15rem; color: var(--text-mid); margin-bottom: 1.8rem; line-height: 1.75; font-style: italic; position: relative; padding-left: 1.2rem; border-left: 3px solid var(--gold-warm); }
     .benefits-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2.2rem; }
     .benefits-list li { display: flex; align-items: flex-start; gap: 0.9rem; font-size: 1rem; color: var(--text-mid); line-height: 1.55; }
     .benefit-icon { width: 30px; height: 30px; min-width: 30px; background: linear-gradient(135deg, var(--gold-pale) 0%, #fff3aa 100%); border: 1.5px solid rgba(245,197,24,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; margin-top: 1px; }
+
+    /* About courses header spacing */
+    .about-courses-title {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-family: 'Arial', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--brown);
+    }
 
     /* TEST SECTION */
     .test-section { background: linear-gradient(145deg, #fffef2 0%, #fff8cd 60%, #fffdf5 100%); position: relative; }
@@ -140,13 +220,10 @@
     .check-box { width: 24px; height: 24px; min-width: 24px; border-radius: 8px; border: 2px solid rgba(245,197,24,0.5); background: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; margin-top: 2px; transition: all 0.2s ease; color: transparent; }
     .test-card.checked .check-box { background: linear-gradient(135deg, var(--gold), var(--gold-warm)); border-color: var(--gold-warm); color: white; }
     .test-card p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.5; font-weight: 500; font-family: 'Arial', sans-serif; }
-    
     .test-progress-bar { height: 10px; background: rgba(245,197,24,0.12); border-radius: 10px; margin-bottom: 2rem; overflow: hidden; position: relative; }
     .test-progress-fill { width: 0%; height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-warm)); border-radius: 10px; transition: width 0.4s ease; }
-    
     .test-counter { font-family: 'Arial', sans-serif; font-size: 1rem; color: var(--text-mid); margin-bottom: 1.5rem; text-align: center; font-weight: bold; }
     .test-counter span { color: var(--gold-warm); font-size: 1.3rem; }
-    
     .test-result { background: linear-gradient(135deg, #fffbf0 0%, #fff6bf 100%); border-radius: 24px; padding: 2.5rem 3rem; text-align: center; box-shadow: var(--shadow-md); border: 2px solid var(--gold); display: none; margin-top: 2rem; transform: scale(0.95); opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
     .test-result.visible { display: block; transform: scale(1); opacity: 1; }
     .test-result-badge { display: inline-block; padding: 0.4rem 1.2rem; background: var(--brown); color: white; border-radius: 30px; font-family: 'Arial', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 0.08em; }
@@ -154,7 +231,7 @@
     .test-result p { font-size: 1.05rem; color: var(--text-mid); margin-bottom: 1.8rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; }
     .test-result .result-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 
-    /* INTENSIVE (8 PEARLS Switcher) */
+    /* INTENSIVE */
     .intensive { background: #fff; }
     .pearl-nav-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin-bottom: 2rem; }
     @media (max-width: 768px) { .pearl-nav-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -165,7 +242,6 @@
     .pearl-tab.active .pearl-tab-title { color: var(--brown); font-weight: bold; }
     .pearl-tab-num { font-size: 1.3rem; font-weight: 800; color: var(--gold-warm); }
     .pearl-tab-title { font-size: 0.82rem; color: var(--text-mid); font-weight: 600; line-height: 1.3; }
-
     .pearl-content-container { background: var(--cream); border-radius: 28px; padding: 2.5rem; border: 1px solid rgba(245,197,24,0.2); box-shadow: var(--shadow-sm); min-height: 250px; display: flex; align-items: center; position: relative; overflow: hidden; }
     .pearl-content-container::after { content: '🌻'; position: absolute; bottom: -20px; right: -10px; font-size: 8rem; opacity: 0.05; pointer-events: none; }
     .pearl-pane { display: none; width: 100%; animation: fadeIn 0.4s ease forwards; }
@@ -186,225 +262,346 @@
     .trainer-lead p { font-size: 1.1rem; line-height: 1.75; color: rgba(255,255,255,0.92); }
     .trainer-roles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; margin-bottom: 3.5rem; }
     .role-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(245,197,24,0.18); border-radius: var(--radius-sm); padding: 1.8rem 1.2rem; text-align: center; transition: all 0.3s ease; position: relative; overflow: hidden; }
-    .role-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(245,197,24,0.1) 0%, transparent 100%); opacity: 0; transition: opacity 0.3s; }
+    .role-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(245,197,24,0.1) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; }
+    .role-card:hover { transform: translateY(-4px); border-color: rgba(245,197,24,0.4); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
     .role-card:hover::before { opacity: 1; }
-    .role-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(245,197,24,0.45); transform: translateY(-5px); box-shadow: var(--shadow-md); }
-    .role-emoji { font-size: 2.4rem; margin-bottom: 0.8rem; display: block; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); }
-    .role-card h4 { font-size: 1.05rem; color: var(--gold-light); margin-bottom: 0.4rem; font-weight: bold; font-family: 'Arial', sans-serif; }
-    .role-card p { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+    .role-icon { font-size: 2.2rem; margin-bottom: 0.8rem; display: block; }
+    .role-card h4 { font-size: 1.05rem; color: var(--gold-light); margin-bottom: 0.5rem; font-family: 'Arial', sans-serif; font-weight: 700; }
+    .role-card p { font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.55; }
+    .audience-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .audience-item { background: rgba(255,255,255,0.06); border: 1px solid rgba(245,197,24,0.15); border-radius: var(--radius-sm); padding: 1.4rem; display: flex; gap: 1rem; align-items: flex-start; transition: all 0.25s; }
+    .audience-item:hover { background: rgba(255,255,255,0.1); border-color: rgba(245,197,24,0.3); transform: translateY(-2px); }
+    .audience-icon { width: 36px; height: 36px; min-width: 36px; background: linear-gradient(135deg, var(--gold), var(--gold-warm)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .audience-text { font-size: 0.95rem; color: rgba(255,255,255,0.82); line-height: 1.5; }
+    .audience-text strong { color: var(--gold-light); }
 
     /* WHY CHOOSE */
-    .why-choose { background: var(--cream); }
-    .why-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
-    .why-card { background: white; border-radius: var(--radius); padding: 2.2rem 1.8rem; border: 1px solid rgba(245,197,24,0.15); box-shadow: var(--shadow-sm); transition: all 0.3s ease; position: relative; overflow: hidden; }
-    .why-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--gold), var(--gold-warm)); }
-    .why-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(245,197,24,0.3); }
-    .why-card .card-icon { font-size: 2.4rem; margin-bottom: 1.2rem; display: block; }
-    .why-card h4 { font-size: 1.15rem; color: var(--brown); margin-bottom: 0.6rem; font-weight: bold; }
-    .why-card p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.6; }
+    .why-choose { background: linear-gradient(145deg, #fffef5 0%, #fffbde 50%, #fffdf5 100%); }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; }
+    .why-card { background: white; border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.12); transition: all 0.3s; }
+    .why-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(245,197,24,0.25); }
+    .why-icon { font-size: 2.5rem; margin-bottom: 0.9rem; display: block; }
+    .why-card h4 { font-size: 1.08rem; color: var(--brown); margin-bottom: 0.6rem; font-family: 'Arial', sans-serif; font-weight: 700; }
+    .why-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.55; }
 
-    /* TEAM SECTION ("Yellow Sunflowers") */
-    .team-section { background: linear-gradient(135deg, #fff8cc 0%, #fffef5 50%, #fff19d 100%); position: relative; overflow: hidden; }
-    .team-section::before { content: '🌻'; position: absolute; font-size: 16rem; opacity: 0.05; top: -50px; right: -50px; pointer-events: none; }
-    .team-section::after { content: '🌻'; position: absolute; font-size: 12rem; opacity: 0.04; bottom: -50px; left: -50px; pointer-events: none; }
-    .team-inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4.5rem; align-items: center; position: relative; z-index: 2; }
-    .team-content h2 { font-size: clamp(1.8rem, 3.8vw, 2.6rem); color: var(--brown); margin-bottom: 0.8rem; font-weight: bold; }
-    .team-title { font-family: 'Arial', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--gold-warm); margin-bottom: 1.6rem; display: flex; align-items: center; gap: 0.6rem; }
-    .team-content p { font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 1.2rem; }
-    .team-values { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.8rem; }
-    .team-tag { background: white; border: 1.5px solid rgba(245,197,24,0.4); color: var(--brown); font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 700; padding: 0.4rem 1rem; border-radius: 20px; box-shadow: var(--shadow-sm); }
-    .team-stats { display: flex; flex-direction: column; gap: 1rem; }
-    .team-stat { background: white; border-radius: var(--radius); padding: 1.5rem 1.8rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.18); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-    .team-stat:hover { transform: translateX(8px); box-shadow: var(--shadow-md); border-color: var(--gold-warm); }
-    .team-stat-icon { font-size: 2.2rem; width: 55px; height: 55px; background: var(--gold-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(245,197,24,0.3); }
-    .team-stat-text strong { display: block; font-size: 1.15rem; color: var(--brown); font-family: 'Arial', sans-serif; font-weight: bold; }
-    .team-stat-text span { font-size: 0.88rem; color: var(--text-light); font-weight: 500; }
+    /* TEAM SECTION */
+    .team-section { background: #fff; }
+    .team-inner { display: grid; grid-template-columns: 1.3fr 0.8fr; gap: 4rem; align-items: center; }
+    .team-values { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem; }
+    .team-value-tag { font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--brown); background: linear-gradient(135deg, var(--gold-pale), #fff3aa); border: 1px solid rgba(245,197,24,0.35); padding: 0.35rem 1rem; border-radius: 30px; }
+    .team-stats { display: flex; flex-direction: column; gap: 1.5rem; }
+    .team-stat-box { background: linear-gradient(135deg, #fffbf0 0%, #fff5cc 100%); border-radius: var(--radius); padding: 1.8rem; text-align: center; border: 1px solid rgba(245,197,24,0.2); box-shadow: var(--shadow-sm); transition: all 0.3s; }
+    .team-stat-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .team-stat-icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+    .team-stat-num { font-size: 1.6rem; font-weight: bold; color: var(--brown); display: block; font-family: 'Arial', sans-serif; }
+    .team-stat-label { font-size: 0.82rem; color: var(--text-mid); font-family: 'Arial', sans-serif; font-weight: 600; }
 
-    /* DYNAMIC CALCULATOR */
-    .calc-section { background: white; }
-    .calc-card { background: var(--cream); border-radius: 32px; border: 1px solid rgba(245,197,24,0.18); box-shadow: var(--shadow-md); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; }
-    @media (max-width: 900px) { .calc-card { grid-template-columns: 1fr; } }
-    .calc-left { padding: 3rem; border-right: 1px solid rgba(245,197,24,0.12); }
-    @media (max-width: 900px) { .calc-left { border-right: none; border-bottom: 1px solid rgba(245,197,24,0.12); padding: 2.2rem; } }
-    .calc-right { padding: 3rem; background: white; display: flex; flex-direction: column; justify-content: space-between; }
-    @media (max-width: 900px) { .calc-right { padding: 2.2rem; } }
-    .calc-option { border: 2px solid rgba(245,197,24,0.18); background: white; padding: 1.3rem; border-radius: var(--radius-sm); margin-bottom: 1rem; cursor: pointer; transition: all 0.25s; display: flex; justify-content: space-between; align-items: center; }
-    .calc-option:hover { border-color: var(--gold-warm); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-    .calc-option.active { border-color: var(--gold-warm); background: linear-gradient(135deg, #fffdf2, #fff6b5); box-shadow: var(--shadow-sm); }
-    .calc-option-title { font-family: 'Arial', sans-serif; font-weight: 700; color: var(--brown); font-size: 1rem; }
-    .calc-option-desc { font-size: 0.78rem; color: var(--text-light); margin-top: 0.1rem; }
-    .calc-bullet { width: 20px; height: 20px; border-radius: 50%; border: 2px solid rgba(245,197,24,0.5); background: white; display: flex; align-items: center; justify-content: center; }
-    .calc-option.active .calc-bullet { border-color: var(--gold-warm); background: var(--gold-warm); }
-    .calc-option.active .calc-bullet::after { content: ''; width: 8px; height: 8px; background: white; border-radius: 50%; }
-    
-    .calc-details-box { display: flex; flex-direction: column; gap: 1.2rem; }
-    .calc-meta-item { display: flex; align-items: center; gap: 0.8rem; font-size: 0.95rem; color: var(--text-mid); }
-    .calc-meta-icon { font-size: 1.3rem; color: var(--gold-warm); width: 28px; }
-    .calc-features-list { display: flex; flex-direction: column; gap: 0.6rem; background: var(--cream); padding: 1.2rem; border-radius: var(--radius-sm); border: 1px solid rgba(245,197,24,0.1); margin: 1.2rem 0; }
-    .calc-feature { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; color: var(--text-mid); font-family: 'Arial', sans-serif; font-weight: 500; }
-    .calc-feature i { color: #4CAF50; }
+    /* CALCULATOR */
+    .calc-section { background: linear-gradient(145deg, #fffef2 0%, #fff8cd 60%, #fffdf5 100%); }
+    .calc-container { background: white; border-radius: 32px; padding: 3rem; box-shadow: var(--shadow-lg); border: 1px solid rgba(245,197,24,0.18); }
+    .calc-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
+    .calc-options { display: flex; flex-direction: column; gap: 0.8rem; }
+    .calc-option { background: var(--cream); border: 1.5px solid rgba(245,197,24,0.18); border-radius: var(--radius-sm); padding: 1.1rem 1.4rem; cursor: pointer; transition: all 0.25s; }
+    .calc-option:hover { background: white; border-color: var(--gold-warm); transform: translateX(4px); }
+    .calc-option.active { background: linear-gradient(135deg, rgba(245,197,24,0.15), rgba(249,168,37,0.08)); border-color: var(--gold-warm); box-shadow: var(--shadow-sm); }
+    .calc-option-title { font-family: 'Arial', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--brown); margin-bottom: 0.25rem; }
+    .calc-option-desc { font-size: 0.82rem; color: var(--text-light); font-family: 'Arial', sans-serif; }
+    .calc-result { background: var(--cream); border-radius: 24px; padding: 2.2rem; border: 1px solid rgba(245,197,24,0.2); }
+    .calc-result-title { font-size: 1.5rem; color: var(--brown); margin-bottom: 1.5rem; font-weight: bold; }
+    .calc-info-row { display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.9rem; color: var(--text-mid); padding: 0.7rem 0; border-bottom: 1px solid rgba(245,197,24,0.1); font-family: 'Arial', sans-serif; }
+    .calc-info-icon { color: var(--gold-warm); min-width: 18px; margin-top: 2px; }
+    .calc-features { margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .calc-feat { display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.9rem; color: var(--text-mid); font-family: 'Arial', sans-serif; }
+    .calc-feat-icon { color: var(--gold-warm); min-width: 18px; }
+    .calc-note { font-size: 0.82rem; color: var(--text-light); font-family: 'Arial', sans-serif; margin-top: 1.5rem; font-style: italic; line-height: 1.5; }
+    /* More space under the note */
+    .calc-note-spacing { margin-bottom: 1.8rem; }
 
-    /* GALLERY SECTION (with Lightbox) */
-    .gallery-section { background: var(--cream); }
-    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-    .gallery-item { position: relative; border-radius: var(--radius-sm); overflow: hidden; aspect-ratio: 1; background: linear-gradient(135deg, #fff8cc, #fde96d44); cursor: pointer; box-shadow: var(--shadow-sm); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; border: 2px solid white; }
-    .gallery-item:hover { transform: scale(1.04) translateY(-3px); box-shadow: var(--shadow-md); z-index: 10; border-color: var(--gold); }
-    .gallery-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    /* GALLERY */
+    .gallery-section { background: white; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+    .gallery-item { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 3/4; cursor: pointer; box-shadow: var(--shadow-sm); transition: all 0.3s; }
+    .gallery-item:hover { transform: scale(1.03); box-shadow: var(--shadow-md); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
     .gallery-item:hover img { transform: scale(1.08); }
-    .gallery-overlay { position: absolute; inset: 0; background: rgba(92,61,0,0.4); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+    .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(92,61,0,0.6) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; justify-content: flex-end; padding: 1.2rem; }
     .gallery-item:hover .gallery-overlay { opacity: 1; }
-    .gallery-zoom-icon { font-size: 1.8rem; color: white; transform: scale(0.8); transition: transform 0.3s; }
-    .gallery-item:hover .gallery-zoom-icon { transform: scale(1); }
-    
-    .gallery-placeholder-art { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; background: linear-gradient(135deg, #fffcf0, #fffa99); }
-    .gallery-placeholder-art i { font-size: 2.2rem; color: var(--gold-warm); }
-    .gallery-placeholder-art span { font-size: 0.72rem; color: var(--text-light); text-transform: uppercase; font-family: 'Arial', sans-serif; font-weight: 700; letter-spacing: 0.08em; }
+    .gallery-zoom-icon { width: 42px; height: 42px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--brown); font-size: 1.1rem; }
 
-    /* VIDEOS & REVIEWS SECTION */
-    .videos-section { background: white; }
-    .videos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-    .video-card { background: var(--cream); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.14); transition: all 0.3s ease; }
-    .video-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: var(--gold-warm); }
-    .video-wrapper { position: relative; aspect-ratio: 16/9; background: #231800; overflow: hidden; }
-    .video-thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9); transition: transform 0.5s; }
-    .video-card:hover .video-thumb { transform: scale(1.04); }
-    .video-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 58px; height: 58px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(245,197,24,0.5); cursor: pointer; transition: all 0.25s ease; z-index: 4; border: 2px solid white; }
-    .video-play-btn:hover { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 6px 22px rgba(245,197,24,0.7); }
-    .video-play-btn i { font-size: 1.4rem; color: var(--brown); margin-left: 3px; }
-    .video-card-body { padding: 1.4rem 1.6rem; }
-    .video-card-body h4 { font-size: 1rem; color: var(--brown); font-weight: bold; line-height: 1.4; margin-top: 0.2rem; }
+    /* LIGHTBOX */
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9000; align-items: center; justify-content: center; padding: 2rem; }
+    .lightbox.open { display: flex; }
+    .lightbox-inner { position: relative; max-width: 900px; width: 100%; }
+    .lightbox-close { position: absolute; top: -44px; right: 0; background: rgba(255,255,255,0.12); border: none; color: white; font-size: 1.3rem; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+    .lightbox-inner img { width: 100%; border-radius: 16px; max-height: 80vh; object-fit: contain; }
+    .lightbox-caption { color: rgba(255,255,255,0.8); text-align: center; margin-top: 1rem; font-size: 1rem; font-family: 'Arial', sans-serif; }
 
-    /* CONVERSION / MESSAGE GENERATOR */
-    .msg-section { background: linear-gradient(135deg, #fff9d0 0%, #fffdf5 100%); }
-    .msg-card { background: white; border-radius: 32px; box-shadow: var(--shadow-lg); border: 1px solid rgba(245,197,24,0.2); padding: 3rem; display: grid; grid-template-columns: 1fr 1.2fr; gap: 3.5rem; align-items: center; }
-    @media (max-width: 900px) { .msg-card { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; } }
-    .msg-left h3 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); color: var(--brown); margin-bottom: 1rem; font-weight: bold; }
-    .msg-left p { font-size: 1rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 1.5rem; }
-    .msg-avatar-group { display: flex; align-items: center; gap: 0.8rem; margin-top: 1.5rem; }
-    .msg-avatar { width: 52px; height: 52px; border-radius: 50%; border: 2.5px solid var(--gold-warm); background: #fff3aa; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: var(--shadow-sm); }
-    .msg-avatar-info strong { display: block; font-size: 0.95rem; color: var(--brown); font-family: 'Arial', sans-serif; font-weight: bold; }
-    .msg-avatar-info span { font-size: 0.78rem; color: var(--text-light); }
-    
-    .msg-form { display: flex; flex-direction: column; gap: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-    .form-group label { font-family: 'Arial', sans-serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--text-light); letter-spacing: 0.05em; }
-    .form-input { padding: 0.85rem 1.1rem; border-radius: var(--radius-sm); border: 2px solid rgba(245,197,24,0.22); background: var(--cream); font-family: 'Arial', sans-serif; font-size: 0.95rem; color: var(--text-dark); transition: all 0.25s; }
-    .form-input:focus { outline: none; border-color: var(--gold-warm); background: white; box-shadow: var(--shadow-sm); }
-    .goal-option { border: 2px solid rgba(245,197,24,0.15); background: var(--cream); padding: 0.7rem 1rem; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s; font-family: 'Arial', sans-serif; font-size: 0.88rem; font-weight: 600; text-align: center; color: var(--text-mid); }
+    /* VIDEOS SECTION */
+    .videos-section { background: linear-gradient(145deg, #fffef2 0%, #fff8cd 40%, #fffdf5 100%); }
+    .videos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+    .video-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.1); transition: all 0.3s; }
+    .video-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .video-wrapper { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000; }
+    .video-thumb { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: opacity 0.3s; }
+    .video-card:hover .video-thumb { opacity: 0.7; }
+    .video-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .video-play-btn i { width: 56px; height: 56px; background: linear-gradient(135deg, var(--gold), var(--gold-warm)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--brown); box-shadow: 0 6px 20px rgba(245,197,24,0.5); transition: all 0.3s; }
+    .video-play-btn:hover i { transform: scale(1.15); box-shadow: 0 10px 28px rgba(245,197,24,0.6); }
+    .video-card-body { padding: 1.3rem 1.5rem; }
+    .video-label { font-family: 'Arial', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-warm); display: block; margin-bottom: 0.4rem; }
+    .video-card-body h4 { font-size: 0.98rem; color: var(--brown); line-height: 1.45; font-family: 'Arial', sans-serif; font-weight: 700; }
+
+    /* VIDEO MODAL */
+    .video-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9500; align-items: center; justify-content: center; padding: 2rem; }
+    .video-modal.open { display: flex; }
+    .video-modal-inner { position: relative; max-width: 960px; width: 100%; aspect-ratio: 16/9; }
+    .video-modal-close { position: absolute; top: -48px; right: 0; background: rgba(255,255,255,0.14); border: none; color: white; font-size: 1.3rem; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .video-modal-close:hover { background: rgba(255,255,255,0.28); }
+    .video-modal-iframe { width: 100%; height: 100%; border-radius: 12px; border: none; }
+
+    /* MSG SECTION (Quick Start) */
+    .msg-section { background: linear-gradient(145deg, #fffef2 0%, #fff8cd 60%, #fffdf5 100%); }
+    .msg-card { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; background: white; border-radius: 32px; padding: 4rem; box-shadow: var(--shadow-lg); border: 1px solid rgba(245,197,24,0.18); }
+    .msg-left h3 { font-size: 1.8rem; color: var(--brown); margin-bottom: 1rem; font-weight: bold; }
+    .msg-left p { font-size: 1rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 1.8rem; }
+    .msg-avatar-group { display: flex; align-items: center; gap: 1rem; }
+    .msg-avatar { width: 50px; height: 50px; background: linear-gradient(135deg, var(--gold), var(--gold-warm)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; box-shadow: var(--shadow-sm); flex-shrink: 0; }
+    .msg-avatar-info strong { display: block; font-size: 1rem; color: var(--brown); font-family: 'Arial', sans-serif; font-weight: 700; }
+    .msg-avatar-info span { font-size: 0.82rem; color: var(--text-light); font-family: 'Arial', sans-serif; }
+    .msg-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-group label { display: block; font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--text-mid); margin-bottom: 0.4rem; }
+    .form-input { width: 100%; padding: 0.85rem 1.2rem; border: 1.5px solid rgba(245,197,24,0.3); border-radius: var(--radius-sm); font-family: 'Arial', sans-serif; font-size: 0.95rem; color: var(--text-dark); background: var(--cream); outline: none; transition: all 0.2s; }
+    .form-input:focus { border-color: var(--gold-warm); background: white; box-shadow: 0 0 0 3px rgba(245,197,24,0.12); }
+    .goal-option { background: var(--cream); border: 1.5px solid rgba(245,197,24,0.18); border-radius: 10px; padding: 0.7rem 0.9rem; font-family: 'Arial', sans-serif; font-size: 0.88rem; color: var(--text-mid); cursor: pointer; text-align: center; transition: all 0.2s; font-weight: 600; }
     .goal-option:hover { border-color: var(--gold-warm); background: white; }
-    .goal-option.selected { border-color: var(--gold-warm); background: linear-gradient(135deg, var(--gold-pale), #fff3aa); color: var(--brown); box-shadow: var(--shadow-sm); }
+    .goal-option.selected { background: linear-gradient(135deg, rgba(245,197,24,0.2), rgba(249,168,37,0.1)); border-color: var(--gold-warm); color: var(--brown); font-weight: 700; }
 
-    /* CTA / INTERACTION */
-    .cta-section { background: linear-gradient(135deg, #2c1d00 0%, #3d2800 50%, #2c1d00 100%); text-align: center; position: relative; overflow: hidden; }
-    .cta-section::before { content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(245,197,24,0.14) 0%, transparent 65%); pointer-events: none; }
+    /* CTA SECTION */
+    .cta-section { background: linear-gradient(135deg, #3d2800 0%, #5c3d00 50%, #3d2800 100%); text-align: center; padding: 100px 0; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; top: -100px; left: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(245,197,24,0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+    .cta-section::after { content: ''; position: absolute; bottom: -80px; right: -80px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(249,168,37,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
     .cta-section .section-label { color: var(--gold-light); }
-    .cta-section h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); color: white; margin-bottom: 1rem; }
-    .cta-section p { font-size: 1.1rem; color: rgba(255,255,255,0.78); margin-bottom: 2.8rem; max-width: 620px; margin-left: auto; margin-right: auto; line-height: 1.65; }
-    .cta-buttons { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; }
+    .cta-section h2 { font-size: clamp(2rem, 5vw, 3.2rem); color: white; margin-bottom: 1.2rem; font-weight: normal; }
+    .cta-section p { font-size: 1.1rem; color: rgba(255,255,255,0.82); max-width: 620px; margin: 0 auto 2.8rem; line-height: 1.65; }
+    .cta-buttons { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
+    .btn-gold-outline { background: transparent; border: 2px solid rgba(245,197,24,0.5); color: white; }
+    .btn-gold-outline:hover { background: rgba(245,197,24,0.12); border-color: var(--gold); transform: translateY(-3px); }
 
-    /* CONTACTS */
-    .contacts-section { background: var(--cream); }
+    /* CTA Telegram button with proper Telegram styling */
+    .btn-tg-style {
+      background: #2AABEE;
+      color: white !important;
+      border: none !important;
+    }
+    .btn-tg-style:hover {
+      background: #1a9fd8;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(42,171,238,0.5);
+    }
+
+    /* CONTACTS SECTION */
+    .contacts-section { background: white; }
     .contact-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
-    .contact-card { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; background: white; border-radius: var(--radius); padding: 1.8rem 1.2rem; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.15); text-align: center; transition: all 0.3s ease; text-decoration: none; color: var(--text-dark); position: relative; }
-    .contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-    .contact-card-icon { font-size: 2.2rem; margin-bottom: 0.2rem; }
-    .contact-card-title { font-family: 'Arial', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); }
-    .contact-card-name { font-size: 0.95rem; color: var(--brown); font-weight: 700; font-family: 'Arial', sans-serif; }
-    .contact-card.tg { border-top: 4px solid #2AABEE; }
+    .contact-card { border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; transition: all 0.3s; border: 1.5px solid rgba(245,197,24,0.12); display: block; }
+    .contact-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .contact-card-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+    .contact-card-title { font-family: 'Arial', sans-serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+    .contact-card-name { font-family: 'Arial', sans-serif; font-size: 0.92rem; font-weight: 600; }
+    .contact-card.tg { background: linear-gradient(135deg, #e8f4fd, #d0eaf9); border-color: #2AABEE44; color: #0088cc; }
+    .contact-card.tg:hover { border-color: #2AABEE; }
     .contact-card.tg .contact-card-icon { color: #2AABEE; }
-    .contact-card.wa { border-top: 4px solid #25D366; }
-    .contact-card.wa .contact-card-icon { color: #25D366; }
-    .contact-card.ig { border-top: 4px solid #E1306C; }
-    .contact-card.ig .contact-card-icon { color: #E1306C; }
-    .contact-card.reg { border-top: 4px solid var(--gold-warm); }
+    .contact-card.wa { background: linear-gradient(135deg, #e8f9ed, #d0f0da); border-color: #25d36644; color: #128C7E; }
+    .contact-card.wa:hover { border-color: #25d366; }
+    .contact-card.wa .contact-card-icon { color: #25d366; }
+    .contact-card.ig { background: linear-gradient(135deg, #fde8f5, #f5d0ee); border-color: #e1306c44; color: #c13584; }
+    .contact-card.ig:hover { border-color: #e1306c; }
+    .contact-card.ig .contact-card-icon { color: #e1306c; }
+    .contact-card.reg { background: linear-gradient(135deg, var(--gold-pale), #fff3aa); border-color: rgba(245,197,24,0.3); color: var(--brown); }
+    .contact-card.reg:hover { border-color: var(--gold-warm); }
     .contact-card.reg .contact-card-icon { color: var(--gold-warm); }
 
     /* FOOTER */
-    footer { background: #180f00; color: rgba(255,255,255,0.72); padding: 3rem 1.5rem; font-family: 'Arial', sans-serif; font-size: 0.88rem; border-top: 2px solid rgba(245,197,24,0.15); }
-    .footer-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; max-width: 1140px; margin: 0 auto 1.8rem; padding-bottom: 1.8rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .footer-copy { color: rgba(255,255,255,0.55); }
-    .footer-copy strong { color: rgba(255,255,255,0.9); }
-    .footer-bottom { max-width: 1140px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 0.8rem 2.5rem; align-items: center; justify-content: center; text-align: center; }
-    .footer-dev { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.45); }
-    .footer-dev a { color: var(--gold-light); font-weight: 700; text-decoration: none; transition: color 0.2s; }
-    .footer-dev a:hover { color: white; }
+    footer {
+      background: var(--brown);
+      color: rgba(255,255,255,0.85);
+      padding: 0;
+    }
+    .footer-top {
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-copy {
+      font-family: 'Arial', sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+    }
+    .footer-dev {
+      font-family: 'Arial', sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .footer-dev a {
+      color: var(--gold-light);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .footer-dev a:hover { color: var(--gold); }
 
     /* BACK TO TOP */
-    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 52px; height: 52px; background: linear-gradient(135deg, var(--gold), var(--gold-warm)); border: none; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 22px rgba(245,197,24,0.5); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0; pointer-events: none; z-index: 900; color: var(--brown); border: 2px solid white; }
-    .back-to-top.visible { opacity: 1; pointer-events: all; }
-    .back-to-top:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 8px 28px rgba(245,197,24,0.7); }
-
-    /* ANIMATIONS ON SCROLL */
-    .animate-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-    .animate-in.visible { opacity: 1; transform: translateY(0); }
-    .delay-1 { transition-delay: 0.1s !important; }
-    .delay-2 { transition-delay: 0.2s !important; }
-    .delay-3 { transition-delay: 0.3s !important; }
-    .delay-4 { transition-delay: 0.4s !important; }
-
-    /* LIGHTBOX */
-    .lightbox { position: fixed; inset: 0; background: rgba(18,11,0,0.96); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 2rem; }
-    .lightbox.open { display: flex; }
-    .lightbox-inner { position: relative; max-width: 850px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-    .lightbox img { max-height: 80vh; border-radius: 16px; border: 4px solid white; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
-    .lightbox-caption { color: white; font-family: 'Arial', sans-serif; font-size: 0.95rem; text-align: center; background: rgba(0,0,0,0.6); padding: 0.5rem 1.5rem; border-radius: 30px; }
-    .lightbox-close { position: absolute; top: -50px; right: 0; width: 44px; height: 44px; background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.4); border-radius: 50%; color: white; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-    .lightbox-close:hover { background: rgba(255,255,255,0.3); transform: scale(1.05); }
-
-    /* VIDEO MODAL */
-    .video-modal { position: fixed; inset: 0; background: rgba(18,11,0,0.96); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 2rem; }
-    .video-modal.open { display: flex; }
-    .video-modal-inner { position: relative; max-width: 900px; width: 100%; aspect-ratio: 16/9; border-radius: 20px; border: 3px solid var(--gold-light); overflow: hidden; box-shadow: 0 25px 60px rgba(245,197,24,0.15); background: black; }
-    .video-modal-close { position: absolute; top: 1.5rem; right: 1.5rem; width: 44px; height: 44px; background: rgba(255,255,255,0.2); border: 2px solid white; border-radius: 50%; color: white; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; z-index: 100; }
-    .video-modal-close:hover { background: rgba(255,255,255,0.35); transform: scale(1.05); }
-    .video-modal-iframe { width: 100%; height: 100%; border: none; }
-
-    /* RESPONSIVE BREAKPOINTS */
-    @media (max-width: 1024px) {
-      .hero-inner { grid-template-columns: 1.1fr 0.9fr; gap: 2rem; }
-      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .about-img { max-width: 420px; margin: 0 auto; }
-      .about-badge { bottom: -15px; right: 10%; }
-      .trainer-roles { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-      .team-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-      .videos-grid { grid-template-columns: repeat(2, 1fr); }
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-warm));
+      color: var(--brown);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 20px rgba(245,197,24,0.4);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 900;
+      pointer-events: none;
     }
-    @media (max-width: 768px) {
-      section { padding: 75px 0; }
-      .hero { padding-top: 72px; min-height: auto; padding-bottom: 75px; }
-      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
-      .hero-image-wrap { order: -1; }
-      .hero-image-frame { max-width: 300px; margin: 0 auto; }
-      .hero-tagline { justify-content: center; }
-      .hero-cta { justify-content: center; }
-      .hero-stat-card { display: none; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .videos-grid { grid-template-columns: 1fr; max-width: 450px; margin: 0 auto; }
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .back-to-top:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(245,197,24,0.55);
+    }
+
+    /* ANIMATE */
+    .animate-in { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .animate-in.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.12s; }
+    .delay-2 { transition-delay: 0.24s; }
+    .delay-3 { transition-delay: 0.36s; }
+
+    /* ===================== MOBILE ===================== */
+    @media (max-width: 1024px) {
+      .trainer-roles { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-cards { grid-template-columns: repeat(2, 1fr); }
-      .navbar { padding: 0 1.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .navbar { padding: 0 1.2rem; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .footer-top { flex-direction: column; text-align: center; }
+      section { padding: 70px 0; }
+
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+      .hero-cta { justify-content: center; }
+      .hero-tagline { justify-content: center; }
+      .hero-stat-card.top-left { top: 10px; left: 5px; }
+      .hero-stat-card.bottom-right { bottom: 30px; right: 5px; }
+
+      /* ABOUT mobile - scale down photo */
+      .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .about-img {
+        max-width: 320px;
+        margin: 0 auto;
+        aspect-ratio: 4/5;
+      }
+      .about-img img {
+        transform: scale(0.85);
+        transform-origin: top center;
+      }
+      .about-badge {
+        font-size: 0.65rem;
+        padding: 0.6rem 0.9rem;
+        bottom: -8px;
+        right: -5px;
+        max-width: 140px;
+      }
+
+      .trainer-roles { grid-template-columns: repeat(2, 1fr); }
+      .audience-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .team-stats { flex-direction: row; flex-wrap: wrap; }
+      .team-stat-box { flex: 1 1 140px; }
+
+      .calc-layout { grid-template-columns: 1fr; gap: 2rem; }
+
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .videos-grid { grid-template-columns: 1fr; }
+
+      .msg-card { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1.5rem; }
+
+      .contact-cards { grid-template-columns: repeat(2, 1fr); }
+
+      .hero-stat-card { padding: 0.65rem 0.9rem; }
+      .stat-text strong { font-size: 0.82rem; }
+      .stat-text span { font-size: 0.68rem; }
+
+      /* Footer mobile */
+      .footer-top {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem 1.2rem;
+        gap: 0.8rem;
+      }
+      .footer-copy {
+        font-size: 0.9rem;
+        text-align: center;
+      }
+      .footer-dev {
+        text-align: center;
+        font-size: 0.85rem;
+        align-items: center;
+      }
+
+      /* No horizontal scroll */
+      .container { padding: 0 1rem; }
+      .test-container { padding: 1.5rem 1rem; }
+      .msg-card { padding: 1.8rem 1.2rem; }
+      .calc-container { padding: 1.8rem 1.2rem; }
+      .trainer-lead { padding: 1.8rem 1.4rem; }
+      .test-grid { grid-template-columns: 1fr; }
     }
+
     @media (max-width: 480px) {
-      .hero-cta { flex-direction: column; width: 100%; align-items: stretch; }
-      .hero-cta .btn { width: 100%; }
-      .test-container { padding: 1.5rem; }
-      .test-result { padding: 1.5rem; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .contact-cards { grid-template-columns: 1fr; }
-      .pearl-content-container { padding: 1.5rem; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero-stat-card { display: none; }
+      .pearl-nav-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: 1fr; }
+      .contact-cards { grid-template-columns: repeat(2, 1fr); }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-stats { flex-direction: column; }
     }
   </style>
 </head>
+
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="nav-brand">
-    <span class="text-2xl">🌻</span>
-    <span class="tracking-wide">Наталья Вардая</span>
+    <span>🌻</span>
+    <span>Наталья Вардая</span>
   </div>
   <ul class="nav-links">
     <li><a href="#about">Обо мне</a></li>
@@ -416,7 +613,7 @@
     <li><a href="#videos">Видео</a></li>
     <li><a href="#contacts" class="nav-cta">Консультация</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Открыть меню">
+  <button class="hamburger" id="hamburger" aria-label="Меню">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -430,44 +627,56 @@
   <a href="#team" onclick="closeMobileMenu()">Команда</a>
   <a href="#gallery" onclick="closeMobileMenu()">Галерея</a>
   <a href="#videos" onclick="closeMobileMenu()">Видео</a>
-  <a href="#contacts" class="bg-gradient-to-r from-[#f5c518] to-[#f9a825] text-[#5c3d00] font-bold rounded-full py-3" onclick="closeMobileMenu()">Получить консультацию</a>
+  <a href="#contacts" onclick="closeMobileMenu()">Консультация</a>
 </div>
 
 <!-- HERO -->
-<section class="hero" id="hero">
+<section class="hero" id="home">
   <div class="container">
     <div class="hero-inner">
-      <div class="hero-text animate-in">
+      <div class="hero-text">
         <div class="hero-badge">🌻 Интеллект-тренер · Super Jump</div>
-        <h1><span class="name-highlight">Наталья<br>Вардая</span></h1>
-        <div class="hero-subtitle font-sans font-light text-slate-700">Солнечный путь к внутренней опоре — свет, энергия, ясность и рост в каждой сфере жизни</div>
-        <div class="hero-tagline">Интеллект-тренер и надежный проводник к ментальной свободе</div>
+        <h1>
+          <span class="name-highlight">Наталья<br>Вардая</span>
+        </h1>
+        <p class="hero-subtitle">Солнечный путь к внутренней опоре — свет, энергия, ясность и рост в каждой сфере жизни</p>
+        <p class="hero-tagline">Интеллект-тренер и надёжный проводник к ментальной свободе</p>
         <div class="hero-cta">
-          <a href="#test" class="btn btn-primary"><i class="fa-solid fa-fire"></i> Пройти тест энергии</a>
-          <a href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-outline"><i class="fa-brands fa-telegram"></i> Написать в Telegram</a>
-          <a href="#calculator" class="btn btn-ghost"><i class="fa-solid fa-circle-info"></i> Форматы участия</a>
+          <a href="#test" class="btn btn-primary"><i class="fa-solid fa-bolt"></i> Пройти диагностику</a>
+          <a href="#about" class="btn btn-outline"><i class="fa-solid fa-circle-info"></i> Узнать обо мне</a>
         </div>
       </div>
-      <div class="hero-image-wrap animate-in delay-2">
-        <div class="hero-stat-card top-left">
-          <div class="stat-icon">🌍</div>
-          <div class="stat-text"><strong>Онлайн формат</strong><span>Ученики в 20+ странах</span></div>
-        </div>
+      <div class="hero-image-wrap">
         <div class="hero-image-frame">
           <img src="img/3.jpg" alt="Наталья Вардая" />
         </div>
         <div class="hero-decor-ring"></div>
         <div class="hero-decor-dot">🌻</div>
+        <div class="hero-stat-card top-left">
+          <span class="stat-icon">🌍</span>
+          <div class="stat-text">
+            <strong>Онлайн формат</strong>
+            <span>Ученики в 20+ странах</span>
+          </div>
+        </div>
         <div class="hero-stat-card bottom-right">
-          <div class="stat-icon">⚡</div>
-          <div class="stat-text"><strong>10 дней интенсива</strong><span>Энергия уже на 2-й день</span></div>
+          <span class="stat-icon">⚡</span>
+          <div class="stat-text">
+            <strong>10 дней интенсива</strong>
+            <span>Энергия уже на 2-й день</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"><div class="divider-line"><span class="divider-flower">🌻</span></div></div>
+<!-- DIVIDER with animated sunflower -->
+<div class="sunflower-divider">
+  <div class="sf-line">
+    <span class="sunflower-big">🌻</span>
+  </div>
+</div>
 
 <!-- ABOUT -->
 <section class="about" id="about">
@@ -477,30 +686,49 @@
         <div class="about-img">
           <img src="img/14.jpg" alt="Наталья Вардая" />
         </div>
-        <div class="about-badge">🏅 Основатель<br>всемирной ассоциации<br>интеллект-тренеров</div>
+        <div class="about-badge">
+          🏅 Основатель<br>всемирной ассоциации<br>интеллект-тренеров
+        </div>
       </div>
-      <div class="about-content animate-in delay-2">
+      <div class="about-content animate-in delay-1">
         <span class="section-label">Обо мне и моем призвании</span>
         <h2>Я Наталья Вардая —<br>твой проводник к ресурсному состоянию</h2>
         <p class="about-lead">Моя фамилия Вардая переводится как <strong>«солнечный цветок»</strong> или подсолнух. Это не просто совпадение — это мой путь. Я помогаю людям обрести внутреннее солнце, когда за окном бушуют тучи.</p>
-        <p class="font-sans text-slate-700 text-base mb-6 leading-relaxed">Как интеллект-тренер международной системы Super Jump и основатель команды <strong>«Жёлтые Подсолнухи»</strong>, я обучаю системе простых, но гениальных ментальных упражнений. Они занимают минимум времени, но дают колоссальный выброс жизненных сил.</p>
-        <p class="font-sans text-[#5c3d00] font-bold mb-4">Наши 10-дневные онлайн-курсы:</p>
-        <ul class="benefits-list font-sans">
-          <li><div class="benefit-icon"><i class="fa-solid fa-heart-pulse text-[#f9a825] text-xs"></i></div><span><strong>Заряжают батарейку:</strong> уходит хроническая усталость и апатия.</span></li>
-          <li><div class="benefit-icon"><i class="fa-solid fa-brain text-[#f9a825] text-xs"></i></div><span><strong>Ментальная гигиена:</strong> полный контроль над тревожными мыслями.</span></li>
-          <li><div class="benefit-icon"><i class="fa-solid fa-shield-halved text-[#f9a825] text-xs"></i></div><span><strong>Стрессоустойчивость:</strong> выстраивание надежного щита от негатива.</span></li>
-          <li><div class="benefit-icon"><i class="fa-solid fa-arrows-to-eye text-[#f9a825] text-xs"></i></div><span><strong>Ясность фокуса:</strong> четкое понимание своих целей и рост доходов.</span></li>
+        <p style="font-size:1rem; color:var(--text-mid); margin-bottom:1.5rem; line-height:1.65;">Как интеллект-тренер международной системы Super Jump и основатель команды <strong>«Жёлтые Подсолнухи»</strong>, я обучаю системе простых, но гениальных ментальных упражнений. Они занимают минимум времени, но дают колоссальный выброс жизненных сил.</p>
+        <p class="about-courses-title">Наши 10-дневные онлайн-курсы:</p>
+        <ul class="benefits-list">
+          <li>
+            <span class="benefit-icon">⚡</span>
+            <span><strong>Заряжают батарейку:</strong> уходит хроническая усталость и апатия.</span>
+          </li>
+          <li>
+            <span class="benefit-icon">🧠</span>
+            <span><strong>Ментальная гигиена:</strong> полный контроль над тревожными мыслями.</span>
+          </li>
+          <li>
+            <span class="benefit-icon">🛡️</span>
+            <span><strong>Стрессоустойчивость:</strong> выстраивание надёжного щита от негатива.</span>
+          </li>
+          <li>
+            <span class="benefit-icon">🎯</span>
+            <span><strong>Ясность фокуса:</strong> чёткое понимание своих целей и рост доходов.</span>
+          </li>
         </ul>
-        <div class="hero-cta mt-4">
-          <a href="#test" class="btn btn-primary">Попробовать тест энергии</a>
-          <a href="#calculator" class="btn btn-outline">Выбрать формат</a>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="#test" class="btn btn-primary"><i class="fa-solid fa-bolt"></i> Пройти тест энергии</a>
+          <a href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-outline"><i class="fa-brands fa-telegram"></i> Написать напрямую</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"><div class="divider-line"><span class="divider-flower">🌻</span></div></div>
+<!-- SUNFLOWER DIVIDER -->
+<div class="sunflower-divider">
+  <div class="sf-line">
+    <span class="sunflower-big">🌻</span>
+  </div>
+</div>
 
 <!-- TEST SECTION -->
 <section class="test-section" id="test">
@@ -508,65 +736,57 @@
     <div class="section-head animate-in">
       <span class="section-label">Экспресс-диагностика</span>
       <h2>Определи свой уровень энергии</h2>
-      <p>Выбери утверждения, которые откликаются у тебя прямо сейчас. Наша интерактивная система мгновенно оценит состояние твоего ментального ресурса и подберет совет.</p>
+      <p>Выбери утверждения, которые откликаются у тебя прямо сейчас. Наша интерактивная система мгновенно оценит состояние твоего ментального ресурса и подберёт совет.</p>
     </div>
-    
     <div class="test-container animate-in delay-1">
       <div class="test-progress-bar">
         <div class="test-progress-fill" id="testProgress"></div>
       </div>
-      
-      <div class="test-counter">
-        Выбрано признаков: <span id="checkedCount">0</span> из 8
-      </div>
-      
+      <p class="test-counter">Выбрано признаков: <span id="checkedCount">0</span> из 8</p>
       <div class="test-grid">
-        <div class="test-card" onclick="toggleTestCard(this, 12)">
+        <div class="test-card" onclick="toggleTestCard(this)">
           <div class="check-box"><i class="fa-solid fa-check"></i></div>
           <p>Быстро устаю, тяжело просыпаюсь по утрам даже после долгого сна</p>
         </div>
-        <div class="test-card" onclick="toggleTestCard(this, 12)">
+        <div class="test-card" onclick="toggleTestCard(this)">
           <div class="check-box"><i class="fa-solid fa-check"></i></div>
           <p>Постоянно прокручиваю в голове негативные мысли или прошлые обиды</p>
         </div>
-        <div class="test-card" onclick="toggleTestCard(this, 12)">
+        <div class="test-card" onclick="toggleTestCard(this)">
           <div class="check-box"><i class="fa-solid fa-check"></i></div>
           <p>Испытываю тревожность от новостей, будущего или работы</p>
         </div>
-        <div class="test-card" onclick="toggleTestCard(this, 12)">
+        <div class="test-card" onclick="toggleTestCard(this)">
           <div class="check-box"><i class="fa-solid fa-check"></i></div>
           <p>Часто срываюсь на близких, раздражаюсь по пустякам</p>
         </div>
-        <div class="test-card" onclick="toggleTestCard(this, 12)">
+        <div class="test-card" onclick="toggleTestCard(this)">
           <div class="check-box"><i class="fa-solid fa-check"></i></div>
           <p>Потерял ясность целей, не знаю, куда двигаться дальше в жизни</p>
         </div>
-        <div class="test-card" onclick="toggleTestCard(this, 12)">
+        <div class="test-card" onclick="toggleTestCard(this)">
           <div class="check-box"><i class="fa-solid fa-check"></i></div>
           <p>Уперся в «финансовый потолок», нет сил делать больше результатов</p>
         </div>
-        <div class="test-card" onclick="toggleTestCard(this, 12)">
+        <div class="test-card" onclick="toggleTestCard(this)">
           <div class="check-box"><i class="fa-solid fa-check"></i></div>
-          <p>Боюсь публичности, не хватает уверенности отстаивать свое мнение</p>
+          <p>Боюсь публичности, не хватает уверенности отстаивать своё мнение</p>
         </div>
-        <div class="test-card" onclick="toggleTestCard(this, 12)">
+        <div class="test-card" onclick="toggleTestCard(this)">
           <div class="check-box"><i class="fa-solid fa-check"></i></div>
           <p>Чувствую одиночество, не хватает сильного поддерживающего окружения</p>
         </div>
       </div>
-      
-      <div style="text-align: center;">
-        <button onclick="calculateTestResults()" class="btn btn-primary px-10 py-4 text-base"><i class="fa-solid fa-chart-pie"></i> Получить расшифровку состояния</button>
+      <div style="text-align:center; margin-bottom: 0.5rem;">
+        <button onclick="calculateTestResults()" class="btn btn-primary px-10 py-4"><i class="fa-solid fa-magnifying-glass-chart"></i> Узнать свой результат</button>
       </div>
-      
-      <!-- Test Result Box -->
       <div class="test-result" id="testResultBox">
-        <div class="test-result-badge" id="resultLabel">Баланс в норме</div>
+        <span class="test-result-badge" id="resultLabel">Баланс в норме</span>
         <h3 id="resultTitle">Отличный потенциал для роста</h3>
         <p id="resultText">Вы держитесь неплохо, но у вас есть скрытые ресурсы энергии, которые можно раскрыть на наших тренировках.</p>
         <div class="result-btns">
-          <a id="resultTgLink" href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-primary"><i class="fa-brands fa-telegram"></i> Обсудить с Натальей в Telegram</a>
-          <a href="#intensive" class="btn btn-outline">Изучить 8 упражнений</a>
+          <a href="https://t.me/NafalyaVardaya" id="resultTgLink" target="_blank" class="btn btn-primary"><i class="fa-brands fa-telegram"></i> Записаться к Наталье</a>
+          <a href="#intensive" class="btn btn-outline">Узнать о курсе</a>
         </div>
       </div>
     </div>
@@ -580,12 +800,10 @@
   <div class="container">
     <div class="section-head animate-in">
       <span class="section-label">Программа тренировок</span>
-      <h2>8 Жемчужин Super Jump</h2>
+      <h2>8 жемчужин Super Jump</h2>
       <p>Основа методики — 8 простых, но мощнейших интеллектуальных и эмоциональных упражнений, разработанных для современных занятых людей. Кликай по вкладкам ниже, чтобы изучить каждое!</p>
     </div>
-
     <div class="animate-in delay-1">
-      <!-- Pearl Navigation -->
       <div class="pearl-nav-grid">
         <div class="pearl-tab active" onclick="switchPearl(1)">
           <span class="pearl-tab-num">1</span>
@@ -620,79 +838,69 @@
           <span class="pearl-tab-title">Сверхцель</span>
         </div>
       </div>
-
-      <!-- Pearl Content Pane -->
       <div class="pearl-content-container">
-        <!-- Day 1 -->
         <div class="pearl-pane active" id="pearl-1">
-          <div class="pearl-pane-icon text-[#f9a825]">🌟</div>
-          <div class="pearl-pane-text font-sans">
+          <div class="pearl-pane-icon">🌟</div>
+          <div class="pearl-pane-text">
             <h3>Упражнение №1: Смехозарядка (Выработка гормонов счастья)</h3>
-            <p class="text-slate-700">Особая мышечная техника вызова смеха без использования шуток. Запускает мгновенную генерацию эндорфинов, дофамина и серотонина. Укрепляет иммунитет, насыщает клетки кислородом и снимает мышечные спазмы уже в первые 5 минут.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-bolt"></i> Дает заряд бодрости на весь день</span>
+            <p>Особая мышечная техника вызова смеха без использования шуток. Запускает мгновенную генерацию эндорфинов, дофамина и серотонина. Укрепляет иммунитет, насыщает клетки кислородом и снимает мышечные спазмы уже в первые 5 минут.</p>
+            <span class="pearl-pane-benefit"><i class="fa-solid fa-star"></i> Даёт заряд бодрости на весь день</span>
           </div>
         </div>
-        <!-- Day 2 -->
         <div class="pearl-pane" id="pearl-2">
-          <div class="pearl-pane-icon text-[#f9a825]">🧠</div>
-          <div class="pearl-pane-text font-sans">
+          <div class="pearl-pane-icon">🧠</div>
+          <div class="pearl-pane-text">
             <h3>Упражнение №2: Резинка (Контроль негативных мыслей)</h3>
-            <p class="text-slate-700">Простая, но феноменальная техника отслеживания и мгновенного прекращения ментальной «мыслежвачки» и тревожных прогнозов. Позволяет перепрограммировать подсознание с режима выживания на режим победы и созидания.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-brain"></i> Избавляет от 90% фонового стресса</span>
+            <p>Простая, но феноменальная техника отслеживания и мгновенного прекращения ментальной «мыслежвачки» и тревожных прогнозов. Позволяет перепрограммировать подсознание с режима выживания на режим победы и созидания.</p>
+            <span class="pearl-pane-benefit"><i class="fa-solid fa-star"></i> Избавляет от 90% фонового стресса</span>
           </div>
         </div>
-        <!-- Day 3 -->
         <div class="pearl-pane" id="pearl-3">
-          <div class="pearl-pane-icon text-[#f9a825]">👑</div>
-          <div class="pearl-pane-text font-sans">
+          <div class="pearl-pane-icon">👑</div>
+          <div class="pearl-pane-text">
             <h3>Упражнение №3: Королевская осанка (Уверенность)</h3>
-            <p class="text-slate-700">Физиологическая обратная связь: как положение тела влияет на наши гормоны и уверенность в себе. Осанка лидера меняет выработку тестостерона и кортизола, убирая неуверенность и страх перед важными выступлениями или переговорами.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-crown"></i> Возвращает уверенность в себе</span>
+            <p>Физиологическая обратная связь: как положение тела влияет на наши гормоны и уверенность в себе. Осанка лидера меняет выработку тестостерона и кортизола, убирая неуверенность и страх перед важными выступлениями или переговорами.</p>
+            <span class="pearl-pane-benefit"><i class="fa-solid fa-star"></i> Возвращает уверенность в себе</span>
           </div>
         </div>
-        <!-- Day 4 -->
         <div class="pearl-pane" id="pearl-4">
-          <div class="pearl-pane-icon text-[#f9a825]">💧</div>
-          <div class="pearl-pane-text font-sans">
+          <div class="pearl-pane-icon">💧</div>
+          <div class="pearl-pane-text">
             <h3>Упражнение №4: Будьте здоровы (Энергетизация)</h3>
-            <p class="text-slate-700">Экологичный метод закаливания и водных процедур, адаптированный под городские реалии. Запускает капиллярный кровоток, убирает застой лимфы, пробуждает спящие ресурсы организма и заряжает невероятной бодростью.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-snowflake"></i> Мощный детокс и омоложение</span>
+            <p>Экологичный метод закаливания и водных процедур, адаптированный под городские реалии. Запускает капиллярный кровоток, убирает застой лимфы, пробуждает спящие ресурсы организма и заряжает невероятной бодростью.</p>
+            <span class="pearl-pane-benefit"><i class="fa-solid fa-star"></i> Мощный детокс и омоложение</span>
           </div>
         </div>
-        <!-- Day 5 -->
         <div class="pearl-pane" id="pearl-5">
-          <div class="pearl-pane-icon text-[#f9a825]">❤️</div>
-          <div class="pearl-pane-text font-sans">
+          <div class="pearl-pane-icon">❤️</div>
+          <div class="pearl-pane-text">
             <h3>Упражнение №5: Управление чувствами (Эмоциональный интеллект)</h3>
-            <p class="text-slate-700">Техника «паузы» перед эмоциональным взрывом. Помогает моментально брать под контроль вспышки гнева, обиды, зависти или раздражения. Позволяет решать любые конфликты мирно и сохранять глубокое внутреннее спокойствие.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-heart"></i> Спасает и улучшает отношения с близкими</span>
+            <p>Техника «паузы» перед эмоциональным взрывом. Помогает моментально брать под контроль вспышки гнева, обиды, зависти или раздражения. Позволяет решать любые конфликты мирно и сохранять глубокое внутреннее спокойствие.</p>
+            <span class="pearl-pane-benefit"><i class="fa-solid fa-star"></i> Спасает и улучшает отношения с близкими</span>
           </div>
         </div>
-        <!-- Day 6 -->
         <div class="pearl-pane" id="pearl-6">
-          <div class="pearl-pane-icon text-[#f9a825]">🎧</div>
-          <div class="pearl-pane-text font-sans">
+          <div class="pearl-pane-icon">🎧</div>
+          <div class="pearl-pane-text">
             <h3>Упражнение №6: Аудиотренинг (Перепрошивка убеждений)</h3>
-            <p class="text-slate-700">Уникальный способ записи собственных позитивных аффирмаций особым голосом, который проникает прямо в подсознание. Эффективно убирает детские травмы, денежные блоки и страх масштабироваться в бизнесе.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-microphone"></i> Перепрограммирует на успех и богатство</span>
+            <p>Уникальный способ записи собственных позитивных аффирмаций особым голосом, который проникает прямо в подсознание. Эффективно убирает детские травмы, денежные блоки и страх масштабироваться в бизнесе.</p>
+            <span class="pearl-pane-benefit"><i class="fa-solid fa-star"></i> Перепрограммирует на успех и богатство</span>
           </div>
         </div>
-        <!-- Day 7 -->
         <div class="pearl-pane" id="pearl-7">
-          <div class="pearl-pane-icon text-[#f9a825]">🛡️</div>
-          <div class="pearl-pane-text font-sans">
+          <div class="pearl-pane-icon">🛡️</div>
+          <div class="pearl-pane-text">
             <h3>Упражнение №7: Информационная гигиена (Защита разума)</h3>
-            <p class="text-slate-700">Фильтр входящих данных. Обучение защите мозга от информационного «шума», токсичных новостей, критики и нытиков. Создает крепкую психологическую броню, сохраняющую фокус внимания на созидательных вещах.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-shield-halved"></i> Сохраняет ментальное здоровье в хаосе</span>
+            <p>Фильтр входящих данных. Обучение защите мозга от информационного «шума», токсичных новостей, критики и нытиков. Создаёт крепкую психологическую броню, сохраняющую фокус внимания на созидательных вещах.</p>
+            <span class="pearl-pane-benefit"><i class="fa-solid fa-star"></i> Сохраняет ментальное здоровье в хаосе</span>
           </div>
         </div>
-        <!-- Day 8 -->
         <div class="pearl-pane" id="pearl-8">
-          <div class="pearl-pane-icon text-[#f9a825]">🌻</div>
-          <div class="pearl-pane-text font-sans">
+          <div class="pearl-pane-icon">🌻</div>
+          <div class="pearl-pane-text">
             <h3>Упражнение №8: Сверхцель (Поиск миссии)</h3>
-            <p class="text-slate-700">Финальная жемчужина, объединяющая все остальные. Раскрывает предназначение человека, выводит из кризиса среднего возраста и дарит глубочайший смысл жизни. Вы поймете, ради чего просыпаетесь по утрам и как изменить мир к лучшему.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-compass"></i> Обретение истинного предназначения</span>
+            <p>Финальная жемчужина, объединяющая все остальные. Раскрывает предназначение человека, выводит из кризиса среднего возраста и дарит глубочайший смысл жизни. Вы поймёте, ради чего просыпаетесь по утрам и как изменить мир к лучшему.</p>
+            <span class="pearl-pane-benefit"><i class="fa-solid fa-star"></i> Обретение истинного предназначения</span>
           </div>
         </div>
       </div>
@@ -700,62 +908,64 @@
   </div>
 </section>
 
-<div class="divider"><div class="divider-line"><span class="divider-flower">🌻</span></div></div>
+<!-- SUNFLOWER DIVIDER (after "Заряд бодрости на весь день", before ПОЧЕМУ ЭТО РАБОТАЕТ) -->
+<div class="sunflower-divider">
+  <div class="sf-line">
+    <span class="sunflower-big">🌻</span>
+  </div>
+</div>
 
-<!-- METHODOLOGY SECTION (Dark theme) -->
-<section class="trainer-section font-sans" id="trainer">
+<!-- METHODOLOGY SECTION -->
+<section class="trainer-section" id="trainer">
   <div class="container">
     <div class="section-head animate-in">
       <span class="section-label">Почему это работает?</span>
       <h2>Научная основа и сила методики</h2>
       <p>Super Jump — это синергия восточной мудрости и современной западной психотерапии. Никакой эзотерики — только чистая нейробиология и развитие эмоционального интеллекта.</p>
     </div>
-
     <div class="trainer-lead animate-in delay-1">
-      <p>«За 10 дней занятий по 1 часу в день мы создаем новые нейронные связи в вашем мозге. Вы не просто слушаете лекции, а делаете практические упражнения в группе под моим чутким руководством. Это дает 100% результат».<br><strong class="block mt-4 text-white text-lg font-serif italic">— Наталья Вардая</strong></p>
+      <p>«За 10 дней занятий по 1 часу в день мы создаём новые нейронные связи в вашем мозге. Вы не просто слушаете лекции, а делаете практические упражнения в группе под моим чутким руководством. Это даёт 100% результат».<br><strong>— Наталья Вардая</strong></p>
     </div>
-
     <div class="trainer-roles animate-in delay-2">
       <div class="role-card">
-        <span class="role-emoji">🧠</span>
+        <span class="role-icon">🧠</span>
         <h4>Нейрокоуч</h4>
         <p>Активация правого полушария и выработка правильных гормонов радости.</p>
       </div>
       <div class="role-card">
-        <span class="role-emoji">👑</span>
+        <span class="role-icon">👑</span>
         <h4>Ментальный Наставник</h4>
         <p>Помогу бережно пройти через кризисы и найти внутреннюю опору.</p>
       </div>
       <div class="role-card">
-        <span class="role-emoji">⚡</span>
+        <span class="role-icon">⚡</span>
         <h4>Энергопрактик</h4>
         <p>Быстрые техники возвращения сил при выгорании за считанные минуты.</p>
       </div>
       <div class="role-card">
-        <span class="role-emoji">🤝</span>
+        <span class="role-icon">🤝</span>
         <h4>Лидер Сообщества</h4>
         <p>Создаю бережное пространство развития без критики и осуждения.</p>
       </div>
     </div>
-
-    <div class="trainer-why animate-in delay-3">
-      <h3>Кому идеально подойдёт наш интенсив?</h3>
-      <div class="why-items mt-6">
-        <div class="why-item">
-          <div class="why-dot"></div>
-          <span><strong>Предпринимателям</strong> — вернуть фокус, вырасти в доходах и избежать выгорания.</span>
+    <div class="animate-in delay-3">
+      <h3 style="font-size:1.6rem; color:white; margin-bottom:1.5rem; text-align:center;">Кому идеально подойдёт наш интенсив?</h3>
+      <div class="audience-grid">
+        <div class="audience-item">
+          <div class="audience-icon">💼</div>
+          <p class="audience-text"><strong>Предпринимателям</strong> — вернуть фокус, вырасти в доходах и избежать выгорания.</p>
         </div>
-        <div class="why-item">
-          <div class="why-dot"></div>
-          <span><strong>Мамам в декрете</strong> — найти время для себя, восполнить силы и убрать усталость.</span>
+        <div class="audience-item">
+          <div class="audience-icon">👶</div>
+          <p class="audience-text"><strong>Мамам в декрете</strong> — найти время для себя, восполнить силы и убрать усталость.</p>
         </div>
-        <div class="why-item">
-          <div class="why-dot"></div>
-          <span><strong>Психологам и коучам</strong> — освоить новые инструменты и повысить чек.</span>
+        <div class="audience-item">
+          <div class="audience-icon">🧠</div>
+          <p class="audience-text"><strong>Психологам и коучам</strong> — освоить новые инструменты и повысить чек.</p>
         </div>
-        <div class="why-item">
-          <div class="why-dot"></div>
-          <span><strong>Всем в поиске себя</strong> — найти призвание и сильных друзей.</span>
+        <div class="audience-item">
+          <div class="audience-icon">🌟</div>
+          <p class="audience-text"><strong>Всем в поиске себя</strong> — найти призвание и сильных друзей.</p>
         </div>
       </div>
     </div>
@@ -772,83 +982,76 @@
       <h2>Почему выбирают Super Jump?</h2>
       <p>Уникальность методики состоит в её простоте, скорости получения первых результатов и долгосрочном позитивном эффекте.</p>
     </div>
-
-    <div class="why-cards animate-in delay-1">
-      <div class="why-card font-sans">
-        <span class="card-icon">⏱️</span>
+    <div class="why-grid animate-in delay-1">
+      <div class="why-card">
+        <span class="why-icon">⏱️</span>
         <h4>Всего 1 час в день</h4>
         <p>Вам не нужно тратить недели на изучение теории. Занятия идут онлайн по 1 часу в день, легко встраиваясь в самый плотный рабочий график.</p>
       </div>
-      <div class="why-card font-sans">
-        <span class="card-icon">⚡</span>
+      <div class="why-card">
+        <span class="why-icon">⚡</span>
         <h4>Эффект со 2-го дня</h4>
         <p>Многие чувствуют прилив вдохновения, уход тревоги и нормализацию сна уже на втором практическом занятии смехозарядки.</p>
       </div>
-      <div class="why-card font-sans">
-        <span class="card-icon">👫</span>
+      <div class="why-card">
+        <span class="why-icon">👫</span>
         <h4>Поддерживающий Интеллект-клуб</h4>
-        <p>После 10 дней вы не остаетесь одни. Мы продолжаем поддерживать форму в нашем клубе единомышленников «Жёлтые Подсолнухи».</p>
+        <p>После 10 дней вы не остаётесь одни. Мы продолжаем поддерживать форму в нашем клубе единомышленников «Жёлтые Подсолнухи».</p>
       </div>
-      <div class="why-card font-sans">
-        <span class="card-icon">💯</span>
+      <div class="why-card">
+        <span class="why-icon">💯</span>
         <h4>Гарантия результата</h4>
-        <p>Если вы будете выполнять все упражнения 10 дней и не почувствуете улучшений, мы вернем вам полную стоимость курса без лишних вопросов.</p>
+        <p>Если вы будете выполнять все упражнения 10 дней и не почувствуете улучшений, мы вернём вам полную стоимость курса без лишних вопросов.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"><div class="divider-line"><span class="divider-flower">🌻</span></div></div>
+<!-- SUNFLOWER DIVIDER (before АТМОСФЕРА ВСТРЕЧ) — wait, let's follow the page order -->
+<!-- TEAM FIRST -->
+<div class="divider"><div class="divider-line"><span class="divider-flower">✨</span></div></div>
 
 <!-- TEAM SECTION -->
 <section class="team-section" id="team">
   <div class="container">
     <div class="team-inner">
-      <div class="team-content animate-in">
+      <div class="animate-in">
         <span class="section-label">Наше сообщество</span>
         <h2>Команда «Жёлтые Подсолнухи»</h2>
-        <div class="team-title">
-          <span>🌻</span> Международная ассоциация интеллект-тренеров
-        </div>
-        <p>Каждый подсолнух всегда поворачивается к солнцу, ловя его теплые лучи. Наша команда — это люди, выбравшие путь развития, света, любви к жизни и поддержки друг друга.</p>
-        <p class="font-sans text-slate-700 text-sm mb-6">Мы объединяем партнеров из разных уголков планеты: Россия, СНГ, Европа, Азия. Мы вместе проводим масштабные встречи, учимся побеждать стресс, зарабатываем и открываем новые школы интеллект-тренеров.</p>
+        <p style="font-size:1rem; color:var(--gold-warm); font-family:'Arial',sans-serif; font-weight:700; margin-bottom:1rem;">🌻 Международная ассоциация интеллект-тренеров</p>
+        <p style="font-size:1rem; color:var(--text-mid); margin-bottom:1rem; line-height:1.65;">Каждый подсолнух всегда поворачивается к солнцу, ловя его тёплые лучи. Наша команда — это люди, выбравшие путь развития, света, любви к жизни и поддержки друг друга.</p>
+        <p style="font-size:1rem; color:var(--text-mid); margin-bottom:1.5rem; line-height:1.65;">Мы объединяем партнёров из разных уголков планеты: Россия, СНГ, Европа, Азия. Мы вместе проводим масштабные встречи, учимся побеждать стресс, зарабатываем и открываем новые школы интеллект-тренеров.</p>
         <div class="team-values">
-          <span class="team-tag">☀️ Искренность</span>
-          <span class="team-tag">☀️ Взаимопомощь</span>
-          <span class="team-tag">☀️ Постоянный рост</span>
-          <span class="team-tag">☀️ Энергия добра</span>
+          <span class="team-value-tag">☀️ Искренность</span>
+          <span class="team-value-tag">☀️ Взаимопомощь</span>
+          <span class="team-value-tag">☀️ Постоянный рост</span>
+          <span class="team-value-tag">☀️ Энергия добра</span>
         </div>
       </div>
-      <div class="team-stats animate-in delay-2 font-sans">
-        <div class="team-stat">
-          <div class="team-stat-icon">🔥</div>
-          <div class="team-stat-text">
-            <strong>500+ участников</strong>
-            <span>Вдохновленных учеников по всему миру</span>
-          </div>
+      <div class="team-stats animate-in delay-1">
+        <div class="team-stat-box">
+          <span class="team-stat-icon">🔥</span>
+          <span class="team-stat-num">500+</span>
+          <span class="team-stat-label">Вдохновлённых учеников по всему миру</span>
         </div>
-        <div class="team-stat">
-          <div class="team-stat-icon">🌍</div>
-          <div class="team-stat-text">
-            <strong>20+ стран</strong>
-            <span>Стираем географические границы онлайн</span>
-          </div>
+        <div class="team-stat-box">
+          <span class="team-stat-icon">🌍</span>
+          <span class="team-stat-num">20+ стран</span>
+          <span class="team-stat-label">Стираем географические границы онлайн</span>
         </div>
-        <div class="team-stat">
-          <div class="team-stat-icon">🌻</div>
-          <div class="team-stat-text">
-            <strong>Команда лидеров</strong>
-            <span>Обучаем профессии интеллект-тренера с доходом</span>
-          </div>
+        <div class="team-stat-box">
+          <span class="team-stat-icon">🌻</span>
+          <span class="team-stat-num">Команда лидеров</span>
+          <span class="team-stat-label">Обучаем профессии интеллект-тренера с доходом</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CALCULATOR / FORMAT SELECTOR -->
 <div class="divider"><div class="divider-line"><span class="divider-flower">✨</span></div></div>
 
-<!-- DYNAMIC CALCULATOR / FORMAT SELECTOR -->
 <section class="calc-section" id="calculator">
   <div class="container">
     <div class="section-head animate-in">
@@ -856,90 +1059,79 @@
       <h2>Выберите идеальный формат</h2>
       <p>Определите наиболее комфортный способ прохождения программы под ваши личные цели и темп жизни.</p>
     </div>
-
-    <div class="calc-card animate-in delay-1">
-      <!-- Calculator Left Options -->
-      <div class="calc-left font-sans">
-        <h3 class="text-xl font-serif text-[#5c3d00] mb-4 font-bold">Варианты обучения:</h3>
-        
-        <div class="calc-option active" onclick="selectFormat('group')">
-          <div>
-            <div class="calc-option-title">Групповой интенсив (10 дней)</div>
-            <div class="calc-option-desc">Оптимально для старта, обмен сильной энергией группы</div>
-          </div>
-          <div class="calc-bullet"></div>
-        </div>
-        
-        <div class="calc-option" onclick="selectFormat('individual')">
-          <div>
-            <div class="calc-option-title">Индивидуальный VIP-формат</div>
-            <div class="calc-option-desc">Работа с Натальей 1 на 1, подстройка под ваш график</div>
-          </div>
-          <div class="calc-bullet"></div>
-        </div>
-        
-        <div class="calc-option" onclick="selectFormat('family')">
-          <div>
-            <div class="calc-option-title">Семейный пакет (до 3-х человек)</div>
-            <div class="calc-option-desc">Для пар и семей, кто хочет расти и развиваться вместе</div>
-          </div>
-          <div class="calc-bullet"></div>
-        </div>
-        
-        <div class="calc-option" onclick="selectFormat('trainer')">
-          <div>
-            <div class="calc-option-title">Стать Интеллект-тренером</div>
-            <div class="calc-option-desc">Обучение профессии с правом преподавания и франшизой</div>
-          </div>
-          <div class="calc-bullet"></div>
-        </div>
-      </div>
-
-      <!-- Calculator Right Output -->
-      <div class="calc-right font-sans">
-        <div class="calc-details-box">
-          <h3 id="calcFormatTitle" class="text-2xl font-serif text-[#5c3d00] font-bold">Групповой интенсив</h3>
-          
-          <div class="calc-meta-item">
-            <div class="calc-meta-icon"><i class="fa-solid fa-calendar-days"></i></div>
-            <div><strong>Длительность:</strong> <span id="calcDuration">10 дней по 1 часу ежедневно</span></div>
-          </div>
-          
-          <div class="calc-meta-item">
-            <div class="calc-meta-icon"><i class="fa-solid fa-users"></i></div>
-            <div><strong>Формат группы:</strong> <span id="calcGroupSize">До 10 человек в Zoom/Skype</span></div>
-          </div>
-
-          <div class="calc-features-list">
-            <div class="calc-feature mb-2"><i class="fa-solid fa-circle-check mr-2"></i> <span id="feat1">8 базовых упражнений Super Jump</span></div>
-            <div class="calc-feature mb-2"><i class="fa-solid fa-circle-check mr-2"></i> <span id="feat2">Доступ в закрытый чат поддержки навсегда</span></div>
-            <div class="calc-feature"><i class="fa-solid fa-circle-check mr-2"></i> <span id="feat3">Месяц участия в Интеллект-клубе в подарок</span></div>
+    <div class="calc-container animate-in delay-1">
+      <div class="calc-layout">
+        <div>
+          <h3 style="font-size:1.1rem; color:var(--brown); font-family:'Arial',sans-serif; font-weight:700; margin-bottom:1.2rem;">Варианты обучения:</h3>
+          <div class="calc-options">
+            <div class="calc-option active" onclick="selectFormat('group', event)">
+              <div class="calc-option-title">Групповой интенсив (10 дней)</div>
+              <div class="calc-option-desc">Оптимально для старта, обмен сильной энергией группы</div>
+            </div>
+            <div class="calc-option" onclick="selectFormat('individual', event)">
+              <div class="calc-option-title">Индивидуальный VIP-формат</div>
+              <div class="calc-option-desc">Работа с Натальей 1 на 1, подстройка под ваш график</div>
+            </div>
+            <div class="calc-option" onclick="selectFormat('family', event)">
+              <div class="calc-option-title">Семейный пакет (до 3-х человек)</div>
+              <div class="calc-option-desc">Для пар и семей, кто хочет расти и развиваться вместе</div>
+            </div>
+            <div class="calc-option" onclick="selectFormat('trainer', event)">
+              <div class="calc-option-title">Стать Интеллект-тренером</div>
+              <div class="calc-option-desc">Обучение профессии с правом преподавания и франшизой</div>
+            </div>
           </div>
         </div>
-
-        <div class="mt-6">
-          <p class="text-sm text-slate-500 mb-4">*Даты ближайших потоков уточняйте у наставника. Количество мест строго ограничено.</p>
-          <div class="flex gap-4 flex-wrap">
-            <a href="https://account.superjump.com/register/118814" target="_blank" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Занять место</a>
-            <a id="calcTgLink" href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-outline"><i class="fa-brands fa-telegram"></i> Задать вопрос</a>
+        <div class="calc-result">
+          <h3 class="calc-result-title" id="calcFormatTitle">Групповой интенсив</h3>
+          <div class="calc-info-row">
+            <i class="fa-solid fa-clock calc-info-icon"></i>
+            <span id="calcDuration">10 дней по 1 часу ежедневно</span>
           </div>
+          <div class="calc-info-row">
+            <i class="fa-solid fa-users calc-info-icon"></i>
+            <span id="calcGroupSize">До 10 человек в Zoom / Skype / Telegram</span>
+          </div>
+          <div class="calc-features">
+            <div class="calc-feat">
+              <i class="fa-solid fa-check-circle calc-feat-icon"></i>
+              <span id="feat1">8 базовых упражнений Super Jump</span>
+            </div>
+            <div class="calc-feat">
+              <i class="fa-solid fa-check-circle calc-feat-icon"></i>
+              <span id="feat2">Доступ в закрытый чат поддержки навсегда</span>
+            </div>
+            <div class="calc-feat">
+              <i class="fa-solid fa-check-circle calc-feat-icon"></i>
+              <span id="feat3">Месяц участия в Интеллект-клубе в подарок</span>
+            </div>
+          </div>
+          <!-- Note with more spacing below -->
+          <p class="calc-note calc-note-spacing">*Даты ближайших потоков уточняйте у наставника. Количество мест строго ограничено.</p>
+          <a href="https://t.me/NafalyaVardaya" id="calcTgLink" target="_blank" class="btn btn-primary w-full" style="width:100%; justify-content:center;">
+            <i class="fa-brands fa-telegram"></i> Узнать стоимость у Натальи
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"><div class="divider-line"><span class="divider-flower">🌻</span></div></div>
+<!-- SUNFLOWER DIVIDER (before АТМОСФЕРА ВСТРЕЧ) -->
+<div class="sunflower-divider">
+  <div class="sf-line">
+    <span class="sunflower-big">🌻</span>
+  </div>
+</div>
 
-<!-- GALLERY WITH LIGHTBOX -->
+<!-- GALLERY -->
 <section class="gallery-section" id="gallery">
   <div class="container">
     <div class="section-head animate-in">
       <span class="section-label">Атмосфера встреч</span>
       <h2>Наша яркая фотогалерея</h2>
-      <p>Взгляните на жизнь команды «Жёлтые Подсолнухи». Теплые живые встречи, улыбки и незабываемые моменты единства.</p>
+      <p>Взгляните на жизнь команды «Жёлтые Подсолнухи». Тёплые живые встречи, улыбки и незабываемые моменты единства.</p>
     </div>
-
     <div class="gallery-grid animate-in delay-1">
       <div class="gallery-item" onclick="openLightbox(this, 'Золотые поля подсолнухов олицетворяют свет нашей команды')">
         <img src="img/6.jpg" alt="Подсолнухи" />
@@ -969,7 +1161,7 @@
   </div>
 </section>
 
-<!-- LIGHTBOX ELEMENT -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
   <div class="lightbox-inner" onclick="event.stopPropagation()">
     <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
@@ -988,12 +1180,10 @@
       <h2>Видеообзоры и выступления</h2>
       <p>Посмотрите короткие видеоматериалы, чтобы лучше понять ценность методики Super Jump и познакомиться со школой.</p>
     </div>
-
-    <div class="videos-grid animate-in delay-1 font-sans">
-      <!-- Video 1 -->
+    <div class="videos-grid animate-in delay-1">
       <div class="video-card">
         <div class="video-wrapper">
-          <img class="video-thumb" src="img/10.jpg" alt="Что такое Super Jump за 5 минут? Суть методики" />
+          <img class="video-thumb" src="img/10.jpg" alt="Что такое Super Jump за 5 минут?" />
           <div class="video-play-btn" onclick="openVideoModal('https://rutube.ru/play/embed/c6e4660768cc75a4820cf6d666aff7ca?p=lhP7YXwOvLdqm2P95LqGUA')">
             <i class="fa-solid fa-play"></i>
           </div>
@@ -1003,7 +1193,6 @@
           <h4>Что такое Super Jump за 5 минут? Суть методики</h4>
         </div>
       </div>
-      <!-- Video 2 -->
       <div class="video-card">
         <div class="video-wrapper">
           <img class="video-thumb" src="img/11.jpg" alt="конгресс интеллект тренеров" />
@@ -1013,10 +1202,9 @@
         </div>
         <div class="video-card-body">
           <span class="video-label">Событие</span>
-          <h4>конгресс интеллект тренеров</h4>
+          <h4>Конгресс интеллект тренеров</h4>
         </div>
       </div>
-      <!-- Video 3 -->
       <div class="video-card">
         <div class="video-wrapper">
           <img class="video-thumb" src="img/12.jpg" alt="8 упражнений для увеличения энергии" />
@@ -1033,7 +1221,7 @@
   </div>
 </section>
 
-<!-- VIDEO MODAL CONTAINER -->
+<!-- VIDEO MODAL -->
 <div class="video-modal" id="videoModal" onclick="closeVideoModal(event)">
   <div class="video-modal-inner" onclick="event.stopPropagation()">
     <button class="video-modal-close" onclick="closeVideoModal()"><i class="fa-solid fa-xmark"></i></button>
@@ -1041,16 +1229,23 @@
   </div>
 </div>
 
-<div class="divider"><div class="divider-line"><span class="divider-flower">🌻</span></div></div>
+<!-- SUNFLOWER DIVIDER (before БЫСТРЫЙ СТАРТ) -->
+<div class="sunflower-divider">
+  <div class="sf-line">
+    <span class="sunflower-big">🌻</span>
+  </div>
+</div>
 
-<!-- CONVERSION / MESSAGE GENERATOR -->
+<!-- QUICK START / MSG GENERATOR -->
 <section class="msg-section" id="msg-generator">
   <div class="container">
-    <div class="msg-card">
+    <div class="section-head animate-in">
+      <span class="section-label">Быстрый старт</span>
+      <h2>Запишись на личный разбор</h2>
+    </div>
+    <div class="msg-card animate-in delay-1">
       <div class="msg-left">
-        <span class="section-label">Быстрый старт</span>
-        <h3>Запишись на личный разбор</h3>
-        <p>Заполни форму справа: введи свое имя, выбери фокус внимания и нажми кнопку. Система автоматически создаст персонализированное сообщение для отправки Наталье в Telegram/WhatsApp.</p>
+        <p>Заполни форму справа: введи своё имя, выбери фокус внимания и нажми кнопку. Система автоматически создаст персонализированное сообщение для отправки Наталье в Telegram/WhatsApp.</p>
         <div class="msg-avatar-group">
           <div class="msg-avatar">🌻</div>
           <div class="msg-avatar-info">
@@ -1059,23 +1254,23 @@
           </div>
         </div>
       </div>
-      <div class="msg-form font-sans">
+      <div class="msg-form">
         <div class="form-group">
           <label for="userName">Ваше имя</label>
           <input type="text" id="userName" class="form-input" placeholder="Введите имя, например: Елена" />
         </div>
-        
         <div class="form-group">
           <label>Главный фокус изменений</label>
-          <div class="grid grid-cols-2 gap-2 mt-1">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:0.4rem;">
             <div class="goal-option selected" onclick="selectGoal(this, 'Поднять энергию и тонус')">⚡ Больше энергии</div>
             <div class="goal-option" onclick="selectGoal(this, 'Улучшить отношения')">❤️ Отношения</div>
             <div class="goal-option" onclick="selectGoal(this, 'Найти призвание')">🎯 Поиск предназначения</div>
             <div class="goal-option" onclick="selectGoal(this, 'Вырасти финансово')">📈 Рост доходов</div>
           </div>
         </div>
-        
-        <button onclick="generateCustomMessage()" class="btn btn-primary w-full py-4 text-base mt-2"><i class="fa-brands fa-telegram text-lg mr-1"></i> Сформировать и отправить в Telegram</button>
+        <button onclick="generateCustomMessage()" class="btn btn-primary" style="width:100%; padding:1rem; font-size:1rem; margin-top:0.5rem;">
+          <i class="fa-brands fa-telegram" style="font-size:1.2rem;"></i> Сформировать и отправить в Telegram
+        </button>
       </div>
     </div>
   </div>
@@ -1085,13 +1280,17 @@
 
 <!-- CTA SECTION -->
 <section class="cta-section" id="cta">
-  <div class="container">
-    <span class="section-label">Трансформация ждет</span>
-    <h2>Зажгите свое внутреннее солнце</h2>
+  <div class="container" style="position:relative; z-index:2;">
+    <span class="section-label">Трансформация ждёт</span>
+    <h2>Зажгите своё внутреннее солнце</h2>
     <p>Каждый поток интенсива Super Jump в команде «Жёлтые Подсолнухи» — это десятки счастливых историй людей, которые вернули контроль над жизнью. Сделайте первый шаг уже сегодня!</p>
     <div class="cta-buttons">
-      <a href="https://account.superjump.com/register/118814" target="_blank" class="btn btn-white px-8 py-4"><i class="fa-solid fa-arrow-pointer"></i> Быстрая регистрация</a>
-      <a href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-gold-outline text-white border-white/50 hover:bg-white/10 px-8 py-4"><i class="fa-brands fa-telegram"></i> Написать напрямую</a>
+      <a href="https://account.superjump.com/register/118814" target="_blank" class="btn btn-white" style="padding:1rem 2.5rem;">
+        <i class="fa-solid fa-arrow-pointer"></i> Быстрая регистрация
+      </a>
+      <a href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-tg-style" style="padding:1rem 2.5rem;">
+        <i class="fa-brands fa-telegram" style="font-size:1.2rem;"></i> Написать напрямую
+      </a>
     </div>
   </div>
 </section>
@@ -1104,8 +1303,7 @@
       <h2>Официальные контакты</h2>
       <p>Свяжитесь удобным для вас способом, чтобы задать любой интересующий вопрос об интенсивах или вступлении в команду.</p>
     </div>
-
-    <div class="contact-cards animate-in delay-1 font-sans">
+    <div class="contact-cards animate-in delay-1">
       <a href="https://t.me/NafalyaVardaya" target="_blank" class="contact-card tg">
         <div class="contact-card-icon"><i class="fa-brands fa-telegram"></i></div>
         <div class="contact-card-title">Telegram</div>
@@ -1133,12 +1331,10 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
-    <div class="flex-direction: column; gap: 0.5rem; text-align: left;">
+    <div class="footer-copy">
       © 2026 <strong>Наталья Вардая</strong>. Все права защищены.
     </div>
-  </div>
-  <div class="footer-top font-sans">
-    <div class="footer-dev" style="flex-direction: raw; gap: 0.5rem; text-align: right;">
+    <div class="footer-dev">
       <div>Разработчик сайта — <a href="https://t.me/Samadhi2411" target="_blank">samadhi2411</a></div>
       <div>Нужен сайт? Пиши → <a href="https://max.ru/u/f9LHodD0cOKDY1emmUrupKlXJll32btrvJyZe3d0CeMmvy_rHDa2TWoayQc" target="_blank">MAX (МЕССЕНДЖЕР)</a></div>
       <div><a href="https://vk.com/samadhi2411" target="_blank">ВКонтакте</a></div>
@@ -1153,7 +1349,7 @@
 
 <!-- JAVASCRIPT -->
 <script>
-  // Navbar Scrolled Effect
+  // Navbar scroll effect
   window.addEventListener('scroll', function() {
     const navbar = document.getElementById('navbar');
     const backToTop = document.getElementById('backToTop');
@@ -1162,7 +1358,6 @@
     } else {
       navbar.classList.remove('scrolled');
     }
-
     if (window.scrollY > 500) {
       backToTop.classList.add('visible');
     } else {
@@ -1170,30 +1365,24 @@
     }
   });
 
-  // Mobile Menu Toggling
+  // Mobile Menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     mobileMenu.classList.toggle('open');
   });
-
   function closeMobileMenu() {
     hamburger.classList.remove('active');
     mobileMenu.classList.remove('open');
   }
 
-
-
-  // Interactive Test Logic
+  // Test logic
   let selectedSymptoms = 0;
   function toggleTestCard(card) {
     card.classList.toggle('checked');
     const checkedCards = document.querySelectorAll('.test-card.checked');
     selectedSymptoms = checkedCards.length;
-    
-    // Update live indicators
     document.getElementById('checkedCount').innerText = selectedSymptoms;
     const progressFill = document.getElementById('testProgress');
     const percentage = (selectedSymptoms / 8) * 100;
@@ -1206,71 +1395,49 @@
     const title = document.getElementById('resultTitle');
     const text = document.getElementById('resultText');
     const link = document.getElementById('resultTgLink');
-
     let archetype = '';
     let adviceText = '';
     let badgeClass = '';
-
     if (selectedSymptoms === 0) {
       archetype = "Баланс гармонии";
       badgeClass = "bg-[#4CAF50] text-white";
       title.innerText = "У вас отличный уровень энергии!";
       adviceText = "Замечательно! Вы держите баланс и контролируете свой фокус. Однако вы можете использовать упражнения Super Jump для взрывного масштабирования в бизнесе, творчестве и раскрытии потенциала тренера в нашей команде.";
     } else if (selectedSymptoms <= 2) {
-      archetype = "Легкое утомление";
+      archetype = "Лёгкое утомление";
       badgeClass = "bg-[#ff9800] text-white";
       title.innerText = "Требуется профилактический тонус";
-      adviceText = "Ваш ресурс на нормальном уровне, но наметились первые звоночки выгорания. Чтобы не уйти в хроническую усталость, вам идеально подойдет Смехозарядка и техника информационной гигиены. Ждем вас на 10-дневном курсе!";
+      adviceText = "Ваш ресурс на нормальном уровне, но наметились первые звоночки выгорания. Чтобы не уйти в хроническую усталость, вам идеально подойдёт Смехозарядка и техника информационной гигиены. Ждём вас на 10-дневном курсе!";
     } else if (selectedSymptoms <= 5) {
       archetype = "Синдром выгорания";
       badgeClass = "bg-[#e65100] text-white";
       title.innerText = "Необходима срочная перезагрузка";
-      adviceText = "Вы отдаете больше сил, чем восполняете. Эмоциональные качели, фоновый стресс и усталость мешают двигаться дальше. Наш 10-дневный практический интенсив Super Jump вернет вам 100% ресурсного состояния уже на второй день занятий.";
+      adviceText = "Вы отдаёте больше сил, чем восполняете. Эмоциональные качели, фоновый стресс и усталость мешают двигаться дальше. Наш 10-дневный практический интенсив Super Jump вернёт вам 100% ресурсного состояния уже на второй день занятий.";
     } else {
       archetype = "Глубокий энергокризис";
       badgeClass = "bg-[#d32f2f] text-white";
       title.innerText = "Критическая потеря энергии!";
-      adviceText = "Вы работаете на износ на холостых оборотах. Организм посылает сигналы SOS. Самое лучшее решение — остановиться и пройти курс восстановления. Наталья Вардая бережно проведет вас за руку через 8 исцеляющих жемчужин.";
+      adviceText = "Вы работаете на износ на холостых оборотах. Организм посылает сигналы SOS. Самое лучшее решение — остановиться и пройти курс восстановления. Наталья Вардая бережно проведёт вас за руку через 8 исцеляющих жемчужин.";
     }
-
     label.innerText = archetype;
     label.className = `test-result-badge ${badgeClass}`;
     text.innerText = adviceText;
-
-    // Custom personalized link
     link.href = "https://t.me/NafalyaVardaya";
-
     resultBox.style.display = 'block';
-    setTimeout(() => {
-      resultBox.classList.add('visible');
-    }, 50);
-
-    // Scroll smoothly to results
+    setTimeout(() => { resultBox.classList.add('visible'); }, 50);
     resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  // 8 Pearls Interactive Day Switcher
+  // 8 Pearls switcher
   function switchPearl(index) {
-    // Tabs
-    const tabs = document.querySelectorAll('.pearl-tab');
-    tabs.forEach((tab, idx) => {
-      if (idx === index - 1) {
-        tab.classList.add('active');
-      } else {
-        tab.classList.remove('active');
-      }
+    document.querySelectorAll('.pearl-tab').forEach((tab, idx) => {
+      tab.classList.toggle('active', idx === index - 1);
     });
-
-    // Content Panes
-    const panes = document.querySelectorAll('.pearl-pane');
-    panes.forEach(pane => {
-      pane.classList.remove('active');
-    });
-
+    document.querySelectorAll('.pearl-pane').forEach(pane => pane.classList.remove('active'));
     document.getElementById(`pearl-${index}`).classList.add('active');
   }
 
-  // Interactive format selector for Pricing / Formats
+  // Format selector
   const formatsData = {
     group: {
       title: "Групповой интенсив",
@@ -1306,16 +1473,9 @@
     }
   };
 
-  function selectFormat(formatKey) {
-    // Toggle active state for elements
-    const options = document.querySelectorAll('.calc-option');
-    options.forEach(opt => {
-      opt.classList.remove('active');
-    });
-
-    event.currentTarget.classList.add('active');
-
-    // Update details values
+  function selectFormat(formatKey, ev) {
+    document.querySelectorAll('.calc-option').forEach(opt => opt.classList.remove('active'));
+    if (ev && ev.currentTarget) ev.currentTarget.classList.add('active');
     const data = formatsData[formatKey];
     document.getElementById('calcFormatTitle').innerText = data.title;
     document.getElementById('calcDuration').innerText = data.duration;
@@ -1323,88 +1483,59 @@
     document.getElementById('feat1').innerText = data.feat1;
     document.getElementById('feat2').innerText = data.feat2;
     document.getElementById('feat3').innerText = data.feat3;
-
-    // Custom personalized question text
     document.getElementById('calcTgLink').href = "https://t.me/NafalyaVardaya";
   }
 
-  // Interactive Goal Selector in prefilled message form
+  // Goal selector
   let selectedGoalText = 'Поднять энергию и тонус';
   function selectGoal(element, goal) {
-    const goals = document.querySelectorAll('.goal-option');
-    goals.forEach(el => {
-      el.classList.remove('selected');
-    });
+    document.querySelectorAll('.goal-option').forEach(el => el.classList.remove('selected'));
     element.classList.add('selected');
     selectedGoalText = goal;
   }
 
   function generateCustomMessage() {
-    const targetUrl = "https://t.me/NafalyaVardaya";
-    window.open(targetUrl, '_blank');
+    window.open("https://t.me/NafalyaVardaya", '_blank');
   }
 
-  // Lightbox Implementation
+  // Lightbox
   function openLightbox(element, caption) {
     const img = element.querySelector('img');
     const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxCaption = document.getElementById('lightboxCaption');
-
-    lightboxImg.src = img.src;
-    lightboxCaption.innerText = caption;
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightboxCaption').innerText = caption;
     lightbox.classList.add('open');
   }
-
   function closeLightbox(event) {
-    const lightbox = document.getElementById('lightbox');
-    lightbox.classList.remove('open');
+    document.getElementById('lightbox').classList.remove('open');
   }
 
-  // Video modal logic
+  // Video modal
   function openVideoModal(embedUrl) {
-    const videoModal = document.getElementById('videoModal');
-    const iframe = document.getElementById('videoModalIframe');
-    iframe.src = embedUrl;
-    videoModal.classList.add('open');
+    document.getElementById('videoModalIframe').src = embedUrl;
+    document.getElementById('videoModal').classList.add('open');
   }
-
   function closeVideoModal(event) {
-    const videoModal = document.getElementById('videoModal');
-    const iframe = document.getElementById('videoModalIframe');
-    iframe.src = "";
-    videoModal.classList.remove('open');
+    document.getElementById('videoModalIframe').src = "";
+    document.getElementById('videoModal').classList.remove('open');
   }
 
-  // Back to Top smooth scroll
+  // Back to top
   document.getElementById('backToTop').addEventListener('click', function() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Animated elements entry on scroll
+  // Animate on scroll
   const animates = document.querySelectorAll('.animate-in');
-  const observerOptions = {
-    root: null,
-    threshold: 0.1,
-    rootMargin: '0px'
-  };
-
-  const observer = new IntersectionObserver(function(entries, observer) {
+  const observer = new IntersectionObserver(function(entries, obs) {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        obs.unobserve(entry.target);
       }
     });
-  }, observerOptions);
-
-  animates.forEach(el => {
-    observer.observe(el);
-  });
+  }, { root: null, threshold: 0.08, rootMargin: '0px' });
+  animates.forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>
