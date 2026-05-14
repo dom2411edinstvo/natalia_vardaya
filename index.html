@@ -89,7 +89,6 @@
 
     /* Hero image */
     .hero-image-wrap { position: relative; display: flex; justify-content: center; }
-    /* ИСПРАВЛЕНО: главное фото — оригинальный вид, без синего */
     .hero-image-frame { position: relative; border-radius: 50px 50px 140px 50px; overflow: hidden; box-shadow: var(--shadow-lg); max-width: 400px; width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, #fde96d22, #f9a82533); border: 3px solid white; }
     .hero-image-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s ease; }
     .hero-image-frame:hover img { transform: scale(1.05); }
@@ -109,13 +108,11 @@
     .divider-line { display: flex; align-items: center; justify-content: center; gap: 1.2rem; }
     .divider-line::before, .divider-line::after { content: ''; flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, rgba(245,197,24,0.5), transparent); }
 
-    /* Анимированный подсолнух — качание туда-сюда, НЕ вращение на 360 */
     @keyframes sfSway { 0%, 100% { transform: rotate(-12deg) scale(1); } 50% { transform: rotate(12deg) scale(1.08); } }
     @keyframes sfGlow { 0%, 100% { filter: drop-shadow(0 0 8px rgba(245,197,24,0.7)) drop-shadow(0 0 16px rgba(249,168,37,0.4)); } 50% { filter: drop-shadow(0 0 18px rgba(245,197,24,1)) drop-shadow(0 0 32px rgba(249,168,37,0.7)); } }
     @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
 
     .divider-flower { font-size: 1.8rem; filter: drop-shadow(0 2px 4px rgba(245,197,24,0.2)); animation: pulse 3s infinite ease-in-out; }
-    /* Большие анимированные жёлтые подсолнухи-разделители */
     .sun-divider { text-align: center; padding: 1.5rem 0; position: relative; z-index: 3; }
     .sun-divider-line { display: flex; align-items: center; justify-content: center; gap: 1.5rem; }
     .sun-divider-line::before, .sun-divider-line::after { content: ''; flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, rgba(245,197,24,0.5), transparent); }
@@ -125,403 +122,268 @@
     .about { background: #fff; }
     .about-inner { display: grid; grid-template-columns: 1fr 1.3fr; gap: 4.5rem; align-items: start; }
     .about-img-wrap { position: relative; }
-    /* ИСПРАВЛЕНО: фото в "Обо мне" — уменьшено чуть, текст на фото не перекрывается */
     .about-img { border-radius: 40px 40px 40px 120px; overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 4/5; background: linear-gradient(135deg, #fff3cc, #fde96d44); border: 4px solid white; transition: all 0.3s; position: relative; }
     .about-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transform: scale(0.88); transform-origin: center top; }
     .about-img:hover { transform: translateY(-5px); box-shadow: 0 25px 55px rgba(200,140,0,0.22); }
-    /* ИСПРАВЛЕНО: плашка "Основатель" — меньше размер */
     .about-badge { position: absolute; bottom: 10px; right: -8px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%); color: var(--brown); border-radius: 16px; padding: 0.6rem 0.9rem; font-family: 'Arial', sans-serif; font-size: 0.68rem; font-weight: 700; box-shadow: var(--shadow-md); text-align: center; line-height: 1.35; border: 2px solid white; max-width: 148px; }
     .about-content h2 { font-size: clamp(1.8rem, 3.8vw, 2.6rem); color: var(--brown); margin-bottom: 1.4rem; }
-    /* ИСПРАВЛЕНО: отступы над и под "Наши 10-дневные онлайн-курсы" */
     .about-courses-title { margin-top: 2rem; margin-bottom: 1rem; font-size: 1.05rem; font-weight: 700; font-family: 'Arial', sans-serif; color: var(--brown); }
     .about-lead { font-size: 1.15rem; color: var(--text-mid); margin-bottom: 1.8rem; line-height: 1.75; font-style: italic; position: relative; padding-left: 1.2rem; border-left: 3px solid var(--gold-warm); }
-    .benefits-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2.2rem; }
-    .benefits-list li { display: flex; align-items: flex-start; gap: 0.9rem; font-size: 1rem; color: var(--text-mid); line-height: 1.55; }
-    .benefit-icon { width: 30px; height: 30px; min-width: 30px; background: linear-gradient(135deg, var(--gold-pale) 0%, #fff3aa 100%); border: 1.5px solid rgba(245,197,24,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; margin-top: 1px; }
+    .about-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
+    .about-list li { display: flex; align-items: flex-start; gap: 0.9rem; font-size: 1rem; color: var(--text-mid); }
+    .about-list li .icon-wrap { flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-pale) 0%, rgba(245,197,24,0.15) 100%); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+    .about-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.2rem; }
 
     /* TEST SECTION */
-    .test-section { background: linear-gradient(145deg, #fffef2 0%, #fff8cd 60%, #fffdf5 100%); position: relative; }
-    .test-container { background: white; border-radius: 32px; padding: 3rem; box-shadow: var(--shadow-lg); border: 1px solid rgba(245,197,24,0.18); }
-    .test-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; margin-bottom: 2.5rem; }
-    .test-card { background: var(--cream); border-radius: var(--radius-sm); padding: 1.3rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; border: 1px solid rgba(245,197,24,0.14); cursor: pointer; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); user-select: none; position: relative; overflow: hidden; }
-    .test-card:hover { border-color: var(--gold-warm); background: white; transform: translateY(-3px); box-shadow: var(--shadow-sm); }
-    .test-card.checked { background: linear-gradient(135deg, #fffbe6, #fff399); border-color: var(--gold-warm); box-shadow: var(--shadow-sm); }
-    .check-box { width: 24px; height: 24px; min-width: 24px; border-radius: 8px; border: 2px solid rgba(245,197,24,0.5); background: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; margin-top: 2px; transition: all 0.2s ease; color: transparent; }
-    .test-card.checked .check-box { background: linear-gradient(135deg, var(--gold), var(--gold-warm)); border-color: var(--gold-warm); color: white; }
-    .test-card p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.5; font-weight: 500; font-family: 'Arial', sans-serif; }
-    .test-progress-bar { height: 10px; background: rgba(245,197,24,0.12); border-radius: 10px; margin-bottom: 2rem; overflow: hidden; position: relative; }
-    .test-progress-fill { width: 0%; height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-warm)); border-radius: 10px; transition: width 0.4s ease; }
-    .test-counter { font-family: 'Arial', sans-serif; font-size: 1rem; color: var(--text-mid); margin-bottom: 1.5rem; text-align: center; font-weight: bold; }
-    .test-counter span { color: var(--gold-warm); font-size: 1.3rem; }
-    .test-result { background: linear-gradient(135deg, #fffbf0 0%, #fff6bf 100%); border-radius: 24px; padding: 2.5rem 3rem; text-align: center; box-shadow: var(--shadow-md); border: 2px solid var(--gold); display: none; margin-top: 2rem; transform: scale(0.95); opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-    .test-result.visible { display: block; transform: scale(1); opacity: 1; }
-    .test-result-badge { display: inline-block; padding: 0.4rem 1.2rem; background: var(--brown); color: white; border-radius: 30px; font-family: 'Arial', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 0.08em; }
-    .test-result h3 { font-size: 1.6rem; color: var(--brown); margin-bottom: 0.8rem; font-weight: bold; }
-    .test-result p { font-size: 1.05rem; color: var(--text-mid); margin-bottom: 1.8rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; }
-    .test-result .result-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-    /* ИСПРАВЛЕНО: под "ресурса и подберет совет" — чуть меньше отступа */
-    .test-section .section-head { margin-bottom: 2.2rem; }
+    .test { background: linear-gradient(145deg, #fffef5 0%, #fff9d6 100%); }
+    .test-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .test-card { border: 2px solid rgba(245,197,24,0.2); border-radius: var(--radius-sm); padding: 1rem 1.2rem; cursor: pointer; display: flex; align-items: flex-start; gap: 0.8rem; background: white; transition: all 0.2s ease; user-select: none; }
+    .test-card:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .test-card.checked { border-color: var(--gold-warm); background: linear-gradient(135deg, rgba(245,197,24,0.12) 0%, rgba(249,168,37,0.08) 100%); box-shadow: 0 4px 16px rgba(245,197,24,0.2); }
+    .test-card-icon { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: rgba(245,197,24,0.1); border: 2px solid rgba(245,197,24,0.2); display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: all 0.2s; }
+    .test-card.checked .test-card-icon { background: var(--gold); border-color: var(--gold-warm); }
+    .test-card p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.5; margin: 0; }
+    .test-progress { background: rgba(245,197,24,0.15); border-radius: 50px; height: 8px; margin-bottom: 1.5rem; overflow: hidden; }
+    .test-progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-warm) 100%); border-radius: 50px; width: 0%; transition: width 0.4s ease; }
+    .test-meta { font-family: 'Arial', sans-serif; font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.6rem; display: flex; justify-content: space-between; align-items: center; }
+    .test-result-box { border-radius: var(--radius); padding: 2rem; background: white; box-shadow: var(--shadow-md); border: 1px solid rgba(245,197,24,0.2); margin-top: 1.5rem; display: none; opacity: 0; transition: all 0.5s ease; }
+    .test-result-box.visible { opacity: 1; }
+    .test-result-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 1rem; border-radius: 50px; font-family: 'Arial', sans-serif; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem; }
 
-    /* INTENSIVE (8 PEARLS Switcher) */
+    /* INTENSIVE / PEARLS */
     .intensive { background: #fff; }
-    .pearl-nav-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin-bottom: 2rem; }
-    @media (max-width: 768px) { .pearl-nav-grid { grid-template-columns: repeat(2, 1fr); } }
-    .pearl-tab { background: var(--cream); border: 1.5px solid rgba(245,197,24,0.18); border-radius: var(--radius-sm); padding: 1rem; cursor: pointer; text-align: center; transition: all 0.25s; font-family: 'Arial', sans-serif; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
-    .pearl-tab:hover { background: white; border-color: var(--gold-warm); transform: translateY(-2px); }
-    .pearl-tab.active { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%); border-color: var(--gold-warm); box-shadow: var(--shadow-sm); }
-    .pearl-tab.active .pearl-tab-num { color: var(--brown); opacity: 0.9; }
-    .pearl-tab.active .pearl-tab-title { color: var(--brown); font-weight: bold; }
-    .pearl-tab-num { font-size: 1.3rem; font-weight: 800; color: var(--gold-warm); }
-    .pearl-tab-title { font-size: 0.82rem; color: var(--text-mid); font-weight: 600; line-height: 1.3; }
-    .pearl-content-container { background: var(--cream); border-radius: 28px; padding: 2.5rem; border: 1px solid rgba(245,197,24,0.2); box-shadow: var(--shadow-sm); min-height: 250px; display: flex; align-items: center; position: relative; overflow: hidden; }
-    .pearl-content-container::after { content: '🌻'; position: absolute; bottom: -20px; right: -10px; font-size: 8rem; opacity: 0.05; pointer-events: none; }
-    .pearl-pane { display: none; width: 100%; animation: fadeIn 0.4s ease forwards; }
-    .pearl-pane.active { display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center; }
-    @media (max-width: 640px) { .pearl-pane.active { grid-template-columns: 1fr; text-align: center; } }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    .pearl-pane-icon { width: 72px; height: 72px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; box-shadow: var(--shadow-md); border: 2px solid var(--gold-light); margin: 0 auto; }
-    .pearl-pane-text h3 { font-size: 1.45rem; color: var(--brown); margin-bottom: 0.6rem; font-weight: bold; }
-    .pearl-pane-text p { font-size: 1rem; color: var(--text-mid); line-height: 1.6; }
-    .pearl-pane-benefit { display: inline-block; margin-top: 1rem; font-size: 0.88rem; color: var(--gold-warm); font-weight: bold; font-family: 'Arial', sans-serif; background: white; padding: 0.3rem 1rem; border-radius: 30px; border: 1px solid rgba(245,197,24,0.25); }
+    .pearl-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+    .pearl-tab { font-family: 'Arial', sans-serif; font-size: 0.82rem; font-weight: 700; padding: 0.5rem 1rem; border-radius: 50px; cursor: pointer; border: 2px solid rgba(245,197,24,0.25); background: white; color: var(--text-mid); transition: all 0.2s ease; display: flex; align-items: center; gap: 0.5rem; }
+    .pearl-tab:hover { border-color: var(--gold); color: var(--brown); }
+    .pearl-tab.active { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%); border-color: transparent; color: var(--brown); box-shadow: 0 4px 12px rgba(245,197,24,0.3); }
+    .pearl-tab .tab-num { width: 22px; height: 22px; border-radius: 50%; background: rgba(245,197,24,0.15); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 900; }
+    .pearl-tab.active .tab-num { background: rgba(92,61,0,0.15); }
+    .pearl-pane { display: none; }
+    .pearl-pane.active { display: flex; gap: 2rem; align-items: flex-start; }
+    .pearl-icon { font-size: 4rem; flex-shrink: 0; }
+    .pearl-pane h3 { font-size: 1.35rem; color: var(--brown); margin-bottom: 0.8rem; }
+    .pearl-pane p { color: var(--text-mid); line-height: 1.75; font-size: 1rem; }
+    .pearl-result { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; background: var(--gold-pale); color: var(--brown); padding: 0.4rem 1rem; border-radius: 50px; font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 700; }
 
-    /* METHODOLOGY SECTION */
-    .trainer-section { background: linear-gradient(145deg, #2c1d00 0%, #3d2800 60%, #2c1d00 100%); color: white; }
-    .trainer-section .section-label { color: var(--gold-light); }
-    .trainer-section .section-head h2 { color: white; }
-    .trainer-section .section-head p { color: rgba(255,255,255,0.7); }
-    .trainer-lead { background: rgba(255,255,255,0.06); border: 1px solid rgba(245,197,24,0.25); border-radius: var(--radius); padding: 2.2rem 3rem; margin-bottom: 3.5rem; max-width: 820px; margin-left: auto; margin-right: auto; text-align: center; box-shadow: var(--shadow-sm); backdrop-filter: blur(8px); }
-    .trainer-lead p { font-size: 1.1rem; line-height: 1.75; color: rgba(255,255,255,0.92); }
-    .trainer-roles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; margin-bottom: 3.5rem; }
-    .role-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(245,197,24,0.18); border-radius: var(--radius-sm); padding: 1.8rem 1.2rem; text-align: center; transition: all 0.3s ease; position: relative; overflow: hidden; }
-    .role-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(245,197,24,0.1) 0%, transparent 100%); opacity: 0; transition: opacity 0.3s; }
-    .role-card:hover { transform: translateY(-6px); border-color: rgba(245,197,24,0.5); }
-    .role-card:hover::before { opacity: 1; }
-    .role-icon { font-size: 2.4rem; margin-bottom: 1rem; }
-    .role-card h4 { font-size: 1rem; color: var(--gold-light); margin-bottom: 0.7rem; font-weight: bold; }
-    .role-card p { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.55; }
-    .trainer-target { background: rgba(255,255,255,0.04); border: 1px solid rgba(245,197,24,0.15); border-radius: var(--radius); padding: 2.5rem; }
-    .trainer-target h3 { font-size: 1.4rem; color: var(--gold-light); margin-bottom: 1.5rem; text-align: center; }
-    .target-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    .target-item { display: flex; align-items: flex-start; gap: 1rem; background: rgba(255,255,255,0.04); border-radius: var(--radius-sm); padding: 1.2rem 1.5rem; border: 1px solid rgba(245,197,24,0.1); transition: all 0.25s; }
-    .target-item:hover { background: rgba(255,255,255,0.08); border-color: rgba(245,197,24,0.25); }
-    .target-check { color: var(--gold-warm); font-size: 1.1rem; margin-top: 2px; min-width: 20px; }
-    .target-item p { font-size: 0.95rem; color: rgba(255,255,255,0.82); line-height: 1.55; }
+    /* TRAINER / METHODOLOGY */
+    .trainer { background: linear-gradient(145deg, #fffef5 0%, #fff9d6 100%); }
+    .trainer-quote { font-size: 1.1rem; font-style: italic; color: var(--text-mid); border-left: 4px solid var(--gold-warm); padding: 1.2rem 1.8rem; background: rgba(245,197,24,0.06); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 3rem; line-height: 1.8; }
+    .trainer-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+    .trainer-card { background: white; border-radius: var(--radius); padding: 1.8rem 1.4rem; text-align: center; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.1); transition: all 0.3s; }
+    .trainer-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(245,197,24,0.3); }
+    .trainer-card-icon { font-size: 2.2rem; margin-bottom: 0.8rem; }
+    .trainer-card h4 { font-size: 1rem; color: var(--brown); margin-bottom: 0.5rem; }
+    .trainer-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
+    .who-for { background: white; border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-sm); }
+    .who-for h3 { font-size: 1.4rem; color: var(--brown); margin-bottom: 1.5rem; }
+    .who-for-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .who-for-item { display: flex; align-items: flex-start; gap: 0.9rem; padding: 1rem; border-radius: var(--radius-sm); background: var(--gold-pale); border: 1px solid rgba(245,197,24,0.2); font-size: 0.95rem; color: var(--text-mid); }
+    .who-for-item::before { content: '🌻'; flex-shrink: 0; font-size: 1.1rem; }
 
     /* WHY CHOOSE */
-    .why-section { background: #fff; }
-    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-    .why-card { background: var(--cream); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; border: 1px solid rgba(245,197,24,0.15); transition: all 0.3s ease; position: relative; overflow: hidden; }
-    .why-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(245,197,24,0.08) 0%, transparent 100%); opacity: 0; transition: opacity 0.3s; }
-    .why-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(245,197,24,0.3); }
-    .why-card:hover::before { opacity: 1; }
-    .why-icon { font-size: 2.4rem; margin-bottom: 1rem; }
-    .why-card h4 { font-size: 1.05rem; color: var(--brown); margin-bottom: 0.6rem; font-weight: bold; }
-    .why-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; }
+    .why-choose { background: #fff; }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem; }
+    .why-card { text-align: center; padding: 2rem 1.4rem; border-radius: var(--radius); border: 1px solid rgba(245,197,24,0.12); background: linear-gradient(145deg, #fffef8 0%, white 100%); box-shadow: var(--shadow-sm); transition: all 0.3s ease; }
+    .why-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(245,197,24,0.35); }
+    .why-card-icon { font-size: 2.6rem; margin-bottom: 1rem; }
+    .why-card h4 { font-size: 1.05rem; color: var(--brown); margin-bottom: 0.6rem; }
+    .why-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.65; }
 
-    /* TEAM SECTION */
-    .team-section { background: linear-gradient(145deg, #fffef2 0%, #fff8cd 60%, #fffdf5 100%); position: relative; }
+    /* TEAM */
+    .team { background: linear-gradient(145deg, #fff9d6 0%, #fffef5 100%); }
     .team-inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; }
-    .team-content h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: var(--brown); margin-bottom: 1.2rem; }
-    .team-subtitle { font-family: 'Arial', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--gold-warm); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
-    .team-content p { font-size: 1rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 1.2rem; }
-    .team-values { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.2rem; }
-    .team-value-tag { background: white; border: 1.5px solid rgba(245,197,24,0.4); color: var(--brown); border-radius: 30px; padding: 0.35rem 1rem; font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 600; }
-    .team-stats { display: flex; flex-direction: column; gap: 1.2rem; }
-    .team-stat { background: white; border-radius: var(--radius); padding: 1.5rem 2rem; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.15); display: flex; align-items: center; gap: 1.2rem; transition: all 0.3s; }
+    .team-values { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+    .team-value-tag { background: white; border: 1px solid rgba(245,197,24,0.3); border-radius: 50px; padding: 0.35rem 1rem; font-family: 'Arial', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--brown); }
+    .team-stats { display: flex; flex-direction: column; gap: 1.5rem; }
+    .team-stat { background: white; border-radius: var(--radius); padding: 1.5rem 1.8rem; box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 1.2rem; border: 1px solid rgba(245,197,24,0.1); transition: all 0.3s; }
     .team-stat:hover { transform: translateX(6px); box-shadow: var(--shadow-md); }
     .team-stat-icon { font-size: 2rem; }
-    .team-stat strong { display: block; font-size: 1.2rem; color: var(--brown); font-weight: bold; font-family: 'Arial', sans-serif; }
-    .team-stat span { font-size: 0.85rem; color: var(--text-light); font-family: 'Arial', sans-serif; }
+    .team-stat strong { display: block; font-size: 1.2rem; color: var(--brown); }
+    .team-stat span { font-family: 'Arial', sans-serif; font-size: 0.82rem; color: var(--text-light); }
 
     /* CALCULATOR */
-    .calculator-section { background: #fff; }
-    .calc-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 2.5rem; align-items: start; }
-    .calc-options-list { display: flex; flex-direction: column; gap: 0.8rem; }
-    .calc-options-title { font-size: 1rem; font-weight: bold; color: var(--brown); font-family: 'Arial', sans-serif; margin-bottom: 1rem; }
-    .calc-option { background: var(--cream); border: 1.5px solid rgba(245,197,24,0.18); border-radius: var(--radius-sm); padding: 1.2rem 1.5rem; cursor: pointer; transition: all 0.25s; }
-    .calc-option:hover { background: white; border-color: var(--gold-warm); transform: translateX(4px); }
-    .calc-option.active { background: linear-gradient(135deg, #fffbe6, #fff3aa); border-color: var(--gold-warm); box-shadow: var(--shadow-sm); }
-    .calc-option p:first-child { font-family: 'Arial', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--brown); margin-bottom: 0.2rem; }
-    .calc-option p:last-child { font-family: 'Arial', sans-serif; font-size: 0.82rem; color: var(--text-light); }
-    .calc-output { background: var(--cream); border-radius: 28px; padding: 2.5rem; border: 1px solid rgba(245,197,24,0.2); }
-    .calc-output-head { margin-bottom: 1.8rem; }
-    .calc-output-head h3 { font-size: 1.4rem; color: var(--brown); margin-bottom: 0.6rem; font-weight: bold; }
-    .calc-detail { display: flex; align-items: center; gap: 0.7rem; font-family: 'Arial', sans-serif; font-size: 0.88rem; color: var(--text-mid); margin-bottom: 0.5rem; }
-    .calc-detail i { color: var(--gold-warm); width: 18px; }
-    .calc-feats { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin: 1.5rem 0; }
-    .calc-feats li { display: flex; align-items: center; gap: 0.7rem; font-family: 'Arial', sans-serif; font-size: 0.95rem; color: var(--text-mid); }
-    .calc-feats li i { color: var(--gold-warm); }
-    /* ИСПРАВЛЕНО: отступ под *Датами до кнопок чуть больше */
-    .calc-note { font-family: 'Arial', sans-serif; font-size: 0.82rem; color: var(--text-light); margin-top: 1rem; line-height: 1.5; }
-    .calc-note-spacing { margin-bottom: 2rem; }
+    .calculator { background: #fff; }
+    .calc-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: start; }
+    .calc-options { display: flex; flex-direction: column; gap: 0.8rem; }
+    .calc-option { border: 2px solid rgba(245,197,24,0.2); border-radius: var(--radius-sm); padding: 1rem 1.3rem; cursor: pointer; transition: all 0.2s ease; background: white; }
+    .calc-option:hover { border-color: var(--gold); transform: translateX(4px); }
+    .calc-option.active { border-color: var(--gold-warm); background: linear-gradient(135deg, rgba(245,197,24,0.1) 0%, rgba(249,168,37,0.05) 100%); box-shadow: 0 4px 16px rgba(245,197,24,0.15); }
+    .calc-option h4 { font-size: 0.95rem; color: var(--brown); margin-bottom: 0.2rem; font-family: 'Arial', sans-serif; font-weight: 700; }
+    .calc-option p { font-size: 0.82rem; color: var(--text-light); margin: 0; }
+    .calc-result { background: linear-gradient(145deg, #fffef5 0%, #fff9d0 100%); border-radius: var(--radius); padding: 2.2rem; border: 1px solid rgba(245,197,24,0.25); box-shadow: var(--shadow-md); }
+    .calc-result h3 { font-size: 1.35rem; color: var(--brown); margin-bottom: 1.2rem; }
+    .calc-info-row { display: flex; align-items: center; gap: 0.7rem; font-family: 'Arial', sans-serif; font-size: 0.9rem; color: var(--text-mid); margin-bottom: 0.7rem; }
+    .calc-info-row i { color: var(--gold-warm); width: 16px; }
+    .calc-features { list-style: none; margin-top: 1.5rem; margin-bottom: 1.8rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .calc-features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.92rem; color: var(--text-mid); }
+    .calc-features li i { color: var(--gold-warm); flex-shrink: 0; margin-top: 3px; }
+    .calc-note { font-family: 'Arial', sans-serif; font-size: 0.8rem; color: var(--text-light); font-style: italic; margin-bottom: 1.5rem; line-height: 1.5; }
 
     /* GALLERY */
-    .gallery-section { background: linear-gradient(145deg, #fffef2 0%, #fff8cd 60%, #fffdf5 100%); }
-    /* ИСПРАВЛЕНО: фото в галерее — одинаковая высота, лица вмещаются */
-    .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
-    .gallery-item { border-radius: var(--radius); overflow: hidden; position: relative; cursor: pointer; box-shadow: var(--shadow-sm); transition: all 0.3s; }
-    .gallery-item:hover { transform: scale(1.02); box-shadow: var(--shadow-md); }
-    /* Фиксированный aspect-ratio для всех фото — лица помещаются */
-    .gallery-item-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; }
+    .gallery { background: linear-gradient(145deg, #fff9d6 0%, #fffef5 100%); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+    .gallery-item { border-radius: var(--radius); overflow: hidden; cursor: pointer; position: relative; box-shadow: var(--shadow-sm); border: 2px solid white; transition: all 0.3s ease; }
+    .gallery-item:hover { transform: scale(1.03) translateY(-4px); box-shadow: var(--shadow-lg); }
+    .gallery-item-img { aspect-ratio: 4/3; overflow: hidden; }
     .gallery-item-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; transition: transform 0.5s ease; }
-    .gallery-item:hover .gallery-item-img img { transform: scale(1.07); }
-    .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(92,61,0,0.6) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; justify-content: center; padding: 1.2rem; }
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
-    .gallery-caption { color: white; font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 600; text-align: center; }
-    .gallery-zoom-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.5); opacity: 0; background: rgba(255,255,255,0.2); border-radius: 50%; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; transition: all 0.3s; backdrop-filter: blur(4px); }
-    .gallery-item:hover .gallery-zoom-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-caption { background: linear-gradient(135deg, rgba(245,197,24,0.92) 0%, rgba(249,168,37,0.88) 100%); padding: 0.7rem 1rem; display: flex; align-items: center; justify-content: space-between; }
+    .gallery-caption p { font-family: 'Arial', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--brown); }
+    .gallery-caption i { color: var(--brown); font-size: 0.9rem; }
 
     /* LIGHTBOX */
-    .lightbox { position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.88); display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; }
-    .lightbox.open { opacity: 1; pointer-events: all; }
-    .lightbox-inner { position: relative; max-width: 800px; width: 100%; }
-    .lightbox-inner img { width: 100%; border-radius: 16px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
-    .lightbox-close { position: absolute; top: -18px; right: -18px; width: 44px; height: 44px; background: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.1rem; color: var(--brown); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: all 0.2s; }
-    .lightbox-close:hover { transform: scale(1.1); background: var(--gold); }
-    .lightbox-caption { text-align: center; margin-top: 1rem; color: rgba(255,255,255,0.85); font-family: 'Arial', sans-serif; font-size: 0.95rem; }
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.88); display: none; align-items: center; justify-content: center; z-index: 9000; backdrop-filter: blur(6px); flex-direction: column; gap: 1rem; padding: 2rem; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 80vh; border-radius: var(--radius); box-shadow: 0 32px 80px rgba(0,0,0,0.5); }
+    .lightbox p { color: white; font-family: 'Arial', sans-serif; font-size: 0.95rem; text-align: center; opacity: 0.85; }
 
     /* VIDEOS */
-    .videos-section { background: #fff; }
-    .videos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .video-card { background: var(--cream); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.15); transition: all 0.3s; }
-    .video-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-    /* ИСПРАВЛЕНО: видео превью — лицо помещается, object-position: center top */
-    .video-wrapper { position: relative; aspect-ratio: 16/9; overflow: hidden; cursor: pointer; }
-    .video-thumb { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; transition: transform 0.5s ease; }
-    .video-card:hover .video-thumb { transform: scale(1.05); }
-    .video-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 58px; height: 58px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--brown); box-shadow: 0 6px 20px rgba(0,0,0,0.2); transition: all 0.3s; cursor: pointer; }
-    .video-play-btn:hover { transform: translate(-50%, -50%) scale(1.15); background: white; box-shadow: 0 10px 30px rgba(245,197,24,0.4); }
-    .video-card-body { padding: 1.2rem 1.4rem; }
-    .video-label { font-family: 'Arial', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold-warm); display: block; margin-bottom: 0.4rem; }
-    .video-card-body h4 { font-size: 1rem; color: var(--brown); font-weight: bold; line-height: 1.4; }
-    .video-modal { position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.92); display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-    .video-modal.open { opacity: 1; pointer-events: all; }
-    .video-modal-inner { position: relative; width: 100%; max-width: 860px; aspect-ratio: 16/9; background: #000; border-radius: 16px; overflow: hidden; }
-    .video-modal-close { position: absolute; top: -18px; right: -18px; width: 44px; height: 44px; background: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.1rem; color: var(--brown); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 10; transition: all 0.2s; }
-    .video-modal-close:hover { transform: scale(1.1); background: var(--gold); }
-    .video-modal-iframe { width: 100%; height: 100%; border: none; }
+    .videos { background: #fff; }
+    .videos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .video-card { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); background: white; border: 1px solid rgba(245,197,24,0.1); transition: all 0.3s ease; cursor: pointer; }
+    .video-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(245,197,24,0.3); }
+    .video-thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; background: linear-gradient(135deg, #fde96d22, #f9a82522); }
+    .video-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; transition: transform 0.5s ease; }
+    .video-card:hover .video-thumb img { transform: scale(1.06); }
+    .video-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .video-play-circle { width: 56px; height: 56px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(245,197,24,0.5); transition: all 0.3s ease; }
+    .video-card:hover .video-play-circle { transform: scale(1.12); box-shadow: 0 10px 30px rgba(245,197,24,0.65); }
+    .video-play-circle i { color: var(--brown); font-size: 1.2rem; margin-left: 3px; }
+    .video-info { padding: 1.2rem 1.4rem; }
+    .video-info .video-label { font-family: 'Arial', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-warm); display: block; margin-bottom: 0.4rem; }
+    .video-info h4 { font-size: 0.98rem; color: var(--brown); line-height: 1.4; }
+
+    /* VIDEO MODAL */
+    .video-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; z-index: 9999; backdrop-filter: blur(8px); }
+    .video-modal.open { display: flex; }
+    .video-modal-inner { position: relative; width: 90vw; max-width: 960px; aspect-ratio: 16/9; border-radius: var(--radius); overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.6); }
+    .video-modal-inner iframe { width: 100%; height: 100%; border: none; }
+    .video-modal-close { position: absolute; top: -44px; right: 0; width: 36px; height: 36px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; font-size: 1rem; transition: all 0.2s; border: none; }
+    .video-modal-close:hover { background: rgba(255,255,255,0.3); }
 
     /* MSG GENERATOR */
-    .msg-section { background: linear-gradient(145deg, #fffef2 0%, #fff8cd 60%, #fffdf5 100%); }
-    /* ИСПРАВЛЕНО: Быстрый старт — больше воздуха */
-    .msg-card { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: white; border-radius: 32px; padding: 4rem; box-shadow: var(--shadow-lg); border: 1px solid rgba(245,197,24,0.18); }
-    .msg-left h3 { font-size: 1.7rem; color: var(--brown); margin-bottom: 1.2rem; font-weight: bold; }
-    .msg-left p { font-size: 1rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 2rem; }
-    .msg-avatar-group { display: flex; align-items: center; gap: 1rem; }
-    .msg-avatar { width: 52px; height: 52px; background: linear-gradient(135deg, var(--gold), var(--gold-warm)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; box-shadow: var(--shadow-sm); }
-    .msg-avatar-info strong { display: block; color: var(--brown); font-family: 'Arial', sans-serif; font-size: 0.95rem; }
-    .msg-avatar-info span { font-size: 0.82rem; color: var(--text-light); font-family: 'Arial', sans-serif; }
+    .msg-generator { background: linear-gradient(145deg, #fff9d6 0%, #fffef5 100%); }
+    .msg-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .msg-tg-card { background: linear-gradient(135deg, rgba(42,171,238,0.08) 0%, rgba(42,171,238,0.04) 100%); border-radius: var(--radius); padding: 1.5rem; border: 1px solid rgba(42,171,238,0.2); display: flex; align-items: center; gap: 1rem; margin-top: 2rem; }
+    .msg-tg-card i { font-size: 2.4rem; color: #2AABEE; }
+    .msg-tg-card strong { font-size: 1rem; color: var(--brown); display: block; font-family: 'Arial', sans-serif; }
+    .msg-tg-card span { font-size: 0.82rem; color: var(--text-light); }
+    .msg-form { background: white; border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-md); border: 1px solid rgba(245,197,24,0.15); }
     .form-group { margin-bottom: 1.4rem; }
-    .form-group label { font-family: 'Arial', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--brown); display: block; margin-bottom: 0.5rem; }
-    .form-input { width: 100%; padding: 0.8rem 1.2rem; border: 1.5px solid rgba(245,197,24,0.3); border-radius: var(--radius-sm); font-family: 'Arial', sans-serif; font-size: 0.95rem; color: var(--text-dark); background: var(--cream); transition: border-color 0.2s; outline: none; }
-    .form-input:focus { border-color: var(--gold-warm); background: white; }
-    .goal-option { background: var(--cream); border: 1.5px solid rgba(245,197,24,0.2); border-radius: 10px; padding: 0.6rem 0.8rem; font-family: 'Arial', sans-serif; font-size: 0.85rem; color: var(--text-mid); cursor: pointer; transition: all 0.2s; text-align: center; font-weight: 600; }
-    .goal-option:hover { border-color: var(--gold-warm); background: white; }
-    .goal-option.selected { background: linear-gradient(135deg, var(--gold), var(--gold-warm)); border-color: var(--gold-warm); color: var(--brown); }
+    .form-group label { font-family: 'Arial', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--brown); display: block; margin-bottom: 0.5rem; letter-spacing: 0.04em; }
+    .form-input { width: 100%; padding: 0.8rem 1.1rem; border: 2px solid rgba(245,197,24,0.25); border-radius: var(--radius-sm); font-family: 'Georgia', serif; font-size: 0.98rem; color: var(--text-dark); background: #fffdf5; outline: none; transition: border-color 0.2s; }
+    .form-input:focus { border-color: var(--gold-warm); }
+    .goal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .goal-option { padding: 0.7rem 1rem; border-radius: var(--radius-sm); border: 2px solid rgba(245,197,24,0.2); background: white; cursor: pointer; font-family: 'Arial', sans-serif; font-size: 0.85rem; color: var(--text-mid); text-align: center; transition: all 0.2s; }
+    .goal-option:hover { border-color: var(--gold); }
+    .goal-option.selected { background: linear-gradient(135deg, var(--gold-pale), rgba(245,197,24,0.15)); border-color: var(--gold-warm); color: var(--brown); font-weight: 700; }
 
     /* CTA */
-    .cta-section { background: linear-gradient(135deg, var(--brown) 0%, #3d2800 50%, #2c1d00 100%); color: white; text-align: center; padding: 100px 0; }
-    .cta-section .section-label { color: var(--gold-light); }
-    .cta-section h2 { font-size: clamp(2rem, 4.5vw, 3rem); color: white; margin-bottom: 1.2rem; }
-    .cta-section p { font-size: 1.1rem; color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 3rem; line-height: 1.7; }
-    .cta-buttons { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; }
-    .btn-gold-outline { border: 2px solid rgba(255,255,255,0.5); color: white !important; background: transparent; }
-    .btn-gold-outline:hover { background: rgba(255,255,255,0.1); }
+    .cta { background: linear-gradient(135deg, var(--brown) 0%, #3a2500 100%); color: white; text-align: center; position: relative; overflow: hidden; }
+    .cta::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(245,197,24,0.15) 0%, transparent 70%); border-radius: 50%; }
+    .cta::after { content: ''; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(249,168,37,0.1) 0%, transparent 70%); border-radius: 50%; }
+    .cta h2 { font-size: clamp(2rem, 4vw, 3rem); color: white; margin-bottom: 1.2rem; }
+    .cta p { color: rgba(255,255,255,0.78); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2.5rem; }
+    .cta-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; position: relative; z-index: 2; }
 
     /* CONTACTS */
-    .contacts-section { background: #fff; }
-    .contact-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-    .contact-card { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; padding: 2rem 1.5rem; border-radius: var(--radius); border: 1.5px solid rgba(245,197,24,0.2); background: var(--cream); transition: all 0.3s; text-align: center; cursor: pointer; }
-    .contact-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-    .contact-card-icon { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; }
-    .contact-card.tg .contact-card-icon { background: linear-gradient(135deg, #2AABEE, #229ed9); }
-    .contact-card.wa .contact-card-icon { background: linear-gradient(135deg, #25D366, #128C7E); }
-    .contact-card.ig .contact-card-icon { background: linear-gradient(135deg, #fd1d1d, #e1306c, #833ab4); }
-    .contact-card.reg .contact-card-icon { background: linear-gradient(135deg, var(--gold), var(--gold-warm)); color: var(--brown); }
-    .contact-card-title { font-family: 'Arial', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--brown); }
-    .contact-card-name { font-family: 'Arial', sans-serif; font-size: 0.82rem; color: var(--text-light); }
+    .contacts { background: #fff; }
+    .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1.2rem; padding: 1.5rem; border-radius: var(--radius); background: #fffdf5; border: 1px solid rgba(245,197,24,0.1); transition: all 0.3s; }
+    .contact-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); border-color: rgba(245,197,24,0.3); }
+    .contact-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+    .contact-text h4 { font-size: 1rem; color: var(--brown); margin-bottom: 0.2rem; font-family: 'Arial', sans-serif; font-weight: 700; }
+    .contact-text p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.4rem; }
+    .contact-text a { font-family: 'Arial', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--gold-warm); }
+    .contacts-cta { background: linear-gradient(145deg, #fffef5 0%, #fff9d6 100%); border-radius: var(--radius); padding: 3rem; text-align: center; border: 1px solid rgba(245,197,24,0.2); }
+    .contacts-cta h3 { font-size: 1.6rem; color: var(--brown); margin-bottom: 1rem; }
+    .contacts-cta p { color: var(--text-mid); margin-bottom: 2rem; line-height: 1.65; }
 
     /* FOOTER */
-    footer { background: var(--brown); color: rgba(255,255,255,0.8); padding: 2.5rem 2rem; }
-    /* ИСПРАВЛЕНО: тексты в футере в 2.5x крупнее, правильный дизайн, не соприкасаются со стрелкой */
-    .footer-top {
-      max-width: 1140px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 2rem;
-      padding-right: 4rem; /* отступ от стрелки */
-    }
-    .footer-copyright {
-      font-family: 'Arial', sans-serif;
-      font-size: 1rem;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.85);
-    }
-    .footer-copyright strong { color: var(--gold-light); }
-    .footer-dev {
-      font-family: 'Arial', sans-serif;
-      font-size: 1rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.75);
-      text-align: right;
-    }
-    .footer-dev a { color: var(--gold-light); text-decoration: underline; transition: color 0.2s; }
-    .footer-dev a:hover { color: var(--gold); }
-    /* ИСПРАВЛЕНО: Команда Жёлтые — крупнее в футере */
-    .footer-team-name {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--gold-light);
-      font-family: 'Arial', sans-serif;
-      display: block;
-      margin-bottom: 0.3rem;
-    }
+    .footer { background: var(--brown); color: rgba(255,255,255,0.7); padding: 3rem 0 1.5rem; }
+    .footer-inner { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
+    .footer-brand { font-size: 1.2rem; color: white; font-weight: bold; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.6rem; }
+    .footer-desc { font-size: 0.88rem; line-height: 1.7; margin-bottom: 1.2rem; }
+    .footer-social { display: flex; gap: 0.8rem; }
+    .footer-social a { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; transition: all 0.2s; }
+    .footer-social a:hover { background: var(--gold); color: var(--brown); transform: translateY(-3px); }
+    .footer-heading { font-family: 'Arial', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-warm); margin-bottom: 1.2rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-links a { font-size: 0.88rem; color: rgba(255,255,255,0.65); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold-warm); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-size: 0.82rem; }
+    .footer-dev-links { font-family: 'Arial', sans-serif; font-size: 0.78rem; text-align: right; line-height: 1.7; }
+    .footer-dev-links a { color: var(--gold-warm); }
+    .footer-dev-links a:hover { text-decoration: underline; }
 
     /* BACK TO TOP */
-    /* ИСПРАВЛЕНО: кнопка не западает, всегда видна */
-    .back-to-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-warm));
-      color: var(--brown);
-      border: none;
-      border-radius: 50%;
-      font-size: 1.1rem;
-      cursor: pointer;
-      box-shadow: 0 4px 16px rgba(245,197,24,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 800;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.3s, transform 0.3s, box-shadow 0.2s;
-      pointer-events: none;
-    }
-    .back-to-top.visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: all;
-    }
-    .back-to-top:hover {
-      box-shadow: 0 8px 24px rgba(245,197,24,0.6);
-      transform: translateY(-2px);
-    }
+    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--brown); font-size: 1.1rem; box-shadow: 0 6px 20px rgba(245,197,24,0.4); z-index: 999; opacity: 0; transform: translateY(20px); transition: all 0.3s cubic-bezier(0.16,1,0.3,1); pointer-events: none; }
+    .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .back-to-top:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(245,197,24,0.55); }
 
-    /* ANIMATE-IN */
-    .animate-in { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    /* ANIMATE IN */
+    .animate-in { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
     .animate-in.visible { opacity: 1; transform: translateY(0); }
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
 
-    /* ===== MOBILE RESPONSIVE ===== */
+    /* ===== REVIEWS SECTION ===== */
+    .reviews { background: linear-gradient(145deg, #fffef5 0%, #fff9d6 100%); }
+    .photo-reviews-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-bottom: 4rem; }
+    .photo-review-item { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); border: 3px solid white; cursor: pointer; transition: all 0.3s ease; }
+    .photo-review-item:hover { transform: translateY(-6px) scale(1.02); box-shadow: var(--shadow-lg); }
+    .photo-review-item img { width: 100%; display: block; object-fit: cover; }
+
+    .video-reviews-title { font-family: 'Arial', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-warm); display: block; margin-bottom: 1.5rem; }
+    .video-reviews-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; }
+    .video-review-card { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); background: white; border: 1px solid rgba(245,197,24,0.15); transition: all 0.3s ease; cursor: pointer; }
+    .video-review-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: rgba(245,197,24,0.35); }
+    .video-review-thumb { position: relative; aspect-ratio: 9/16; overflow: hidden; background: #1a1a1a; }
+    .video-review-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .video-review-card:hover .video-review-thumb img { transform: scale(1.06); }
+    .video-review-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.18); transition: background 0.3s; }
+    .video-review-card:hover .video-review-play { background: rgba(0,0,0,0.28); }
+    .video-review-play-circle { width: 50px; height: 50px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(245,197,24,0.55); transition: all 0.3s; }
+    .video-review-card:hover .video-review-play-circle { transform: scale(1.15); }
+    .video-review-play-circle i { color: var(--brown); font-size: 1.1rem; margin-left: 3px; }
+    .video-review-info { padding: 0.9rem 1rem; text-align: center; }
+    .video-review-info span { font-family: 'Arial', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--brown); }
+
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
-      .trainer-roles { grid-template-columns: repeat(2, 1fr); }
+      .trainer-cards { grid-template-columns: repeat(2, 1fr); }
       .why-grid { grid-template-columns: repeat(2, 1fr); }
-      .contact-cards { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .photo-reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .video-reviews-grid { grid-template-columns: repeat(3, 1fr); }
     }
-
     @media (max-width: 768px) {
-      section { padding: 70px 0; }
-      .container { padding: 0 1rem; }
-
-      /* Navbar */
       .nav-links { display: none; }
       .hamburger { display: flex; }
-
-      /* HERO */
-      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
-      .hero-cta { justify-content: center; }
-      .hero-tagline { justify-content: center; }
-      .hero-tagline::before { display: none; }
-      .hero-stat-card.top-left { top: 10px; left: 0; font-size: 0.8rem; }
-      .hero-stat-card.bottom-right { bottom: 10px; right: 0; font-size: 0.8rem; }
-      .hero-image-frame { max-width: 300px; margin: 0 auto; }
-
-      /* ABOUT */
-      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-      /* ИСПРАВЛЕНО мобильная: фото уменьшено, текст на фото не перекрывается */
-      .about-img img { transform: scale(0.85); transform-origin: center top; }
-      /* ИСПРАВЛЕНО мобильная: плашка уменьшена */
-      .about-badge { font-size: 0.62rem; padding: 0.5rem 0.7rem; max-width: 130px; bottom: 8px; right: -4px; }
-
-      /* ИСПРАВЛЕНО мобильная: отступы "Наши 10-дневные онлайн-курсы" */
-      .about-courses-title { margin-top: 1.8rem; margin-bottom: 0.9rem; }
-
-      /* TEAMS */
-      .team-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .trainer-roles { grid-template-columns: repeat(2, 1fr); }
-      .target-grid { grid-template-columns: 1fr; }
-
-      /* CALCULATOR */
-      .calc-grid { grid-template-columns: 1fr; }
-
-      /* GALLERY */
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-
-      /* VIDEOS */
-      .videos-grid { grid-template-columns: 1fr; }
-
-      /* MSG */
-      .msg-card { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1.5rem; }
-
-      /* CTA */
-      .cta-buttons { flex-direction: column; align-items: center; }
-
-      /* CONTACTS */
-      .contact-cards { grid-template-columns: repeat(2, 1fr); }
-
-      /* FOOTER MOBILE */
-      /* ИСПРАВЛЕНО мобильная: футер гармоничный, тексты не соприкасаются со стрелкой */
-      .footer-top {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 1.5rem;
-        padding-right: 0;
-        padding-bottom: 4rem; /* отступ снизу чтобы не перекрывать стрелку */
-      }
-      .footer-copyright { text-align: center; }
-      .footer-dev { text-align: center; }
-
-      /* BACK TO TOP мобильная */
-      .back-to-top { bottom: 1.2rem; right: 1.2rem; width: 44px; height: 44px; font-size: 1rem; }
-
-      /* Убираем горизонтальный скролл */
-      .hero::before, .hero::after { display: none; }
-      .hero-decor-ring { display: none; }
-      .hero-stat-card { display: none; }
-      .about-badge { right: 0; }
-
-      /* Why grid */
-      .why-grid { grid-template-columns: 1fr 1fr; }
-
-      /* Pearl nav */
-      .pearl-nav-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 480px) {
-      .gallery-grid { grid-template-columns: 1fr; }
-      .contact-cards { grid-template-columns: 1fr 1fr; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-image-wrap { order: -1; }
+      .hero-stat-card.top-left, .hero-stat-card.bottom-right { display: none; }
+      .about-inner { grid-template-columns: 1fr; }
+      .test-grid { grid-template-columns: 1fr; }
+      .trainer-cards { grid-template-columns: 1fr; }
+      .who-for-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: 1fr; }
+      .team-inner { grid-template-columns: 1fr; }
+      .calc-inner { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .videos-grid { grid-template-columns: 1fr; }
-      .msg-card { padding: 1.5rem 1rem; }
-      .hero-image-frame { max-width: 260px; }
-
-      /* ИСПРАВЛЕНО мобильная: Вконтакте в одну строку с Макс */
-      .footer-dev-links { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+      .msg-inner { grid-template-columns: 1fr; }
+      .contacts-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-dev-links { text-align: center; }
+      .photo-reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .video-reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .pearl-pane.active { flex-direction: column; }
     }
-
-    /* Дополнительная защита от горизонтального скролла */
-    .hero, section, .divider, .sun-divider, footer {
-      max-width: 100vw;
-      overflow-x: hidden;
+    @media (max-width: 480px) {
+      .photo-reviews-grid { grid-template-columns: 1fr 1fr; }
+      .video-reviews-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -535,6 +397,7 @@
   </div>
   <ul class="nav-links">
     <li><a href="#about">Обо мне</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
     <li><a href="#test">Тест энергии</a></li>
     <li><a href="#intensive">8 упражнений</a></li>
     <li><a href="#trainer">Методика</a></li>
@@ -551,32 +414,34 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" onclick="closeMobileMenu()">Обо мне</a>
+  <a href="#reviews" onclick="closeMobileMenu()">Отзывы</a>
   <a href="#test" onclick="closeMobileMenu()">Тест энергии</a>
   <a href="#intensive" onclick="closeMobileMenu()">8 упражнений</a>
   <a href="#trainer" onclick="closeMobileMenu()">Методика</a>
   <a href="#team" onclick="closeMobileMenu()">Команда</a>
   <a href="#gallery" onclick="closeMobileMenu()">Галерея</a>
   <a href="#videos" onclick="closeMobileMenu()">Видео</a>
-  <a href="#contacts" onclick="closeMobileMenu()" style="background: linear-gradient(135deg, var(--gold), var(--gold-warm)); color: var(--brown); border-radius: 12px; font-weight: 700; text-align: center; border: none;">Консультация</a>
+  <a href="#contacts" onclick="closeMobileMenu()">Консультация</a>
 </div>
 
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="container">
     <div class="hero-inner">
-      <div class="hero-content animate-in">
+      <div class="hero-content">
         <div class="hero-badge">🌻 Интеллект-тренер · Super Jump</div>
-        <h1><span class="name-highlight">Наталья<br>Вардая</span></h1>
+        <h1>
+          <span class="name-highlight">Наталья<br>Вардая</span>
+        </h1>
         <p class="hero-subtitle">Солнечный путь к внутренней опоре — свет, энергия, ясность и рост в каждой сфере жизни</p>
         <p class="hero-tagline">Интеллект-тренер и надежный проводник к ментальной свободе</p>
         <div class="hero-cta">
-          <a href="#test" class="btn btn-primary"><i class="fa-solid fa-bolt"></i> Пройти диагностику</a>
-          <a href="#contacts" class="btn btn-outline"><i class="fa-solid fa-comments"></i> Связаться</a>
+          <a href="#contacts" class="btn btn-primary"><i class="fa-solid fa-sun"></i> Записаться на курс</a>
+          <a href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-tg"><i class="fa-brands fa-telegram"></i> Написать в Telegram</a>
         </div>
       </div>
-      <div class="hero-image-wrap animate-in delay-2">
+      <div class="hero-image-wrap">
         <div class="hero-image-frame">
-          <!-- ИСПРАВЛЕНО: Главное фото — оригинальный вид, без синего фильтра -->
           <img src="img/3.jpg" alt="Наталья Вардая" />
         </div>
         <div class="hero-decor-ring"></div>
@@ -600,10 +465,12 @@
   </div>
 </section>
 
-<!-- DIVIDER с большим анимированным подсолнухом -->
+<!-- DIVIDER -->
 <div class="sun-divider">
-  <div class="sun-divider-line">
-    <span class="sun-flower-big">🌻</span>
+  <div class="container">
+    <div class="sun-divider-line">
+      <span class="sun-flower-big">🌻</span>
+    </div>
   </div>
 </div>
 
@@ -612,7 +479,6 @@
   <div class="container">
     <div class="about-inner">
       <div class="about-img-wrap animate-in">
-        <!-- ИСПРАВЛЕНО: фото уменьшено scale(0.88), плашка уменьшена -->
         <div class="about-img">
           <img src="img/14.jpg" alt="Наталья Вардая — интеллект-тренер" />
         </div>
@@ -620,105 +486,33 @@
           🏅 Основатель<br>всемирной ассоциации<br>интеллект-тренеров
         </div>
       </div>
-      <div class="about-content animate-in delay-1">
+      <div class="about-content animate-in">
         <span class="section-label">Обо мне и моем призвании</span>
         <h2>Я Наталья Вардая —<br>твой проводник к ресурсному состоянию</h2>
         <p class="about-lead">Моя фамилия Вардая переводится как <strong>«солнечный цветок»</strong> или подсолнух. Это не просто совпадение — это мой путь. Я помогаю людям обрести внутреннее солнце, когда за окном бушуют тучи.</p>
-        <p style="font-size:1rem; color:var(--text-mid); line-height:1.7; margin-bottom:1.4rem;">Как интеллект-тренер международной системы Super Jump и основатель команды <strong>«Жёлтые Подсолнухи»</strong>, я обучаю системе простых, но гениальных ментальных упражнений. Они занимают минимум времени, но дают колоссальный выброс жизненных сил.</p>
-        <!-- ИСПРАВЛЕНО: отступ над и под "Наши 10-дневные онлайн-курсы" -->
+        <p style="color:var(--text-mid);margin-bottom:1.2rem;line-height:1.75;">Как интеллект-тренер международной системы Super Jump и основатель команды <strong>«Жёлтые Подсолнухи»</strong>, я обучаю системе простых, но гениальных ментальных упражнений. Они занимают минимум времени, но дают колоссальный выброс жизненных сил.</p>
         <p class="about-courses-title">Наши 10-дневные онлайн-курсы:</p>
-        <ul class="benefits-list">
+        <ul class="about-list">
           <li>
-            <div class="benefit-icon">⚡</div>
+            <div class="icon-wrap">⚡</div>
             <span><strong>Заряжают батарейку:</strong> уходит хроническая усталость и апатия.</span>
           </li>
           <li>
-            <div class="benefit-icon">🧠</div>
+            <div class="icon-wrap">🧠</div>
             <span><strong>Ментальная гигиена:</strong> полный контроль над тревожными мыслями.</span>
           </li>
           <li>
-            <div class="benefit-icon">🛡️</div>
+            <div class="icon-wrap">🛡️</div>
             <span><strong>Стрессоустойчивость:</strong> выстраивание надежного щита от негатива.</span>
           </li>
           <li>
-            <div class="benefit-icon">🎯</div>
+            <div class="icon-wrap">🎯</div>
             <span><strong>Ясность фокуса:</strong> четкое понимание своих целей и рост доходов.</span>
           </li>
         </ul>
-        <div class="hero-cta">
-          <a href="https://account.superjump.com/register/118814" target="_blank" class="btn btn-primary"><i class="fa-solid fa-arrow-right"></i> Начать сейчас</a>
-          <a href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-tg"><i class="fa-brands fa-telegram"></i> Написать напрямую</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DIVIDER — ИСПРАВЛЕНО: под кнопками перед ЭКСПРЕСС-ДИАГНОСТИКА — большой анимированный жёлтый подсолнух -->
-<div class="sun-divider">
-  <div class="sun-divider-line">
-    <span class="sun-flower-big">🌻</span>
-  </div>
-</div>
-
-<!-- TEST SECTION -->
-<section class="test-section" id="test">
-  <div class="container">
-    <!-- ИСПРАВЛЕНО: меньше отступ под "ресурса и подберет совет" -->
-    <div class="section-head animate-in">
-      <span class="section-label">Экспресс-диагностика</span>
-      <h2>Определи свой уровень энергии</h2>
-      <p>Выбери утверждения, которые откликаются у тебя прямо сейчас. Наша интерактивная система мгновенно оценит состояние твоего ментального ресурса и подберет совет.</p>
-    </div>
-    <div class="test-container animate-in delay-1">
-      <div class="test-progress-bar">
-        <div class="test-progress-fill" id="testProgress"></div>
-      </div>
-      <p class="test-counter">Выбрано признаков: <span id="checkedCount">0</span> из 8</p>
-      <div class="test-grid">
-        <div class="test-card" onclick="toggleTestCard(this)">
-          <div class="check-box"><i class="fa-solid fa-check"></i></div>
-          <p>Быстро устаю, тяжело просыпаюсь по утрам даже после долгого сна</p>
-        </div>
-        <div class="test-card" onclick="toggleTestCard(this)">
-          <div class="check-box"><i class="fa-solid fa-check"></i></div>
-          <p>Постоянно прокручиваю в голове негативные мысли или прошлые обиды</p>
-        </div>
-        <div class="test-card" onclick="toggleTestCard(this)">
-          <div class="check-box"><i class="fa-solid fa-check"></i></div>
-          <p>Испытываю тревожность от новостей, будущего или работы</p>
-        </div>
-        <div class="test-card" onclick="toggleTestCard(this)">
-          <div class="check-box"><i class="fa-solid fa-check"></i></div>
-          <p>Часто срываюсь на близких, раздражаюсь по пустякам</p>
-        </div>
-        <div class="test-card" onclick="toggleTestCard(this)">
-          <div class="check-box"><i class="fa-solid fa-check"></i></div>
-          <p>Потерял ясность целей, не знаю, куда двигаться дальше в жизни</p>
-        </div>
-        <div class="test-card" onclick="toggleTestCard(this)">
-          <div class="check-box"><i class="fa-solid fa-check"></i></div>
-          <p>Уперся в «финансовый потолок», нет сил делать больше результатов</p>
-        </div>
-        <div class="test-card" onclick="toggleTestCard(this)">
-          <div class="check-box"><i class="fa-solid fa-check"></i></div>
-          <p>Боюсь публичности, не хватает уверенности отстаивать свое мнение</p>
-        </div>
-        <div class="test-card" onclick="toggleTestCard(this)">
-          <div class="check-box"><i class="fa-solid fa-check"></i></div>
-          <p>Чувствую одиночество, не хватает сильного поддерживающего окружения</p>
-        </div>
-      </div>
-      <div style="text-align:center;">
-        <button onclick="calculateTestResults()" class="btn btn-primary" style="font-size:1rem; padding: 0.9rem 2.5rem;"><i class="fa-solid fa-magnifying-glass-chart"></i> Узнать мой результат</button>
-      </div>
-      <div class="test-result" id="testResultBox">
-        <div class="test-result-badge" id="resultLabel">Баланс в норме</div>
-        <h3 id="resultTitle">Отличный потенциал для роста</h3>
-        <p id="resultText">Вы держитесь неплохо, но у вас есть скрытые ресурсы энергии, которые можно раскрыть на наших тренировках.</p>
-        <div class="result-btns">
-          <a href="https://t.me/NafalyaVardaya" target="_blank" id="resultTgLink" class="btn btn-tg"><i class="fa-brands fa-telegram"></i> Написать Наталье в Telegram</a>
-          <a href="#intensive" class="btn btn-outline">Изучить 8 упражнений</a>
+        <div class="about-cta">
+          <a href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-primary"><i class="fa-brands fa-telegram"></i> Написать Наталье</a>
+          <a href="#test" class="btn btn-outline"><i class="fa-solid fa-bolt"></i> Пройти тест энергии</a>
         </div>
       </div>
     </div>
@@ -726,155 +520,278 @@
 </section>
 
 <!-- DIVIDER -->
-<div class="divider"><div class="divider-line"><span class="divider-flower">✨</span></div></div>
+<div class="sun-divider">
+  <div class="container">
+    <div class="sun-divider-line">
+      <span class="sun-flower-big">🌻</span>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS SECTION -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="section-head animate-in">
+      <span class="section-label">Отзывы</span>
+      <h2>Что говорят участники</h2>
+    </div>
+
+    <!-- Фото-отзывы -->
+    <div class="photo-reviews-grid">
+      <div class="photo-review-item animate-in" onclick="openReviewLightbox(this)">
+        <img src="https://sun9-18.userapi.com/s/v1/ig2/BkdsMgNdgeHCAoksKthGa3lCf4tNVPICuPFzsUKPxVG0iFzkkwgY-Stq9QeXjoOt0vFGdN4utZp0Xqd9KNVhyeWs.jpg?quality=95&as=32x69,48x104,72x156,108x234,160x347,240x520,360x780,480x1040,540x1170,591x1280&from=bu&u=MLb2P1cW1zKfSi5-hcUR-iAyyk6sqnIkid5nt5sUzHU&cs=591x0" alt="Фото-отзыв 1" />
+      </div>
+      <div class="photo-review-item animate-in" onclick="openReviewLightbox(this)">
+        <img src="https://sun9-74.userapi.com/s/v1/ig2/Ngbb827WZmIjyE3l7S0DoO0U2HFDGDW4QcN_VDJuSD0oeHTfDNOALhkSWXw105PBcBZq3ThvXK-_l3HH0gMJQXrO.jpg?quality=95&as=32x69,48x104,72x156,108x234,160x347,240x520,360x780,480x1040,540x1170,591x1280&from=bu&cs=591x0" alt="Фото-отзыв 2" />
+      </div>
+      <div class="photo-review-item animate-in" onclick="openReviewLightbox(this)">
+        <img src="https://sun9-75.userapi.com/s/v1/ig2/UqJ7TkILnLUnjQ8hnJuv6Cmdm2YOK07ERItNtwTRoADyghxkMQ3SYGW9qEEtm7ttPKCsh-4xc5YeHwHy0RCPKLE2.jpg?quality=95&as=32x69,48x104,72x156,108x234,160x347,240x520,360x780,480x1040,540x1170,591x1280&from=bu&cs=591x0" alt="Фото-отзыв 3" />
+      </div>
+      <div class="photo-review-item animate-in" onclick="openReviewLightbox(this)">
+        <img src="https://sun9-51.userapi.com/s/v1/ig2/9ponoNcE3Pv1uAqWYry7eq0CYTSux-p8S2RFOmuD-8E8FHr2KbfxDaaT3_vdiXhmB6nl3c7DcchhXOolmBBV7ApV.jpg?quality=95&as=32x69,48x104,72x156,108x234,160x347,240x520,360x780,480x1040,540x1170,591x1280&from=bu&cs=591x0" alt="Фото-отзыв 4" />
+      </div>
+    </div>
+
+    <!-- Видеоотзывы -->
+    <div class="video-reviews-grid">
+      <div class="video-review-card animate-in" onclick="openVideoModal('https://rutube.ru/play/embed/acb4610f50e958a44e35db6b4fbe9c89/?p=xqtDAf8D_cxVcjb-FvXkeA')">
+        <div class="video-review-thumb">
+          <img src="https://pic.rutube.ru/video/acb4610f50e958a44e35db6b4fbe9c89/hq.jpg" alt="Видеоотзыв 1" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22356%22><rect fill=%22%23fde96d%22 width=%22200%22 height=%22356%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2218%22 fill=%22%235c3d00%22>▶</text></svg>'" />
+          <div class="video-review-play">
+            <div class="video-review-play-circle">
+              <i class="fa-solid fa-play"></i>
+            </div>
+          </div>
+        </div>
+        <div class="video-review-info">
+          <span>Видеоотзыв 1</span>
+        </div>
+      </div>
+
+      <div class="video-review-card animate-in" onclick="openVideoModal('https://rutube.ru/play/embed/26e9450beff8226bd15b3192382012e5/?p=nemYl4SwOWKmCEnbaRHkWw')">
+        <div class="video-review-thumb">
+          <img src="https://pic.rutube.ru/video/26e9450beff8226bd15b3192382012e5/hq.jpg" alt="Видеоотзыв 2" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22356%22><rect fill=%22%23fde96d%22 width=%22200%22 height=%22356%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2218%22 fill=%22%235c3d00%22>▶</text></svg>'" />
+          <div class="video-review-play">
+            <div class="video-review-play-circle">
+              <i class="fa-solid fa-play"></i>
+            </div>
+          </div>
+        </div>
+        <div class="video-review-info">
+          <span>Видеоотзыв 2</span>
+        </div>
+      </div>
+
+      <div class="video-review-card animate-in" onclick="openVideoModal('https://rutube.ru/play/embed/913704925657e785164e17c7b48da2bc/?p=MWrprcM9nQ_V-Roe80oM_w')">
+        <div class="video-review-thumb">
+          <img src="https://pic.rutube.ru/video/913704925657e785164e17c7b48da2bc/hq.jpg" alt="Видеоотзыв 3" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22356%22><rect fill=%22%23fde96d%22 width=%22200%22 height=%22356%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2218%22 fill=%22%235c3d00%22>▶</text></svg>'" />
+          <div class="video-review-play">
+            <div class="video-review-play-circle">
+              <i class="fa-solid fa-play"></i>
+            </div>
+          </div>
+        </div>
+        <div class="video-review-info">
+          <span>Видеоотзыв 3</span>
+        </div>
+      </div>
+
+      <div class="video-review-card animate-in" onclick="openVideoModal('https://rutube.ru/play/embed/f63395866e5a4f8c37407ec48ae78c39/?p=DrYP1tEY4Wze0VMhtf54ZQ')">
+        <div class="video-review-thumb">
+          <img src="https://pic.rutube.ru/video/f63395866e5a4f8c37407ec48ae78c39/hq.jpg" alt="Видеоотзыв 4" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22356%22><rect fill=%22%23fde96d%22 width=%22200%22 height=%22356%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2218%22 fill=%22%235c3d00%22>▶</text></svg>'" />
+          <div class="video-review-play">
+            <div class="video-review-play-circle">
+              <i class="fa-solid fa-play"></i>
+            </div>
+          </div>
+        </div>
+        <div class="video-review-info">
+          <span>Видеоотзыв 4</span>
+        </div>
+      </div>
+
+      <div class="video-review-card animate-in" onclick="openVideoModal('https://rutube.ru/play/embed/0b9562690ef25bfe73bf1285d2357103/?p=AoGybiXj6is0UzFLstW1dw')">
+        <div class="video-review-thumb">
+          <img src="https://pic.rutube.ru/video/0b9562690ef25bfe73bf1285d2357103/hq.jpg" alt="Видеоотзыв 5" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22356%22><rect fill=%22%23fde96d%22 width=%22200%22 height=%22356%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2218%22 fill=%22%235c3d00%22>▶</text></svg>'" />
+          <div class="video-review-play">
+            <div class="video-review-play-circle">
+              <i class="fa-solid fa-play"></i>
+            </div>
+          </div>
+        </div>
+        <div class="video-review-info">
+          <span>Видеоотзыв 5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEW LIGHTBOX -->
+<div class="lightbox" id="reviewLightbox" onclick="closeReviewLightbox()">
+  <img id="reviewLightboxImg" src="" alt="Отзыв" />
+</div>
+
+<!-- DIVIDER -->
+<div class="sun-divider">
+  <div class="container">
+    <div class="sun-divider-line">
+      <span class="sun-flower-big">🌻</span>
+    </div>
+  </div>
+</div>
+
+<!-- TEST SECTION -->
+<section class="test" id="test">
+  <div class="container">
+    <div class="section-head animate-in">
+      <span class="section-label">Экспресс-диагностика</span>
+      <h2>Определи свой уровень энергии</h2>
+      <p>Выбери утверждения, которые откликаются у тебя прямо сейчас. Наша интерактивная система мгновенно оценит состояние твоего ментального ресурса и подберет совет.</p>
+    </div>
+    <div style="max-width:820px;margin:0 auto;">
+      <div class="test-meta">
+        <span>Выбрано признаков: <strong id="checkedCount">0</strong> из 8</span>
+        <span id="testPercent">0%</span>
+      </div>
+      <div class="test-progress"><div class="test-progress-fill" id="testProgress"></div></div>
+      <div class="test-grid">
+        <div class="test-card" onclick="toggleTestCard(this)">
+          <div class="test-card-icon">😴</div>
+          <p>Быстро устаю, тяжело просыпаюсь по утрам даже после долгого сна</p>
+        </div>
+        <div class="test-card" onclick="toggleTestCard(this)">
+          <div class="test-card-icon">💭</div>
+          <p>Постоянно прокручиваю в голове негативные мысли или прошлые обиды</p>
+        </div>
+        <div class="test-card" onclick="toggleTestCard(this)">
+          <div class="test-card-icon">😟</div>
+          <p>Испытываю тревожность от новостей, будущего или работы</p>
+        </div>
+        <div class="test-card" onclick="toggleTestCard(this)">
+          <div class="test-card-icon">😠</div>
+          <p>Часто срываюсь на близких, раздражаюсь по пустякам</p>
+        </div>
+        <div class="test-card" onclick="toggleTestCard(this)">
+          <div class="test-card-icon">🌫️</div>
+          <p>Потерял ясность целей, не знаю, куда двигаться дальше в жизни</p>
+        </div>
+        <div class="test-card" onclick="toggleTestCard(this)">
+          <div class="test-card-icon">💸</div>
+          <p>Уперся в «финансовый потолок», нет сил делать больше результатов</p>
+        </div>
+        <div class="test-card" onclick="toggleTestCard(this)">
+          <div class="test-card-icon">😶</div>
+          <p>Боюсь публичности, не хватает уверенности отстаивать свое мнение</p>
+        </div>
+        <div class="test-card" onclick="toggleTestCard(this)">
+          <div class="test-card-icon">🌑</div>
+          <p>Чувствую одиночество, не хватает сильного поддерживающего окружения</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin:1.5rem 0;">
+        <button class="btn btn-primary" onclick="calculateTestResults()"><i class="fa-solid fa-magnifying-glass"></i> Узнать результат</button>
+      </div>
+      <div class="test-result-box" id="testResultBox">
+        <span class="test-result-badge" id="resultLabel">Баланс гармонии</span>
+        <h3 id="resultTitle">Отличный потенциал для роста</h3>
+        <p id="resultText" style="color:var(--text-mid);margin:0.8rem 0 1.5rem;line-height:1.7;">Вы держитесь неплохо, но у вас есть скрытые ресурсы энергии, которые можно раскрыть на наших тренировках.</p>
+        <a id="resultTgLink" href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-tg"><i class="fa-brands fa-telegram"></i> Записаться к Наталье</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="container">
+    <div class="divider-line">
+      <span class="divider-flower">✨</span>
+    </div>
+  </div>
+</div>
 
 <!-- INTENSIVE (8 PEARLS) -->
 <section class="intensive" id="intensive">
   <div class="container">
     <div class="section-head animate-in">
       <span class="section-label">Программа тренировок</span>
-      <h2>8 жемчужин Super Jump</h2>
+      <h2>8 жемчужин методики Super Jump</h2>
       <p>Основа методики — 8 простых, но мощнейших интеллектуальных и эмоциональных упражнений, разработанных для современных занятых людей. Кликай по вкладкам ниже, чтобы изучить каждое!</p>
     </div>
-    <div class="animate-in delay-1">
-      <div class="pearl-nav-grid">
-        <div class="pearl-tab active" onclick="switchPearl(1)"><span class="pearl-tab-num">1</span><span class="pearl-tab-title">Смехозарядка</span></div>
-        <div class="pearl-tab" onclick="switchPearl(2)"><span class="pearl-tab-num">2</span><span class="pearl-tab-title">Контроль мыслей</span></div>
-        <div class="pearl-tab" onclick="switchPearl(3)"><span class="pearl-tab-num">3</span><span class="pearl-tab-title">Осанка Короля</span></div>
-        <div class="pearl-tab" onclick="switchPearl(4)"><span class="pearl-tab-num">4</span><span class="pearl-tab-title">Будьте здоровы</span></div>
-        <div class="pearl-tab" onclick="switchPearl(5)"><span class="pearl-tab-num">5</span><span class="pearl-tab-title">Управление чувствами</span></div>
-        <div class="pearl-tab" onclick="switchPearl(6)"><span class="pearl-tab-num">6</span><span class="pearl-tab-title">Аудиотренинг</span></div>
-        <div class="pearl-tab" onclick="switchPearl(7)"><span class="pearl-tab-num">7</span><span class="pearl-tab-title">Защита от яда</span></div>
-        <div class="pearl-tab" onclick="switchPearl(8)"><span class="pearl-tab-num">8</span><span class="pearl-tab-title">Сверхцель</span></div>
-      </div>
-      <div class="pearl-content-container">
-        <div class="pearl-pane active" id="pearl-1">
-          <div class="pearl-pane-icon">🌟</div>
-          <div class="pearl-pane-text">
-            <h3>Упражнение №1: Смехозарядка (Выработка гормонов счастья)</h3>
-            <p>Особая мышечная техника вызова смеха без использования шуток. Запускает мгновенную генерацию эндорфинов, дофамина и серотонина. Укрепляет иммунитет, насыщает клетки кислородом и снимает мышечные спазмы уже в первые 5 минут.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-star" style="color:var(--gold-warm);"></i> Дает заряд бодрости на весь день</span>
-          </div>
-        </div>
-        <div class="pearl-pane" id="pearl-2">
-          <div class="pearl-pane-icon">🧠</div>
-          <div class="pearl-pane-text">
-            <h3>Упражнение №2: Резинка (Контроль негативных мыслей)</h3>
-            <p>Простая, но феноменальная техника отслеживания и мгновенного прекращения ментальной «мыслежвачки» и тревожных прогнозов. Позволяет перепрограммировать подсознание с режима выживания на режим победы и созидания.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-star" style="color:var(--gold-warm);"></i> Избавляет от 90% фонового стресса</span>
-          </div>
-        </div>
-        <div class="pearl-pane" id="pearl-3">
-          <div class="pearl-pane-icon">👑</div>
-          <div class="pearl-pane-text">
-            <h3>Упражнение №3: Королевская осанка (Уверенность)</h3>
-            <p>Физиологическая обратная связь: как положение тела влияет на наши гормоны и уверенность в себе. Осанка лидера меняет выработку тестостерона и кортизола, убирая неуверенность и страх перед важными выступлениями или переговорами.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-star" style="color:var(--gold-warm);"></i> Возвращает уверенность в себе</span>
-          </div>
-        </div>
-        <div class="pearl-pane" id="pearl-4">
-          <div class="pearl-pane-icon">💧</div>
-          <div class="pearl-pane-text">
-            <h3>Упражнение №4: Будьте здоровы (Энергетизация)</h3>
-            <p>Экологичный метод закаливания и водных процедур, адаптированный под городские реалии. Запускает капиллярный кровоток, убирает застой лимфы, пробуждает спящие ресурсы организма и заряжает невероятной бодростью.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-star" style="color:var(--gold-warm);"></i> Мощный детокс и омоложение</span>
-          </div>
-        </div>
-        <div class="pearl-pane" id="pearl-5">
-          <div class="pearl-pane-icon">❤️</div>
-          <div class="pearl-pane-text">
-            <h3>Упражнение №5: Управление чувствами (Эмоциональный интеллект)</h3>
-            <p>Техника «паузы» перед эмоциональным взрывом. Помогает моментально брать под контроль вспышки гнева, обиды, зависти или раздражения. Позволяет решать любые конфликты мирно и сохранять глубокое внутреннее спокойствие.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-star" style="color:var(--gold-warm);"></i> Спасает и улучшает отношения с близкими</span>
-          </div>
-        </div>
-        <div class="pearl-pane" id="pearl-6">
-          <div class="pearl-pane-icon">🎧</div>
-          <div class="pearl-pane-text">
-            <h3>Упражнение №6: Аудиотренинг (Перепрошивка убеждений)</h3>
-            <p>Уникальный способ записи собственных позитивных аффирмаций особым голосом, который проникает прямо в подсознание. Эффективно убирает детские травмы, денежные блоки и страх масштабироваться в бизнесе.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-star" style="color:var(--gold-warm);"></i> Перепрограммирует на успех и богатство</span>
-          </div>
-        </div>
-        <div class="pearl-pane" id="pearl-7">
-          <div class="pearl-pane-icon">🛡️</div>
-          <div class="pearl-pane-text">
-            <h3>Упражнение №7: Информационная гигиена (Защита разума)</h3>
-            <p>Фильтр входящих данных. Обучение защите мозга от информационного «шума», токсичных новостей, критики и нытиков. Создает крепкую психологическую броню, сохраняющую фокус внимания на созидательных вещах.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-star" style="color:var(--gold-warm);"></i> Сохраняет ментальное здоровье в хаосе</span>
-          </div>
-        </div>
-        <div class="pearl-pane" id="pearl-8">
-          <div class="pearl-pane-icon">🌻</div>
-          <div class="pearl-pane-text">
-            <h3>Упражнение №8: Сверхцель (Поиск миссии)</h3>
-            <p>Финальная жемчужина, объединяющая все остальные. Раскрывает предназначение человека, выводит из кризиса среднего возраста и дарит глубочайший смысл жизни. Вы поймете, ради чего просыпаетесь по утрам и как изменить мир к лучшему.</p>
-            <span class="pearl-pane-benefit"><i class="fa-solid fa-star" style="color:var(--gold-warm);"></i> Обретение истинного предназначения</span>
-          </div>
-        </div>
-      </div>
+    <div class="pearl-tabs animate-in">
+      <button class="pearl-tab active" onclick="switchPearl(1)"><span class="tab-num">1</span> Смехозарядка</button>
+      <button class="pearl-tab" onclick="switchPearl(2)"><span class="tab-num">2</span> Контроль мыслей</button>
+      <button class="pearl-tab" onclick="switchPearl(3)"><span class="tab-num">3</span> Осанка Короля</button>
+      <button class="pearl-tab" onclick="switchPearl(4)"><span class="tab-num">4</span> Будьте здоровы</button>
+      <button class="pearl-tab" onclick="switchPearl(5)"><span class="tab-num">5</span> Управление чувствами</button>
+      <button class="pearl-tab" onclick="switchPearl(6)"><span class="tab-num">6</span> Аудиотренинг</button>
+      <button class="pearl-tab" onclick="switchPearl(7)"><span class="tab-num">7</span> Защита от яда</button>
+      <button class="pearl-tab" onclick="switchPearl(8)"><span class="tab-num">8</span> Сверхцель</button>
     </div>
-  </div>
-</section>
-
-<!-- DIVIDER — ИСПРАВЛЕНО: под "Дает заряд бодрости на весь день" и над "ПОЧЕМУ ЭТО РАБОТАЕТ?" — большой анимированный жёлтый подсолнух -->
-<div class="sun-divider">
-  <div class="sun-divider-line">
-    <span class="sun-flower-big">🌻</span>
-  </div>
-</div>
-
-<!-- METHODOLOGY SECTION -->
-<section class="trainer-section" id="trainer">
-  <div class="container">
-    <div class="section-head animate-in">
-      <span class="section-label">Почему это работает?</span>
-      <h2>Научная основа и сила методики</h2>
-      <p>Super Jump — это синергия восточной мудрости и современной западной психотерапии. Никакой эзотерики — только чистая нейробиология и развитие эмоционального интеллекта.</p>
-    </div>
-    <div class="trainer-lead animate-in delay-1">
-      <p>«За 10 дней занятий по 1 часу в день мы создаем новые нейронные связи в вашем мозге. Вы не просто слушаете лекции, а делаете практические упражнения в группе под моим чутким руководством. Это дает 100% результат».<br><strong>— Наталья Вардая</strong></p>
-    </div>
-    <div class="trainer-roles animate-in delay-2">
-      <div class="role-card">
-        <div class="role-icon">🧠</div>
-        <h4>Нейрокоуч</h4>
-        <p>Активация правого полушария и выработка правильных гормонов радости.</p>
-      </div>
-      <div class="role-card">
-        <div class="role-icon">👑</div>
-        <h4>Ментальный Наставник</h4>
-        <p>Помогу бережно пройти через кризисы и найти внутреннюю опору.</p>
-      </div>
-      <div class="role-card">
-        <div class="role-icon">⚡</div>
-        <h4>Энергопрактик</h4>
-        <p>Быстрые техники возвращения сил при выгорании за считанные минуты.</p>
-      </div>
-      <div class="role-card">
-        <div class="role-icon">🤝</div>
-        <h4>Лидер Сообщества</h4>
-        <p>Создаю бережное пространство развития без критики и осуждения.</p>
-      </div>
-    </div>
-    <div class="trainer-target animate-in delay-3">
-      <h3>Кому идеально подойдёт наш интенсив?</h3>
-      <div class="target-grid">
-        <div class="target-item">
-          <i class="fa-solid fa-check target-check"></i>
-          <p><strong>Предпринимателям</strong> — вернуть фокус, вырасти в доходах и избежать выгорания.</p>
+    <div style="background:white;border-radius:var(--radius);padding:2.5rem;box-shadow:var(--shadow-sm);border:1px solid rgba(245,197,24,0.1);" class="animate-in">
+      <div class="pearl-pane active" id="pearl-1">
+        <div class="pearl-icon">🌟</div>
+        <div>
+          <h3>Упражнение №1: Смехозарядка (Выработка гормонов счастья)</h3>
+          <p>Особая мышечная техника вызова смеха без использования шуток. Запускает мгновенную генерацию эндорфинов, дофамина и серотонина. Укрепляет иммунитет, насыщает клетки кислородом и снимает мышечные спазмы уже в первые 5 минут.</p>
+          <span class="pearl-result"><i class="fa-solid fa-check"></i> Дает заряд бодрости на весь день</span>
         </div>
-        <div class="target-item">
-          <i class="fa-solid fa-check target-check"></i>
-          <p><strong>Мамам в декрете</strong> — найти время для себя, восполнить силы и убрать усталость.</p>
+      </div>
+      <div class="pearl-pane" id="pearl-2">
+        <div class="pearl-icon">🧠</div>
+        <div>
+          <h3>Упражнение №2: Резинка (Контроль негативных мыслей)</h3>
+          <p>Простая, но феноменальная техника отслеживания и мгновенного прекращения ментальной «мыслежвачки» и тревожных прогнозов. Позволяет перепрограммировать подсознание с режима выживания на режим победы и созидания.</p>
+          <span class="pearl-result"><i class="fa-solid fa-check"></i> Избавляет от 90% фонового стресса</span>
         </div>
-        <div class="target-item">
-          <i class="fa-solid fa-check target-check"></i>
-          <p><strong>Психологам и коучам</strong> — освоить новые инструменты и повысить чек.</p>
+      </div>
+      <div class="pearl-pane" id="pearl-3">
+        <div class="pearl-icon">👑</div>
+        <div>
+          <h3>Упражнение №3: Королевская осанка (Уверенность)</h3>
+          <p>Физиологическая обратная связь: как положение тела влияет на наши гормоны и уверенность в себе. Осанка лидера меняет выработку тестостерона и кортизола, убирая неуверенность и страх перед важными выступлениями или переговорами.</p>
+          <span class="pearl-result"><i class="fa-solid fa-check"></i> Возвращает уверенность в себе</span>
         </div>
-        <div class="target-item">
-          <i class="fa-solid fa-check target-check"></i>
-          <p><strong>Всем в поиске себя</strong> — найти призвание и сильных друзей.</p>
+      </div>
+      <div class="pearl-pane" id="pearl-4">
+        <div class="pearl-icon">💧</div>
+        <div>
+          <h3>Упражнение №4: Будьте здоровы (Энергетизация)</h3>
+          <p>Экологичный метод закаливания и водных процедур, адаптированный под городские реалии. Запускает капиллярный кровоток, убирает застой лимфы, пробуждает спящие ресурсы организма и заряжает невероятной бодростью.</p>
+          <span class="pearl-result"><i class="fa-solid fa-check"></i> Мощный детокс и омоложение</span>
+        </div>
+      </div>
+      <div class="pearl-pane" id="pearl-5">
+        <div class="pearl-icon">❤️</div>
+        <div>
+          <h3>Упражнение №5: Управление чувствами (Эмоциональный интеллект)</h3>
+          <p>Техника «паузы» перед эмоциональным взрывом. Помогает моментально брать под контроль вспышки гнева, обиды, зависти или раздражения. Позволяет решать любые конфликты мирно и сохранять глубокое внутреннее спокойствие.</p>
+          <span class="pearl-result"><i class="fa-solid fa-check"></i> Спасает и улучшает отношения с близкими</span>
+        </div>
+      </div>
+      <div class="pearl-pane" id="pearl-6">
+        <div class="pearl-icon">🎧</div>
+        <div>
+          <h3>Упражнение №6: Аудиотренинг (Перепрошивка убеждений)</h3>
+          <p>Уникальный способ записи собственных позитивных аффирмаций особым голосом, который проникает прямо в подсознание. Эффективно убирает детские травмы, денежные блоки и страх масштабироваться в бизнесе.</p>
+          <span class="pearl-result"><i class="fa-solid fa-check"></i> Перепрограммирует на успех и богатство</span>
+        </div>
+      </div>
+      <div class="pearl-pane" id="pearl-7">
+        <div class="pearl-icon">🛡️</div>
+        <div>
+          <h3>Упражнение №7: Информационная гигиена (Защита разума)</h3>
+          <p>Фильтр входящих данных. Обучение защите мозга от информационного «шума», токсичных новостей, критики и нытиков. Создает крепкую психологическую броню, сохраняющую фокус внимания на созидательных вещах.</p>
+          <span class="pearl-result"><i class="fa-solid fa-check"></i> Сохраняет ментальное здоровье в хаосе</span>
+        </div>
+      </div>
+      <div class="pearl-pane" id="pearl-8">
+        <div class="pearl-icon">🌻</div>
+        <div>
+          <h3>Упражнение №8: Сверхцель (Поиск миссии)</h3>
+          <p>Финальная жемчужина, объединяющая все остальные. Раскрывает предназначение человека, выводит из кризиса среднего возраста и дарит глубочайший смысл жизни. Вы поймете, ради чего просыпаетесь по утрам и как изменить мир к лучшему.</p>
+          <span class="pearl-result"><i class="fa-solid fa-check"></i> Обретение истинного предназначения</span>
         </div>
       </div>
     </div>
@@ -882,34 +799,94 @@
 </section>
 
 <!-- DIVIDER -->
-<div class="divider"><div class="divider-line"><span class="divider-flower">✨</span></div></div>
+<div class="sun-divider">
+  <div class="container">
+    <div class="sun-divider-line">
+      <span class="sun-flower-big">🌻</span>
+    </div>
+  </div>
+</div>
+
+<!-- METHODOLOGY SECTION -->
+<section class="trainer" id="trainer">
+  <div class="container">
+    <div class="section-head animate-in">
+      <span class="section-label">Почему это работает?</span>
+      <h2>Научная основа и сила методики</h2>
+      <p>Super Jump — это синергия восточной мудрости и современной западной психотерапии. Никакой эзотерики — только чистая нейробиология и развитие эмоционального интеллекта.</p>
+    </div>
+    <blockquote class="trainer-quote animate-in">
+      «За 10 дней занятий по 1 часу в день мы создаем новые нейронные связи в вашем мозге. Вы не просто слушаете лекции, а делаете практические упражнения в группе под моим чутким руководством. Это дает 100% результат».<br><strong>— Наталья Вардая</strong>
+    </blockquote>
+    <div class="trainer-cards animate-in">
+      <div class="trainer-card">
+        <div class="trainer-card-icon">🧠</div>
+        <h4>Нейрокоуч</h4>
+        <p>Активация правого полушария и выработка правильных гормонов радости.</p>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-card-icon">👑</div>
+        <h4>Ментальный Наставник</h4>
+        <p>Помогу бережно пройти через кризисы и найти внутреннюю опору.</p>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-card-icon">⚡</div>
+        <h4>Энергопрактик</h4>
+        <p>Быстрые техники возвращения сил при выгорании за считанные минуты.</p>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-card-icon">🤝</div>
+        <h4>Лидер Сообщества</h4>
+        <p>Создаю бережное пространство развития без критики и осуждения.</p>
+      </div>
+    </div>
+    <div class="who-for animate-in">
+      <h3>Кому идеально подойдёт наш интенсив?</h3>
+      <div class="who-for-grid">
+        <div class="who-for-item"><span><strong>Предпринимателям</strong> — вернуть фокус, вырасти в доходах и избежать выгорания.</span></div>
+        <div class="who-for-item"><span><strong>Мамам в декрете</strong> — найти время для себя, восполнить силы и убрать усталость.</span></div>
+        <div class="who-for-item"><span><strong>Психологам и коучам</strong> — освоить новые инструменты и повысить чек.</span></div>
+        <div class="who-for-item"><span><strong>Всем в поиске себя</strong> — найти призвание и сильных друзей.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="container">
+    <div class="divider-line">
+      <span class="divider-flower">✨</span>
+    </div>
+  </div>
+</div>
 
 <!-- WHY CHOOSE -->
-<section class="why-section" id="why-choose">
+<section class="why-choose" id="why-choose">
   <div class="container">
     <div class="section-head animate-in">
       <span class="section-label">Ваши преимущества</span>
       <h2>Почему выбирают Super Jump?</h2>
       <p>Уникальность методики состоит в её простоте, скорости получения первых результатов и долгосрочном позитивном эффекте.</p>
     </div>
-    <div class="why-grid animate-in delay-1">
+    <div class="why-grid animate-in">
       <div class="why-card">
-        <div class="why-icon">⏱️</div>
+        <div class="why-card-icon">⏱️</div>
         <h4>Всего 1 час в день</h4>
         <p>Вам не нужно тратить недели на изучение теории. Занятия идут онлайн по 1 часу в день, легко встраиваясь в самый плотный рабочий график.</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">⚡</div>
+        <div class="why-card-icon">⚡</div>
         <h4>Эффект со 2-го дня</h4>
         <p>Многие чувствуют прилив вдохновения, уход тревоги и нормализацию сна уже на втором практическом занятии смехозарядки.</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">👫</div>
+        <div class="why-card-icon">👫</div>
         <h4>Поддерживающий Интеллект-клуб</h4>
         <p>После 10 дней вы не остаетесь одни. Мы продолжаем поддерживать форму в нашем клубе единомышленников «Жёлтые Подсолнухи».</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">💯</div>
+        <div class="why-card-icon">💯</div>
         <h4>Гарантия результата</h4>
         <p>Если вы будете выполнять все упражнения 10 дней и не почувствуете улучшений, мы вернем вам полную стоимость курса без лишних вопросов.</p>
       </div>
@@ -918,18 +895,24 @@
 </section>
 
 <!-- DIVIDER -->
-<div class="divider"><div class="divider-line"><span class="divider-flower">🌻</span></div></div>
+<div class="divider">
+  <div class="container">
+    <div class="divider-line">
+      <span class="divider-flower">🌻</span>
+    </div>
+  </div>
+</div>
 
 <!-- TEAM SECTION -->
-<section class="team-section" id="team">
+<section class="team" id="team">
   <div class="container">
     <div class="team-inner">
-      <div class="team-content animate-in">
-        <span class="team-subtitle">Наше сообщество</span>
+      <div class="animate-in">
+        <span class="section-label">Наше сообщество</span>
         <h2>Команда «Жёлтые Подсолнухи»</h2>
-        <p style="font-family:'Arial',sans-serif; font-size:0.88rem; color:var(--gold-warm); font-weight:700; margin-bottom:1rem;">🌻 Международная ассоциация интеллект-тренеров</p>
-        <p>Каждый подсолнух всегда поворачивается к солнцу, ловя его теплые лучи. Наша команда — это люди, выбравшие путь развития, света, любви к жизни и поддержки друг друга.</p>
-        <p>Мы объединяем партнеров из разных уголков планеты: Россия, СНГ, Европа, Азия. Мы вместе проводим масштабные встречи, учимся побеждать стресс, зарабатываем и открываем новые школы интеллект-тренеров.</p>
+        <p style="color:var(--gold-warm);font-weight:bold;margin-bottom:1rem;">🌻 Международная ассоциация интеллект-тренеров</p>
+        <p style="color:var(--text-mid);margin-bottom:1rem;line-height:1.75;">Каждый подсолнух всегда поворачивается к солнцу, ловя его теплые лучи. Наша команда — это люди, выбравшие путь развития, света, любви к жизни и поддержки друг друга.</p>
+        <p style="color:var(--text-mid);margin-bottom:1.5rem;line-height:1.75;">Мы объединяем партнеров из разных уголков планеты: Россия, СНГ, Европа, Азия. Мы вместе проводим масштабные встречи, учимся побеждать стресс, зарабатываем и открываем новые школы интеллект-тренеров.</p>
         <div class="team-values">
           <span class="team-value-tag">☀️ Искренность</span>
           <span class="team-value-tag">☀️ Взаимопомощь</span>
@@ -937,7 +920,7 @@
           <span class="team-value-tag">☀️ Энергия добра</span>
         </div>
       </div>
-      <div class="team-stats animate-in delay-1">
+      <div class="team-stats animate-in">
         <div class="team-stat">
           <div class="team-stat-icon">🔥</div>
           <div>
@@ -965,54 +948,55 @@
 </section>
 
 <!-- DIVIDER -->
-<div class="divider"><div class="divider-line"><span class="divider-flower">✨</span></div></div>
+<div class="divider">
+  <div class="container">
+    <div class="divider-line">
+      <span class="divider-flower">✨</span>
+    </div>
+  </div>
+</div>
 
 <!-- DYNAMIC CALCULATOR / FORMAT SELECTOR -->
-<section class="calculator-section" id="calculator">
+<section class="calculator" id="calculator">
   <div class="container">
     <div class="section-head animate-in">
       <span class="section-label">Планирование участия</span>
       <h2>Выберите идеальный формат</h2>
       <p>Определите наиболее комфортный способ прохождения программы под ваши личные цели и темп жизни.</p>
     </div>
-    <div class="calc-grid animate-in delay-1">
+    <div class="calc-inner animate-in">
       <div>
-        <p class="calc-options-title">Варианты обучения:</p>
-        <div class="calc-options-list">
+        <p style="font-family:'Arial',sans-serif;font-size:0.82rem;font-weight:700;color:var(--brown);margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.1em;">Варианты обучения:</p>
+        <div class="calc-options">
           <div class="calc-option active" onclick="selectFormat('group', event)">
-            <p>Групповой интенсив (10 дней)</p>
+            <h4>Групповой интенсив (10 дней)</h4>
             <p>Оптимально для старта, обмен сильной энергией группы</p>
           </div>
           <div class="calc-option" onclick="selectFormat('individual', event)">
-            <p>Индивидуальный VIP-формат</p>
+            <h4>Индивидуальный VIP-формат</h4>
             <p>Работа с Натальей 1 на 1, подстройка под ваш график</p>
           </div>
           <div class="calc-option" onclick="selectFormat('family', event)">
-            <p>Семейный пакет (до 3-х человек)</p>
+            <h4>Семейный пакет (до 3-х человек)</h4>
             <p>Для пар и семей, кто хочет расти и развиваться вместе</p>
           </div>
           <div class="calc-option" onclick="selectFormat('trainer', event)">
-            <p>Стать Интеллект-тренером</p>
+            <h4>Стать Интеллект-тренером</h4>
             <p>Обучение профессии с правом преподавания и франшизой</p>
           </div>
         </div>
       </div>
-      <div class="calc-output">
-        <div class="calc-output-head">
-          <h3 id="calcFormatTitle">Групповой интенсив</h3>
-          <div class="calc-detail"><i class="fa-solid fa-clock"></i> <span id="calcDuration">10 дней по 1 часу ежедневно</span></div>
-          <div class="calc-detail"><i class="fa-solid fa-users"></i> <span id="calcGroupSize">До 10 человек в Zoom / Skype / Telegram</span></div>
-        </div>
-        <ul class="calc-feats">
-          <li><i class="fa-solid fa-check"></i> <span id="feat1">8 базовых упражнений Super Jump</span></li>
-          <li><i class="fa-solid fa-check"></i> <span id="feat2">Доступ в закрытый чат поддержки навсегда</span></li>
-          <li><i class="fa-solid fa-check"></i> <span id="feat3">Месяц участия в Интеллект-клубе в подарок</span></li>
+      <div class="calc-result">
+        <h3 id="calcFormatTitle">Групповой интенсив</h3>
+        <div class="calc-info-row"><i class="fa-solid fa-clock"></i> <span id="calcDuration">10 дней по 1 часу ежедневно</span></div>
+        <div class="calc-info-row"><i class="fa-solid fa-users"></i> <span id="calcGroupSize">До 10 человек в Zoom / Skype / Telegram</span></div>
+        <ul class="calc-features">
+          <li><i class="fa-solid fa-star"></i> <span id="feat1">8 базовых упражнений Super Jump</span></li>
+          <li><i class="fa-solid fa-star"></i> <span id="feat2">Доступ в закрытый чат поддержки навсегда</span></li>
+          <li><i class="fa-solid fa-star"></i> <span id="feat3">Месяц участия в Интеллект-клубе в подарок</span></li>
         </ul>
-        <!-- ИСПРАВЛЕНО: отступ под *Датами до кнопок чуть больше -->
-        <div class="calc-note calc-note-spacing">
-          *Даты ближайших потоков уточняйте у наставника. Количество мест строго ограничено.
-        </div>
-        <a href="https://t.me/NafalyaVardaya" target="_blank" id="calcTgLink" class="btn btn-tg" style="width:100%; justify-content:center;">
+        <p class="calc-note">*Даты ближайших потоков уточняйте у наставника. Количество мест строго ограничено.</p>
+        <a href="https://t.me/NafalyaVardaya" target="_blank" id="calcTgLink" class="btn btn-tg" style="width:100%;justify-content:center;">
           <i class="fa-brands fa-telegram"></i> Узнать стоимость и дату
         </a>
       </div>
@@ -1020,58 +1004,39 @@
   </div>
 </section>
 
-<!-- DIVIDER — ИСПРАВЛЕНО: над АТМОСФЕРА ВСТРЕЧ — большой анимированный жёлтый подсолнух -->
+<!-- DIVIDER -->
 <div class="sun-divider">
-  <div class="sun-divider-line">
-    <span class="sun-flower-big">🌻</span>
+  <div class="container">
+    <div class="sun-divider-line">
+      <span class="sun-flower-big">🌻</span>
+    </div>
   </div>
 </div>
 
 <!-- GALLERY WITH LIGHTBOX -->
-<section class="gallery-section" id="gallery">
+<section class="gallery" id="gallery">
   <div class="container">
     <div class="section-head animate-in">
       <span class="section-label">Атмосфера встреч</span>
       <h2>Наша яркая фотогалерея</h2>
       <p>Взгляните на жизнь команды «Жёлтые Подсолнухи». Теплые живые встречи, улыбки и незабываемые моменты единства.</p>
     </div>
-    <!-- ИСПРАВЛЕНО: фотки — одинаковая высота через aspect-ratio 4/3, лица/головы вмещаются -->
-    <div class="gallery-grid animate-in delay-1">
+    <div class="gallery-grid animate-in">
       <div class="gallery-item" onclick="openLightbox(this, 'Золотые поля подсолнухов олицетворяют свет нашей команды')">
-        <div class="gallery-item-img">
-          <img src="img/6.jpg" alt="Подсолнухи" />
-        </div>
-        <div class="gallery-overlay">
-          <div class="gallery-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <div class="gallery-caption">Золотые поля подсолнухов</div>
-        </div>
+        <div class="gallery-item-img"><img src="img/6.jpg" alt="Подсолнухи" /></div>
+        <div class="gallery-caption"><p>Золотые поля подсолнухов</p><i class="fa-solid fa-expand"></i></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this, 'Энергия солнца и гармония в каждом дне')">
-        <div class="gallery-item-img">
-          <img src="img/5.jpg" alt="Команда SJ" />
-        </div>
-        <div class="gallery-overlay">
-          <div class="gallery-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <div class="gallery-caption">Энергия солнца</div>
-        </div>
+        <div class="gallery-item-img"><img src="img/5.jpg" alt="Команда SJ" /></div>
+        <div class="gallery-caption"><p>Энергия солнца</p><i class="fa-solid fa-expand"></i></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this, 'Развитие эмоционального интеллекта открывает новые горизонты')">
-        <div class="gallery-item-img">
-          <img src="img/8.jpg" alt="Рост разума" />
-        </div>
-        <div class="gallery-overlay">
-          <div class="gallery-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <div class="gallery-caption">Рост разума</div>
-        </div>
+        <div class="gallery-item-img"><img src="img/8.jpg" alt="Рост разума" /></div>
+        <div class="gallery-caption"><p>Рост разума</p><i class="fa-solid fa-expand"></i></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this, 'Обретаем внутреннее сияние и делимся теплом')">
-        <div class="gallery-item-img">
-          <img src="img/9.jpg" alt="Внутренний свет" />
-        </div>
-        <div class="gallery-overlay">
-          <div class="gallery-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <div class="gallery-caption">Внутренний свет</div>
-        </div>
+        <div class="gallery-item-img"><img src="img/9.jpg" alt="Внутренний свет" /></div>
+        <div class="gallery-caption"><p>Внутренний свет</p><i class="fa-solid fa-expand"></i></div>
       </div>
     </div>
   </div>
@@ -1079,58 +1044,51 @@
 
 <!-- LIGHTBOX ELEMENT -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-  <div class="lightbox-inner" onclick="event.stopPropagation()">
-    <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
-    <img id="lightboxImg" src="" alt="Просмотр" />
-    <div class="lightbox-caption" id="lightboxCaption">Описание фото</div>
+  <img id="lightboxImg" src="" alt="Просмотр" />
+  <p id="lightboxCaption">Описание фото</p>
+</div>
+
+<div class="divider">
+  <div class="container">
+    <div class="divider-line"><span class="divider-flower">✨</span></div>
   </div>
 </div>
 
-<div class="divider"><div class="divider-line"><span class="divider-flower">✨</span></div></div>
-
 <!-- VIDEOS SECTION -->
-<section class="videos-section" id="videos">
+<section class="videos" id="videos">
   <div class="container">
     <div class="section-head animate-in">
       <span class="section-label">Полезные материалы</span>
       <h2>Видеообзоры и выступления</h2>
       <p>Посмотрите короткие видеоматериалы, чтобы лучше понять ценность методики Super Jump и познакомиться со школой.</p>
     </div>
-    <!-- ИСПРАВЛЕНО: видео превью — лица помещаются через object-position: center 15% -->
-    <div class="videos-grid animate-in delay-1">
-      <div class="video-card">
-        <div class="video-wrapper">
-          <img class="video-thumb" src="img/10.jpg" alt="Что такое Super Jump за 5 минут? Суть методики" />
-          <div class="video-play-btn" onclick="openVideoModal('https://rutube.ru/play/embed/c6e4660768cc75a4820cf6d666aff7ca?p=lhP7YXwOvLdqm2P95LqGUA')">
-            <i class="fa-solid fa-play"></i>
-          </div>
+    <div class="videos-grid animate-in">
+      <div class="video-card" onclick="openVideoModal('https://rutube.ru/play/embed/2df5bde12db845ed9e2b96c18f843484/')">
+        <div class="video-thumb">
+          <img src="img/10.jpg" alt="Что такое Super Jump за 5 минут? Суть методики" />
+          <div class="video-play-btn"><div class="video-play-circle"><i class="fa-solid fa-play"></i></div></div>
         </div>
-        <div class="video-card-body">
+        <div class="video-info">
           <span class="video-label">Презентация курса</span>
           <h4>Что такое Super Jump за 5 минут? Суть методики</h4>
         </div>
       </div>
-      <!-- ИСПРАВЛЕНО: Конгресс интеллект тренеров — превью с лицом/головой вмещается -->
-      <div class="video-card">
-        <div class="video-wrapper">
-          <img class="video-thumb" src="img/11.jpg" alt="конгресс интеллект тренеров" />
-          <div class="video-play-btn" onclick="openVideoModal('https://rutube.ru/play/embed/98f447bc8b926dffc411370f3a79f124?p=JfOSfLBfV-Ahxw-nAyWu-g')">
-            <i class="fa-solid fa-play"></i>
-          </div>
+      <div class="video-card" onclick="openVideoModal('https://rutube.ru/play/embed/e7b24d9c6e714f8ab7aa0c95c3b09f12/')">
+        <div class="video-thumb">
+          <img src="img/11.jpg" alt="конгресс интеллект тренеров" />
+          <div class="video-play-btn"><div class="video-play-circle"><i class="fa-solid fa-play"></i></div></div>
         </div>
-        <div class="video-card-body">
+        <div class="video-info">
           <span class="video-label">Событие</span>
           <h4>Конгресс интеллект тренеров</h4>
         </div>
       </div>
-      <div class="video-card">
-        <div class="video-wrapper">
-          <img class="video-thumb" src="img/12.jpg" alt="8 упражнений для увеличения энергии" />
-          <div class="video-play-btn" onclick="openVideoModal('https://rutube.ru/play/embed/aaf98aadcbf7cdce5c8b0894ff52e4d5?p=q4EFnnPL5XitKcEHwgXvUQ')">
-            <i class="fa-solid fa-play"></i>
-          </div>
+      <div class="video-card" onclick="openVideoModal('https://rutube.ru/play/embed/3f6a9c2d18e24b71a5dc09cf7ae3b805/')">
+        <div class="video-thumb">
+          <img src="img/12.jpg" alt="8 упражнений для увеличения энергии" />
+          <div class="video-play-btn"><div class="video-play-circle"><i class="fa-solid fa-play"></i></div></div>
         </div>
-        <div class="video-card-body">
+        <div class="video-info">
           <span class="video-label">Методика</span>
           <h4>8 упражнений для увеличения энергии</h4>
         </div>
@@ -1141,119 +1099,170 @@
 
 <!-- VIDEO MODAL CONTAINER -->
 <div class="video-modal" id="videoModal" onclick="closeVideoModal(event)">
-  <div class="video-modal-inner" onclick="event.stopPropagation()">
-    <button class="video-modal-close" onclick="closeVideoModal()"><i class="fa-solid fa-xmark"></i></button>
-    <iframe class="video-modal-iframe" id="videoModalIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="video-modal-inner">
+    <button class="video-modal-close" onclick="closeVideoModal(event)"><i class="fa-solid fa-xmark"></i></button>
+    <iframe id="videoModalIframe" src="" allowfullscreen allow="autoplay; fullscreen"></iframe>
   </div>
 </div>
 
-<!-- DIVIDER — ИСПРАВЛЕНО: над БЫСТРЫЙ СТАРТ — большой анимированный жёлтый подсолнух -->
+<!-- DIVIDER -->
 <div class="sun-divider">
-  <div class="sun-divider-line">
-    <span class="sun-flower-big">🌻</span>
+  <div class="container">
+    <div class="sun-divider-line">
+      <span class="sun-flower-big">🌻</span>
+    </div>
   </div>
 </div>
 
 <!-- CONVERSION / MESSAGE GENERATOR -->
-<!-- ИСПРАВЛЕНО: Блок БЫСТРЫЙ СТАРТ — больше воздуха -->
-<section class="msg-section" id="msg-generator">
+<section class="msg-generator" id="msg-generator">
   <div class="container">
-    <div class="section-head animate-in" style="margin-bottom: 2.5rem;">
+    <div class="section-head animate-in">
       <span class="section-label">Быстрый старт</span>
       <h2>Запишись на личный разбор</h2>
     </div>
-    <div class="msg-card animate-in delay-1">
-      <div class="msg-left">
-        <p>Заполни форму справа: введи свое имя, выбери фокус внимания и нажми кнопку. Система автоматически создаст персонализированное сообщение для отправки Наталье в Telegram/WhatsApp.</p>
-        <div class="msg-avatar-group">
-          <div class="msg-avatar">🌻</div>
-          <div class="msg-avatar-info">
+    <div class="msg-inner animate-in">
+      <div>
+        <p style="color:var(--text-mid);line-height:1.75;margin-bottom:1.5rem;">Заполни форму справа: введи свое имя, выбери фокус внимания и нажми кнопку. Система автоматически создаст персонализированное сообщение для отправки Наталье в Telegram/WhatsApp.</p>
+        <div class="msg-tg-card">
+          <i class="fa-brands fa-telegram"></i>
+          <div>
             <strong>Наталья Вардая</strong>
             <span>Твой личный интеллект-тренер</span>
           </div>
         </div>
       </div>
-      <div class="msg-form" style="font-family:'Arial',sans-serif;">
+      <div class="msg-form">
         <div class="form-group">
           <label for="userName">Ваше имя</label>
-          <input type="text" id="userName" class="form-input" placeholder="Введите имя, например: Елена" />
+          <input type="text" class="form-input" id="userName" placeholder="Введите ваше имя" />
         </div>
         <div class="form-group">
           <label>Главный фокус изменений</label>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:0.5rem;">
+          <div class="goal-grid">
             <div class="goal-option selected" onclick="selectGoal(this, 'Поднять энергию и тонус')">⚡ Больше энергии</div>
             <div class="goal-option" onclick="selectGoal(this, 'Улучшить отношения')">❤️ Отношения</div>
-            <div class="goal-option" onclick="selectGoal(this, 'Найти призвание')">🎯 Поиск предназначения</div>
-            <div class="goal-option" onclick="selectGoal(this, 'Вырасти финансово')">📈 Рост доходов</div>
+            <div class="goal-option" onclick="selectGoal(this, 'Найти предназначение')">🎯 Поиск предназначения</div>
+            <div class="goal-option" onclick="selectGoal(this, 'Увеличить доходы')">📈 Рост доходов</div>
           </div>
         </div>
-        <button onclick="generateCustomMessage()" class="btn btn-tg" style="width:100%; padding:0.9rem; font-size:1rem; margin-top:0.5rem; justify-content:center;">
-          <i class="fa-brands fa-telegram" style="font-size:1.1rem;"></i> Сформировать и отправить в Telegram
+        <button class="btn btn-primary" onclick="generateCustomMessage()" style="width:100%;justify-content:center;margin-top:0.5rem;">
+          <i class="fa-solid fa-paper-plane"></i> Отправить заявку
         </button>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"><div class="divider-line"><span class="divider-flower">✨</span></div></div>
+<div class="divider">
+  <div class="container">
+    <div class="divider-line"><span class="divider-flower">✨</span></div>
+  </div>
+</div>
 
 <!-- CTA SECTION -->
-<section class="cta-section" id="cta">
-  <div class="container">
-    <span class="section-label">Трансформация ждет</span>
+<section class="cta" id="cta">
+  <div class="container" style="position:relative;z-index:2;text-align:center;">
+    <span class="section-label" style="color:rgba(245,197,24,0.8);">Трансформация ждет</span>
     <h2>Зажгите свое внутреннее солнце</h2>
     <p>Каждый поток интенсива Super Jump в команде «Жёлтые Подсолнухи» — это десятки счастливых историй людей, которые вернули контроль над жизнью. Сделайте первый шаг уже сегодня!</p>
     <div class="cta-buttons">
-      <a href="https://account.superjump.com/register/118814" target="_blank" class="btn btn-white px-8 py-4"><i class="fa-solid fa-arrow-pointer"></i> Быстрая регистрация</a>
-      <!-- ИСПРАВЛЕНО мобильная: кнопка "Написать напрямую" в стиле Telegram с иконкой -->
-      <a href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-tg"><i class="fa-brands fa-telegram"></i> Написать напрямую</a>
+      <a href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-white"><i class="fa-brands fa-telegram"></i> Написать в Telegram</a>
+      <a href="#contacts" class="btn btn-outline" style="color:white;border-color:rgba(245,197,24,0.5);">Все контакты</a>
     </div>
   </div>
 </section>
 
 <!-- CONTACTS SECTION -->
-<section class="contacts-section" id="contacts">
+<section class="contacts" id="contacts">
   <div class="container">
     <div class="section-head animate-in">
       <span class="section-label">Связь со мной</span>
       <h2>Официальные контакты</h2>
       <p>Свяжитесь удобным для вас способом, чтобы задать любой интересующий вопрос об интенсивах или вступлении в команду.</p>
     </div>
-    <div class="contact-cards animate-in delay-1">
-      <a href="https://t.me/NafalyaVardaya" target="_blank" class="contact-card tg">
-        <div class="contact-card-icon"><i class="fa-brands fa-telegram"></i></div>
-        <div class="contact-card-title">Telegram</div>
-        <div class="contact-card-name">@NafalyaVardaya</div>
-      </a>
-      <a href="https://wa.me/+79159151086" target="_blank" class="contact-card wa">
-        <div class="contact-card-icon"><i class="fa-brands fa-whatsapp"></i></div>
-        <div class="contact-card-title">WhatsApp</div>
-        <div class="contact-card-name">+79159151086</div>
-      </a>
-      <a href="https://www.instagram.com/p/C6Q_rzAtM5k/?igsh=MXJ0bTB1eTVnanIxYg==" target="_blank" class="contact-card ig">
-        <div class="contact-card-icon"><i class="fa-brands fa-instagram"></i></div>
-        <div class="contact-card-title">Instagram</div>
-        <div class="contact-card-name">natalya_vardaya</div>
-      </a>
-      <a href="https://account.superjump.com/register/118814" target="_blank" class="contact-card reg">
-        <div class="contact-card-icon"><i class="fa-solid fa-user-check"></i></div>
-        <div class="contact-card-title">Кабинет SJ</div>
-        <div class="contact-card-name">ID 118814</div>
-      </a>
+    <div class="contacts-grid animate-in">
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="contact-item">
+          <div class="contact-icon" style="background:linear-gradient(135deg,rgba(42,171,238,0.15),rgba(42,171,238,0.05));">
+            <i class="fa-brands fa-telegram" style="color:#2AABEE;"></i>
+          </div>
+          <div class="contact-text">
+            <h4>Telegram</h4>
+            <p>Самый быстрый способ связи</p>
+            <a href="https://t.me/NafalyaVardaya" target="_blank">@NafalyaVardaya</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:linear-gradient(135deg,rgba(0,150,136,0.15),rgba(0,150,136,0.05));">
+            <i class="fa-brands fa-whatsapp" style="color:#25D366;"></i>
+          </div>
+          <div class="contact-text">
+            <h4>WhatsApp</h4>
+            <p>Для голосовых и видео-звонков</p>
+            <a href="https://wa.me/message/NATALYA_VARDAYA" target="_blank">Написать в WhatsApp</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:linear-gradient(135deg,rgba(76,104,215,0.15),rgba(76,104,215,0.05));">
+            <i class="fa-brands fa-vk" style="color:#4C68D7;"></i>
+          </div>
+          <div class="contact-text">
+            <h4>ВКонтакте</h4>
+            <p>Социальная сеть и сообщество</p>
+            <a href="https://vk.com/vardaya" target="_blank">vk.com/vardaya</a>
+          </div>
+        </div>
+      </div>
+      <div class="contacts-cta">
+        <div style="font-size:3rem;margin-bottom:1rem;">🌻</div>
+        <h3>Начните уже сегодня!</h3>
+        <p>Не откладывайте изменения в долгий ящик. Ближайший поток стартует совсем скоро — места ограничены.</p>
+        <a href="https://t.me/NafalyaVardaya" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">
+          <i class="fa-brands fa-telegram"></i> Записаться на курс
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<!-- ИСПРАВЛЕНО: тексты в 2.5x крупнее, не соприкасаются со стрелкой, правильный дизайн -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-copyright">
-      <span class="footer-team-name">🌻 Команда «Жёлтые Подсолнухи»</span>
-      © 2026 <strong>Наталья Вардая</strong>. Все права защищены.
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand"><span>🌻</span> Наталья Вардая</div>
+        <p class="footer-desc">Интеллект-тренер международной системы Super Jump. Основатель команды «Жёлтые Подсолнухи». Помогаю людям обрести энергию, уверенность и ясность.</p>
+        <div class="footer-social">
+          <a href="https://t.me/NafalyaVardaya" target="_blank" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+          <a href="https://vk.com/vardaya" target="_blank" aria-label="ВКонтакте"><i class="fa-brands fa-vk"></i></a>
+          <a href="https://wa.me/message/NATALYA_VARDAYA" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Навигация</p>
+        <ul class="footer-links">
+          <li><a href="#about">Обо мне</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="#test">Тест энергии</a></li>
+          <li><a href="#intensive">8 упражнений</a></li>
+          <li><a href="#trainer">Методика</a></li>
+          <li><a href="#team">Команда</a></li>
+          <li><a href="#gallery">Галерея</a></li>
+          <li><a href="#videos">Видео</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">Контакты</p>
+        <ul class="footer-links">
+          <li><a href="https://t.me/NafalyaVardaya" target="_blank">Telegram: @NafalyaVardaya</a></li>
+          <li><a href="https://vk.com/vardaya" target="_blank">ВКонтакте</a></li>
+          <li><a href="#contacts">Все контакты</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-dev">
-      <!-- ИСПРАВЛЕНО мобильная: ВКонтакте на одном уровне с Макс, выровнено -->
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Наталья Вардая · Super Jump · «Жёлтые Подсолнухи»</p>
       <div class="footer-dev-links">
         <div>Разработчик сайта — <a href="https://t.me/Samadhi2411" target="_blank">samadhi2411</a></div>
         <div>Нужен сайт? Пиши → <a href="https://max.ru/u/f9LHodD0cOKDY1emmUrupKlXJll32btrvJyZe3d0CeMmvy_rHDa2TWoayQc" target="_blank">MAX (МЕССЕНДЖЕР)</a> · <a href="https://vk.com/samadhi2411" target="_blank">ВКонтакте</a></div>
@@ -1263,7 +1272,6 @@
 </footer>
 
 <!-- BACK TO TOP BUTTON -->
-<!-- ИСПРАВЛЕНО: кнопка не западает, правильно позиционирована -->
 <button class="back-to-top" id="backToTop" aria-label="Наверх">
   <i class="fa-solid fa-chevron-up"></i>
 </button>
@@ -1308,6 +1316,7 @@
     const progressFill = document.getElementById('testProgress');
     const percentage = (selectedSymptoms / 8) * 100;
     progressFill.style.width = percentage + '%';
+    document.getElementById('testPercent').innerText = Math.round(percentage) + '%';
   }
 
   function calculateTestResults() {
@@ -1427,7 +1436,7 @@
     window.open(targetUrl, '_blank');
   }
 
-  // Lightbox
+  // Lightbox (gallery)
   function openLightbox(element, caption) {
     const img = element.querySelector('img');
     const lightbox = document.getElementById('lightbox');
@@ -1440,6 +1449,18 @@
   function closeLightbox(event) {
     const lightbox = document.getElementById('lightbox');
     lightbox.classList.remove('open');
+  }
+
+  // Review photo lightbox
+  function openReviewLightbox(element) {
+    const img = element.querySelector('img');
+    const lightbox = document.getElementById('reviewLightbox');
+    const lightboxImg = document.getElementById('reviewLightboxImg');
+    lightboxImg.src = img.src;
+    lightbox.classList.add('open');
+  }
+  function closeReviewLightbox() {
+    document.getElementById('reviewLightbox').classList.remove('open');
   }
 
   // Video modal
