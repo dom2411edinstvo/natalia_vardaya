@@ -1601,6 +1601,15 @@
 
   // Video modal
   function openVideoModal(embedUrl) {
+    // На мобильных Rutube блокирует embed — открываем напрямую на сайте
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 900;
+    // Преобразуем embed URL в обычную ссылку на видео
+    // https://rutube.ru/play/embed/VIDEO_ID/?p=TOKEN -> https://rutube.ru/video/VIDEO_ID/?p=TOKEN
+    var directUrl = embedUrl.replace('/play/embed/', '/video/');
+    if (isMobile) {
+      window.open(directUrl, '_blank');
+      return;
+    }
     const videoModal = document.getElementById('videoModal');
     const iframe = document.getElementById('videoModalIframe');
     iframe.src = embedUrl;
