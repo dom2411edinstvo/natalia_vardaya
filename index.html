@@ -288,10 +288,15 @@
     .review-photo-card { border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.3s; border: 2px solid rgba(245,197,24,0.15); }
     .review-photo-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--gold); }
     .review-photo-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
-    .video-reviews-grid { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-    .video-review-card { display: flex; align-items: center; gap: 0.8rem; padding: 0.8rem 1.2rem; border-radius: 50px; background: linear-gradient(135deg, rgba(245,197,24,0.12), rgba(249,168,37,0.06)); border: 1px solid rgba(245,197,24,0.25); cursor: pointer; transition: all 0.2s; font-family: 'Arial', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--brown); }
-    .video-review-card:hover { background: linear-gradient(135deg, rgba(245,197,24,0.25), rgba(249,168,37,0.12)); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-    .video-review-card .play-icon-small { width: 32px; height: 32px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; color: var(--brown); font-size: 0.7rem; flex-shrink: 0; }
+    .video-reviews-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+    .video-review-card { position: relative; border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; transition: all 0.3s; box-shadow: var(--shadow-sm); border: 2px solid rgba(245,197,24,0.15); aspect-ratio: 9/16; }
+    .video-review-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--gold); }
+    .video-review-thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-review-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.45) 100%); display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
+    .video-review-card:hover .video-review-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%); }
+    .video-review-card .play-icon-small { width: 44px; height: 44px; border-radius: 50%; background: rgba(245,197,24,0.9); display: flex; align-items: center; justify-content: center; color: var(--brown); font-size: 0.9rem; flex-shrink: 0; box-shadow: 0 4px 16px rgba(0,0,0,0.3); transition: transform 0.3s; }
+    .video-review-card:hover .play-icon-small { transform: scale(1.15); background: var(--gold); }
+    .video-review-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.6rem 0.8rem; font-family: 'Arial', sans-serif; font-size: 0.78rem; font-weight: 700; color: white; text-align: center; }
 
     /* VIDEO MODAL */
     .video-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; display: none; align-items: center; justify-content: center; }
@@ -306,7 +311,7 @@
     .videos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .video-card { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); cursor: pointer; transition: all 0.3s; background: white; border: 1px solid rgba(245,197,24,0.12); }
     .video-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--gold); }
-    .video-thumb { position: relative; aspect-ratio: 16/9; background: linear-gradient(135deg, #2c1d00, #5c3d00); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .video-thumb { position: relative; aspect-ratio: 16/9; background: linear-gradient(135deg, #2c1d00, #5c3d00); display: flex; align-items: center; justify-content: center; overflow: hidden; z-index: 1; }
     .video-thumb .play-btn { width: 56px; height: 56px; border-radius: 50%; background: rgba(245,197,24,0.9); display: flex; align-items: center; justify-content: center; color: var(--brown); font-size: 1.2rem; z-index: 2; transition: all 0.3s; }
     .video-card:hover .play-btn { transform: scale(1.15); background: var(--gold); }
     .video-thumb .video-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(44,29,0,0.3), rgba(92,61,0,0.2)); z-index: 1; }
@@ -403,6 +408,7 @@
       .about-img-wrap { max-width: 350px; margin: 0 auto; }
       .diplomas-grid { grid-template-columns: repeat(2, 1fr); }
       .reviews-photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .video-reviews-grid { grid-template-columns: repeat(5, 1fr); }
       .test-grid { grid-template-columns: 1fr; }
       .pearl-pane { flex-direction: column; text-align: center; }
       .trainer-grid { grid-template-columns: repeat(2, 1fr); }
@@ -430,7 +436,8 @@
       .about-badge { position: relative; right: auto; bottom: auto; margin-top: 1rem; display: inline-block; }
       .diplomas-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
       .reviews-photo-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-      .video-reviews-grid { flex-direction: column; align-items: stretch; }
+      .video-reviews-grid { grid-template-columns: repeat(3, 1fr); }
+      .video-review-card { aspect-ratio: 9/16; }
       .trainer-grid { grid-template-columns: 1fr; }
       .trainer-quote { padding: 1.5rem; font-size: 1rem; }
       .adv-grid { grid-template-columns: 1fr; gap: 1rem; }
@@ -638,24 +645,29 @@
     <!-- Video reviews -->
     <div class="video-reviews-grid animate-in">
       <div class="video-review-card" onclick="openVideoModal('https://rutube.ru/play/embed/acb4610f50e958a44e35db6b4fbe9c89')">
-        <div class="play-icon-small"><i class="fa-solid fa-play"></i></div>
-        Видеоотзыв 1
+        <img src="https://pic.rtbcdn.ru/video/2026-05-14/9c/0f/9c0f6c33bd84d5ce896dd31597d25189.jpg" alt="Видеоотзыв 1" class="video-review-thumb">
+        <div class="video-review-overlay"><div class="play-icon-small"><i class="fa-solid fa-play"></i></div></div>
+        <span class="video-review-label">Видеоотзыв 1</span>
       </div>
       <div class="video-review-card" onclick="openVideoModal('https://rutube.ru/play/embed/26e9450beff8226bd15b3192382012e5')">
-        <div class="play-icon-small"><i class="fa-solid fa-play"></i></div>
-        Видеоотзыв 2
+        <img src="https://pic.rtbcdn.ru/video/2026-05-14/65/91/659188c50fc2f612d3942134a078eea1.jpg" alt="Видеоотзыв 2" class="video-review-thumb">
+        <div class="video-review-overlay"><div class="play-icon-small"><i class="fa-solid fa-play"></i></div></div>
+        <span class="video-review-label">Видеоотзыв 2</span>
       </div>
       <div class="video-review-card" onclick="openVideoModal('https://rutube.ru/play/embed/913704925657e785164e17c7b48da2bc')">
-        <div class="play-icon-small"><i class="fa-solid fa-play"></i></div>
-        Видеоотзыв 3
+        <img src="https://pic.rtbcdn.ru/video/2026-05-14/07/86/078691ac3de68b4565af43ca269e8a72.jpg" alt="Видеоотзыв 3" class="video-review-thumb">
+        <div class="video-review-overlay"><div class="play-icon-small"><i class="fa-solid fa-play"></i></div></div>
+        <span class="video-review-label">Видеоотзыв 3</span>
       </div>
       <div class="video-review-card" onclick="openVideoModal('https://rutube.ru/play/embed/f63395866e5a4f8c37407ec48ae78c39')">
-        <div class="play-icon-small"><i class="fa-solid fa-play"></i></div>
-        Видеоотзыв 4
+        <img src="https://pic.rtbcdn.ru/video/2026-05-14/fe/7b/fe7b77fd543a7d7cde5df06151179d17.jpg" alt="Видеоотзыв 4" class="video-review-thumb">
+        <div class="video-review-overlay"><div class="play-icon-small"><i class="fa-solid fa-play"></i></div></div>
+        <span class="video-review-label">Видеоотзыв 4</span>
       </div>
       <div class="video-review-card" onclick="openVideoModal('https://rutube.ru/play/embed/0b9562690ef25bfe73bf1285d2357103')">
-        <div class="play-icon-small"><i class="fa-solid fa-play"></i></div>
-        Видеоотзыв 5
+        <img src="https://pic.rtbcdn.ru/video/2026-05-14/3a/2b/3a2b7e0587b2fbdca5b697cb1aa28066.jpg" alt="Видеоотзыв 5" class="video-review-thumb">
+        <div class="video-review-overlay"><div class="play-icon-small"><i class="fa-solid fa-play"></i></div></div>
+        <span class="video-review-label">Видеоотзыв 5</span>
       </div>
     </div>
   </div>
@@ -1120,6 +1132,7 @@
     <div class="videos-grid animate-in">
       <div class="video-card" onclick="openVideoModal('https://rutube.ru/play/embed/c6e4660768cc75a4820cf6d666aff7ca/?p=lhP7YXwOvLdqm2P95LqGUA')">
         <div class="video-thumb">
+          <img src="https://pic.rtbcdn.ru/video/2026-05-06/56/f6/56f6e609021aa7dc57e246ebd3a01647.jpg" alt="Презентация курса" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
           <div class="video-overlay"></div>
           <div class="play-btn"><i class="fa-solid fa-play"></i></div>
         </div>
@@ -1130,6 +1143,7 @@
       </div>
       <div class="video-card" onclick="openVideoModal('https://rutube.ru/play/embed/98f447bc8b926dffc411370f3a79f124/?p=JfOSfLBfV-Ahxw-nAyWu-g')">
         <div class="video-thumb">
+          <img src="https://pic.rtbcdn.ru/video/2026-05-06/02/c7/02c72180f3d0d3e7d3aafa552ff93f88.jpg" alt="Конгресс интеллект тренеров" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
           <div class="video-overlay"></div>
           <div class="play-btn"><i class="fa-solid fa-play"></i></div>
         </div>
@@ -1140,6 +1154,7 @@
       </div>
       <div class="video-card" onclick="openVideoModal('https://rutube.ru/play/embed/aaf98aadcbf7cdce5c8b0894ff52e4d5/?p=q4EFnnPL5XitKcEHwgXvUQ')">
         <div class="video-thumb">
+          <img src="https://pic.rtbcdn.ru/video/2026-05-06/2c/b0/2cb0b3c5b33500996e1540e610de588c.jpg" alt="8 упражнений" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
           <div class="video-overlay"></div>
           <div class="play-btn"><i class="fa-solid fa-play"></i></div>
         </div>
