@@ -13,7 +13,7 @@
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
     body { font-family: 'Georgia', 'Times New Roman', serif; background: #fffdf5; color: #2c1d00; line-height: 1.7; overflow-x: hidden; max-width: 100vw; }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
@@ -59,7 +59,7 @@
     .mobile-menu a { font-family: 'Arial', sans-serif; font-size: 1.1rem; color: var(--text-mid); padding: 0.8rem 0; border-bottom: 1px solid rgba(245,197,24,0.12); font-weight: 600; text-align: center; }
 
     /* SECTIONS */
-    section { padding: 100px 0; position: relative; }
+    section { padding: 100px 0; position: relative; overflow: hidden; }
     .container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
     .section-head { text-align: center; margin-bottom: 4rem; }
     .section-head h2 { font-size: clamp(2rem, 4.5vw, 3rem); color: var(--brown); margin-bottom: 1rem; font-weight: normal; }
@@ -180,256 +180,273 @@
     .pearl-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
     .pearl-tab { font-family: 'Arial', sans-serif; font-size: 0.82rem; font-weight: 700; padding: 0.5rem 1rem; border-radius: 50px; cursor: pointer; border: 2px solid rgba(245,197,24,0.25); background: white; color: var(--text-mid); transition: all 0.2s ease; display: flex; align-items: center; gap: 0.5rem; }
     .pearl-tab:hover { border-color: var(--gold); color: var(--brown); }
-    .pearl-tab.active { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%); border-color: transparent; color: var(--brown); box-shadow: 0 4px 12px rgba(245,197,24,0.3); }
-    .pearl-pane { display: none; border-radius: var(--radius); padding: 2.5rem; background: linear-gradient(135deg, #fffef5 0%, #fff9d6 60%, #fffdf5 100%); border: 1px solid rgba(245,197,24,0.2); box-shadow: var(--shadow-sm); gap: 2.5rem; align-items: flex-start; }
+    .pearl-tab.active { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%); border-color: transparent; color: var(--brown); box-shadow: 0 4px 14px rgba(245,197,24,0.3); }
+    .pearl-pane { display: none; background: white; border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-md); border: 1px solid rgba(245,197,24,0.15); align-items: center; gap: 2rem; }
     .pearl-pane.active { display: flex; }
-    .pearl-emoji { font-size: 4rem; flex-shrink: 0; filter: drop-shadow(0 4px 8px rgba(245,197,24,0.3)); }
-    .pearl-pane h3 { font-size: clamp(1.3rem, 2.5vw, 1.7rem); color: var(--brown); margin-bottom: 1rem; }
-    .pearl-pane p { font-size: 1rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 1rem; }
-    .pearl-benefit { display: inline-flex; align-items: center; gap: 0.6rem; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%); color: var(--brown); padding: 0.4rem 1rem; border-radius: 50px; font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 700; box-shadow: 0 3px 10px rgba(245,197,24,0.25); }
+    .pearl-icon { font-size: 3.5rem; flex-shrink: 0; width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-pale), rgba(245,197,24,0.15)); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+    .pearl-content h3 { font-size: 1.5rem; color: var(--brown); margin-bottom: 0.8rem; }
+    .pearl-content p { font-size: 1rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 0.8rem; }
+    .pearl-benefit { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 50px; background: linear-gradient(135deg, rgba(245,197,24,0.15), rgba(249,168,37,0.08)); font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--brown); }
 
     /* TRAINER */
     .trainer { background: linear-gradient(145deg, #fffef5 0%, #fff9d6 100%); }
-    .trainer-quote { background: white; border-radius: var(--radius); padding: 2.5rem; margin: 0 auto 3rem; max-width: 750px; box-shadow: var(--shadow-md); border-left: 5px solid var(--gold-warm); position: relative; font-size: 1.12rem; color: var(--text-mid); font-style: italic; line-height: 1.7; }
-    .trainer-quote cite { display: block; margin-top: 1rem; font-style: normal; font-family: 'Arial', sans-serif; font-size: 0.88rem; color: var(--text-light); font-weight: 700; }
-    .trainer-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
-    .trainer-card { background: white; border-radius: var(--radius-sm); padding: 1.8rem 1.4rem; text-align: center; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.15); transition: all 0.3s; }
-    .trainer-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-    .trainer-card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-    .trainer-card h4 { font-family: 'Arial', sans-serif; font-size: 1rem; font-weight: 700; color: var(--brown); margin-bottom: 0.6rem; }
+    .trainer-quote { background: white; border-radius: var(--radius); padding: 2rem 2.5rem; box-shadow: var(--shadow-md); border-left: 4px solid var(--gold-warm); font-size: 1.1rem; color: var(--text-mid); line-height: 1.75; font-style: italic; margin-bottom: 3rem; position: relative; }
+    .trainer-quote cite { display: block; margin-top: 1rem; font-style: normal; font-family: 'Arial', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--brown); }
+    .trainer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+    .trainer-card { background: white; border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.12); transition: all 0.3s; }
+    .trainer-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--gold); }
+    .trainer-card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .trainer-card h4 { font-size: 1.05rem; color: var(--brown); margin-bottom: 0.6rem; font-weight: 700; font-family: 'Arial', sans-serif; }
     .trainer-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; }
-    .trainer-audience { background: white; border-radius: var(--radius); padding: 2rem 2.5rem; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.15); }
+    .trainer-audience { background: white; border-radius: var(--radius); padding: 2rem 2.5rem; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.12); }
     .trainer-audience h3 { font-size: 1.3rem; color: var(--brown); margin-bottom: 1.2rem; }
-    .trainer-audience ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-    .trainer-audience li { font-size: 0.98rem; color: var(--text-mid); padding-left: 1.5rem; position: relative; }
-    .trainer-audience li::before { content: '🌻'; position: absolute; left: 0; }
+    .trainer-audience ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .trainer-audience li { font-size: 1rem; color: var(--text-mid); padding-left: 1.5rem; position: relative; }
+    .trainer-audience li::before { content: '☀️'; position: absolute; left: 0; }
 
     /* ADVANTAGES */
     .advantages { background: #fff; }
-    .advantages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-    .advantage-card { background: linear-gradient(145deg, #fffef5, #fff9d6); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; border: 1px solid rgba(245,197,24,0.2); box-shadow: var(--shadow-sm); transition: all 0.3s; }
-    .advantage-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-    .advantage-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-    .advantage-card h3 { font-family: 'Arial', sans-serif; font-size: 1rem; font-weight: 700; color: var(--brown); margin-bottom: 0.6rem; }
-    .advantage-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; }
+    .adv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .adv-card { background: linear-gradient(145deg, #fffef5 0%, #fff9d6 100%); border-radius: var(--radius); padding: 2rem 1.5rem; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.15); transition: all 0.3s; }
+    .adv-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--gold); }
+    .adv-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .adv-card h3 { font-size: 1.2rem; color: var(--brown); margin-bottom: 0.8rem; font-weight: 700; font-family: 'Arial', sans-serif; }
+    .adv-card p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.65; }
 
     /* TEAM */
-    .team { background: linear-gradient(145deg, #fffef5, #fff9d6); }
-    .team-inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; }
-    .team-values { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
-    .team-value { background: rgba(245,197,24,0.15); border: 1px solid rgba(245,197,24,0.3); border-radius: 50px; padding: 0.4rem 1rem; font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--brown); }
-    .team-stats { display: flex; flex-direction: column; gap: 1.5rem; }
-    .team-stat { background: white; border-radius: var(--radius-sm); padding: 1.5rem; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.15); display: flex; align-items: center; gap: 1.2rem; transition: all 0.3s; }
-    .team-stat:hover { transform: translateX(5px); box-shadow: var(--shadow-md); }
-    .team-stat-icon { font-size: 2rem; }
-    .team-stat h4 { font-family: 'Arial', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--brown); }
-    .team-stat p { font-size: 0.88rem; color: var(--text-mid); }
+    .team { background: linear-gradient(145deg, #fffef5 0%, #fff9d6 100%); }
+    .team-inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: start; }
+    .team-desc { font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; }
+    .team-desc p { margin-bottom: 1.2rem; }
+    .team-values { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+    .team-values span { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 1rem; border-radius: 50px; background: white; font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--brown); box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.15); }
+    .team-stats { display: flex; flex-direction: column; gap: 1.2rem; }
+    .team-stat { display: flex; align-items: center; gap: 1.2rem; background: white; border-radius: var(--radius-sm); padding: 1.2rem 1.5rem; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.12); transition: all 0.3s; }
+    .team-stat:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .team-stat-icon { font-size: 2rem; flex-shrink: 0; }
+    .team-stat h4 { font-size: 1.1rem; color: var(--brown); font-weight: 700; font-family: 'Arial', sans-serif; }
+    .team-stat p { font-size: 0.85rem; color: var(--text-light); }
 
     /* CALCULATOR */
     .calculator { background: #fff; }
-    .calc-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .calc-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+    .calc-left-title { font-family: 'Arial', sans-serif; font-size: 1rem; font-weight: 700; color: var(--brown); margin-bottom: 1.2rem; }
     .calc-options { display: flex; flex-direction: column; gap: 0.8rem; }
-    .calc-options-label { font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-    .calc-option { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; border: 2px solid rgba(245,197,24,0.2); border-radius: var(--radius-sm); background: white; cursor: pointer; transition: all 0.2s; }
-    .calc-option:hover { border-color: var(--gold); transform: translateX(4px); }
-    .calc-option.active { border-color: var(--gold-warm); background: linear-gradient(135deg, rgba(245,197,24,0.1), rgba(249,168,37,0.05)); }
-    .calc-option-icon { font-size: 1.5rem; flex-shrink: 0; }
-    .calc-option-text strong { display: block; font-family: 'Arial', sans-serif; font-size: 0.92rem; color: var(--brown); font-weight: 700; }
-    .calc-option-text span { font-family: 'Arial', sans-serif; font-size: 0.78rem; color: var(--text-light); }
-    .calc-result { background: linear-gradient(145deg, #fffef5, #fff9d6); border-radius: var(--radius); padding: 2rem; border: 1px solid rgba(245,197,24,0.2); box-shadow: var(--shadow-sm); }
-    .calc-result h3 { font-size: 1.4rem; color: var(--brown); margin-bottom: 1.2rem; }
-    .calc-meta { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.4rem; }
-    .calc-meta-item { display: flex; align-items: center; gap: 0.6rem; font-family: 'Arial', sans-serif; font-size: 0.9rem; color: var(--text-mid); }
-    .calc-features { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.8rem; }
-    .calc-features li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--text-mid); }
-    .calc-features li::before { content: '✓'; color: var(--gold-warm); font-weight: 700; font-size: 1rem; }
-    .calc-note { font-family: 'Arial', sans-serif; font-size: 0.8rem; color: var(--text-light); font-style: italic; margin-bottom: 1.2rem; }
+    .calc-option { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; border-radius: var(--radius-sm); border: 2px solid rgba(245,197,24,0.2); background: white; cursor: pointer; transition: all 0.2s; }
+    .calc-option:hover { border-color: var(--gold); }
+    .calc-option.active { border-color: var(--gold-warm); background: linear-gradient(135deg, rgba(245,197,24,0.1), rgba(249,168,37,0.05)); box-shadow: 0 4px 16px rgba(245,197,24,0.15); }
+    .calc-option-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .calc-option-text strong { display: block; font-size: 0.95rem; color: var(--brown); font-weight: 700; }
+    .calc-option-text span { font-size: 0.8rem; color: var(--text-light); }
+    .calc-detail { background: linear-gradient(145deg, #fffef5 0%, #fff9d6 100%); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow-md); border: 1px solid rgba(245,197,24,0.15); }
+    .calc-detail h3 { font-size: 1.4rem; color: var(--brown); margin-bottom: 1rem; }
+    .calc-meta { font-family: 'Arial', sans-serif; font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.3rem; }
+    .calc-features { list-style: none; margin: 1.5rem 0; display: flex; flex-direction: column; gap: 0.7rem; }
+    .calc-features li { font-size: 0.95rem; color: var(--text-mid); padding-left: 1.5rem; position: relative; }
+    .calc-features li::before { content: '✓'; position: absolute; left: 0; color: var(--gold-warm); font-weight: 700; }
+    .calc-note { font-size: 0.8rem; color: var(--text-light); font-style: italic; margin-bottom: 1.5rem; }
 
     /* GALLERY */
     .gallery { background: linear-gradient(145deg, #fffef5 0%, #fff9d6 100%); }
-    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
-    .gallery-item { position: relative; border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; aspect-ratio: 4/3; box-shadow: var(--shadow-sm); border: 2px solid rgba(245,197,24,0.15); transition: all 0.3s; }
-    .gallery-item:hover { transform: translateY(-5px) scale(1.01); box-shadow: var(--shadow-md); border-color: var(--gold-warm); }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .gallery-item { border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow-md); cursor: pointer; transition: all 0.3s; position: relative; }
+    .gallery-item:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .gallery-item img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; transition: transform 0.4s; }
     .gallery-item:hover img { transform: scale(1.08); }
-    .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(92,61,0,0.75) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 1rem; }
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
-    .gallery-caption { color: white; font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 600; }
+    .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.6)); color: white; padding: 1rem 0.8rem 0.8rem; font-family: 'Arial', sans-serif; font-size: 0.8rem; font-weight: 600; }
 
-    /* Gallery/Review Lightbox */
-    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
-    .lightbox.open { display: flex; opacity: 1; }
-    .lightbox-inner { position: relative; display: flex; align-items: center; justify-content: center; }
-    .lightbox-inner img { max-height: 88vh; max-width: 88vw; border-radius: var(--radius-sm); box-shadow: 0 24px 64px rgba(0,0,0,0.5); object-fit: contain; }
-    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.18); border: none; color: white; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 9010; }
-    .lightbox-close:hover { background: rgba(255,255,255,0.35); }
-    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.18); border: none; color: white; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 9010; }
-    .lightbox-nav:hover { background: rgba(255,255,255,0.35); }
-    .lightbox-prev { left: 1.5rem; }
-    .lightbox-next { right: 1.5rem; }
-    .lightbox-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: white; font-family: 'Arial', sans-serif; font-size: 0.9rem; background: rgba(0,0,0,0.5); padding: 0.3rem 1rem; border-radius: 50px; z-index: 9010; }
-    .lightbox-caption { position: fixed; bottom: 3.5rem; left: 50%; transform: translateX(-50%); color: white; font-family: 'Arial', sans-serif; font-size: 0.95rem; background: rgba(0,0,0,0.5); padding: 0.4rem 1.2rem; border-radius: 50px; z-index: 9010; white-space: nowrap; }
+    /* Gallery lightbox */
+    .gallery-lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+    .gallery-lightbox.open { display: flex; opacity: 1; }
+    .gallery-lightbox-inner { position: relative; display: flex; align-items: center; justify-content: center; max-width: 95vw; max-height: 95vh; }
+    .gallery-lightbox img { max-height: 88vh; max-width: 82vw; border-radius: var(--radius-sm); box-shadow: 0 24px 64px rgba(0,0,0,0.5); object-fit: contain; }
+    .gallery-lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.18); border: none; color: white; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+    .gallery-lightbox-close:hover { background: rgba(255,255,255,0.35); }
+    .gallery-lb-nav { position: fixed; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.18); border: none; color: white; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+    .gallery-lb-nav:hover { background: rgba(255,255,255,0.35); }
+    .gallery-lb-prev { left: 1.5rem; }
+    .gallery-lb-next { right: 1.5rem; }
+    .gallery-lb-caption { position: fixed; bottom: 3rem; left: 50%; transform: translateX(-50%); color: white; font-family: 'Arial', sans-serif; font-size: 1rem; background: rgba(0,0,0,0.5); padding: 0.5rem 1.5rem; border-radius: 50px; z-index: 10001; }
+    .gallery-lb-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: white; font-family: 'Arial', sans-serif; font-size: 0.9rem; background: rgba(0,0,0,0.5); padding: 0.3rem 1rem; border-radius: 50px; z-index: 10001; }
+
+    /* Review lightbox */
+    .review-lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+    .review-lightbox.open { display: flex; opacity: 1; }
+    .review-lightbox-inner { position: relative; display: flex; align-items: center; justify-content: center; max-width: 95vw; max-height: 95vh; }
+    .review-lightbox img { max-height: 88vh; max-width: 82vw; border-radius: var(--radius-sm); box-shadow: 0 24px 64px rgba(0,0,0,0.5); object-fit: contain; }
+    .review-lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.18); border: none; color: white; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+    .review-lightbox-close:hover { background: rgba(255,255,255,0.35); }
+    .review-lb-nav { position: fixed; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.18); border: none; color: white; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+    .review-lb-nav:hover { background: rgba(255,255,255,0.35); }
+    .review-lb-prev { left: 1.5rem; }
+    .review-lb-next { right: 1.5rem; }
+    .review-lb-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: white; font-family: 'Arial', sans-serif; font-size: 0.9rem; background: rgba(0,0,0,0.5); padding: 0.3rem 1rem; border-radius: 50px; z-index: 10001; }
 
     /* REVIEWS */
     .reviews { background: #fff; }
-    .review-photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-bottom: 2.5rem; }
-    .review-photo { border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; box-shadow: var(--shadow-sm); border: 2px solid rgba(245,197,24,0.15); transition: all 0.3s; }
-    .review-photo:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--gold-warm); }
-    .review-photo img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; transition: transform 0.3s; }
-    .review-photo:hover img { transform: scale(1.05); }
-
-    /* VIDEO REVIEWS */
-    .video-reviews { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
-    .video-review-item { border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; box-shadow: var(--shadow-sm); border: 2px solid rgba(245,197,24,0.15); transition: all 0.3s; background: #1a1a2e; }
-    .video-review-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--gold-warm); }
-    .video-review-thumb { position: relative; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .video-review-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .video-review-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.35); transition: background 0.2s; }
-    .video-review-item:hover .video-review-play { background: rgba(0,0,0,0.5); }
-    .video-review-play-icon { width: 44px; height: 44px; border-radius: 50%; background: rgba(245,197,24,0.9); display: flex; align-items: center; justify-content: center; color: var(--brown); font-size: 1.1rem; box-shadow: 0 4px 14px rgba(0,0,0,0.3); transition: transform 0.2s; }
-    .video-review-item:hover .video-review-play-icon { transform: scale(1.15); }
-    .video-review-label { padding: 0.6rem 0.8rem; font-family: 'Arial', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.8); font-weight: 600; background: #1a1a2e; }
-
-    /* VIDEO PLACEHOLDER (when thumbnail fails) */
-    .video-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f5c518 0%, #f9a825 100%); }
-    .video-placeholder i { font-size: 2rem; color: var(--brown); }
-
-    /* VIDEOS SECTION */
-    .videos { background: linear-gradient(145deg, #fffef5 0%, #fff9d6 100%); }
-    .videos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-    .video-card { border-radius: var(--radius); overflow: hidden; cursor: pointer; box-shadow: var(--shadow-md); border: 1px solid rgba(245,197,24,0.2); background: white; transition: all 0.3s; }
-    .video-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .video-card-thumb { position: relative; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a1a2e, #16213e); overflow: hidden; }
-    .video-card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .video-card-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); transition: background 0.2s; }
-    .video-card:hover .video-card-play { background: rgba(0,0,0,0.5); }
-    .video-card-play-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(245,197,24,0.95); display: flex; align-items: center; justify-content: center; color: var(--brown); font-size: 1.6rem; box-shadow: 0 6px 20px rgba(0,0,0,0.3); transition: transform 0.2s; }
-    .video-card:hover .video-card-play-icon { transform: scale(1.12); }
-    .video-card-info { padding: 1.2rem 1.4rem; }
-    .video-card-info h4 { font-family: 'Arial', sans-serif; font-size: 1rem; font-weight: 700; color: var(--brown); margin-bottom: 0.3rem; }
-    .video-card-info p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.5; }
+    .reviews-photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-bottom: 2.5rem; }
+    .review-photo-card { border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.3s; border: 2px solid rgba(245,197,24,0.15); }
+    .review-photo-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--gold); }
+    .review-photo-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
+    .video-reviews-grid { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    .video-review-card { display: flex; align-items: center; gap: 0.8rem; padding: 0.8rem 1.2rem; border-radius: 50px; background: linear-gradient(135deg, rgba(245,197,24,0.12), rgba(249,168,37,0.06)); border: 1px solid rgba(245,197,24,0.25); cursor: pointer; transition: all 0.2s; font-family: 'Arial', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--brown); }
+    .video-review-card:hover { background: linear-gradient(135deg, rgba(245,197,24,0.25), rgba(249,168,37,0.12)); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .video-review-card .play-icon-small { width: 32px; height: 32px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; color: var(--brown); font-size: 0.7rem; flex-shrink: 0; }
 
     /* VIDEO MODAL */
-    .video-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9500; display: none; align-items: center; justify-content: center; }
+    .video-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; display: none; align-items: center; justify-content: center; }
     .video-modal.open { display: flex; }
-    .video-modal-inner { position: relative; width: 90vw; max-width: 900px; }
-    .video-modal-inner iframe { width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-sm); border: none; }
-    .video-modal-close { position: absolute; top: -52px; right: 0; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.15); border: none; color: white; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-    .video-modal-close:hover { background: rgba(255,255,255,0.3); }
+    .video-modal-inner { position: relative; width: 90vw; max-width: 900px; aspect-ratio: 16/9; }
+    .video-modal-close { position: fixed; top: 1.5rem; right: 1.5rem; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.18); border: none; color: white; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+    .video-modal-close:hover { background: rgba(255,255,255,0.35); }
+    .video-modal-inner iframe { width: 100%; height: 100%; border: none; border-radius: var(--radius-sm); }
+
+    /* VIDEOS SECTION */
+    .videos { background: #fff; }
+    .videos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .video-card { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); cursor: pointer; transition: all 0.3s; background: white; border: 1px solid rgba(245,197,24,0.12); }
+    .video-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--gold); }
+    .video-thumb { position: relative; aspect-ratio: 16/9; background: linear-gradient(135deg, #2c1d00, #5c3d00); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .video-thumb .play-btn { width: 56px; height: 56px; border-radius: 50%; background: rgba(245,197,24,0.9); display: flex; align-items: center; justify-content: center; color: var(--brown); font-size: 1.2rem; z-index: 2; transition: all 0.3s; }
+    .video-card:hover .play-btn { transform: scale(1.15); background: var(--gold); }
+    .video-thumb .video-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(44,29,0,0.3), rgba(92,61,0,0.2)); z-index: 1; }
+    .video-info { padding: 1.2rem 1.5rem; }
+    .video-info h4 { font-size: 1.05rem; color: var(--brown); margin-bottom: 0.4rem; font-weight: 700; font-family: 'Arial', sans-serif; }
+    .video-info p { font-size: 0.88rem; color: var(--text-light); line-height: 1.5; }
 
     /* SIGNUP */
-    .signup { background: #fff; }
-    .signup-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-    .signup-left-intro { font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 2rem; }
-    .trainer-mini { display: flex; align-items: center; gap: 1.2rem; background: linear-gradient(135deg, var(--gold-pale), rgba(245,197,24,0.08)); border-radius: var(--radius-sm); padding: 1.2rem; border: 1px solid rgba(245,197,24,0.2); }
-    .trainer-mini-avatar { font-size: 2.5rem; }
-    .trainer-mini-info strong { display: block; font-family: 'Arial', sans-serif; font-size: 0.98rem; color: var(--brown); font-weight: 700; }
-    .trainer-mini-info span { font-family: 'Arial', sans-serif; font-size: 0.82rem; color: var(--text-light); }
-    .signup-form { display: flex; flex-direction: column; gap: 1.2rem; }
-    .form-group label { display: block; font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--text-mid); margin-bottom: 0.5rem; }
-    .form-group input { width: 100%; padding: 0.85rem 1.2rem; border: 2px solid rgba(245,197,24,0.25); border-radius: var(--radius-sm); font-family: 'Georgia', serif; font-size: 1rem; color: var(--text-dark); background: white; outline: none; transition: border-color 0.2s; }
-    .form-group input:focus { border-color: var(--gold-warm); }
+    .signup { background: linear-gradient(145deg, #fffef5 0%, #fff9d6 100%); }
+    .signup-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .signup-left { font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; }
+    .signup-trainer { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; padding: 1rem 1.2rem; background: white; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.12); }
+    .signup-trainer-icon { font-size: 2.5rem; }
+    .signup-trainer-text strong { display: block; font-size: 1rem; color: var(--brown); }
+    .signup-trainer-text span { font-size: 0.85rem; color: var(--text-light); }
+    .signup-right { background: white; border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow-md); border: 1px solid rgba(245,197,24,0.15); }
+    .signup-field { margin-bottom: 1.5rem; }
+    .signup-field label { display: block; font-family: 'Arial', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--brown); margin-bottom: 0.5rem; }
+    .signup-field input { width: 100%; padding: 0.8rem 1.2rem; border-radius: var(--radius-sm); border: 2px solid rgba(245,197,24,0.25); font-size: 1rem; font-family: 'Georgia', serif; background: #fffef5; transition: border-color 0.2s; }
+    .signup-field input:focus { outline: none; border-color: var(--gold-warm); }
     .goal-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-    .goal-option { padding: 0.6rem 0.9rem; border: 2px solid rgba(245,197,24,0.2); border-radius: 50px; font-family: 'Arial', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-mid); background: white; cursor: pointer; text-align: center; transition: all 0.2s; }
+    .goal-option { padding: 0.7rem 1rem; border-radius: var(--radius-sm); border: 2px solid rgba(245,197,24,0.2); background: white; cursor: pointer; font-size: 0.9rem; color: var(--text-mid); transition: all 0.2s; text-align: center; font-family: 'Arial', sans-serif; }
     .goal-option:hover { border-color: var(--gold); }
-    .goal-option.selected { background: linear-gradient(135deg, var(--gold), var(--gold-warm)); color: var(--brown); border-color: transparent; }
+    .goal-option.selected { border-color: var(--gold-warm); background: linear-gradient(135deg, rgba(245,197,24,0.12), rgba(249,168,37,0.06)); color: var(--brown); font-weight: 700; }
 
-    /* CTA SECTION */
-    .cta-section { background: linear-gradient(145deg, var(--brown) 0%, #3d2800 100%); padding: 80px 0; text-align: center; position: relative; overflow: hidden; }
-    .cta-section::before { content: ''; position: absolute; top: -80px; right: -80px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(245,197,24,0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-    .cta-section::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(249,168,37,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-    .cta-section h2 { font-size: clamp(2rem, 4.5vw, 3rem); color: white; margin-bottom: 1rem; }
-    .cta-section p { font-size: 1.1rem; color: rgba(255,255,255,0.8); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; }
-    .cta-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 50%, var(--gold-deep) 100%); padding: 80px 0; text-align: center; color: var(--brown); }
+    .cta-section h2 { color: var(--brown); margin-bottom: 1.5rem; }
+    .cta-section p { max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem; }
 
     /* CONTACTS */
     .contacts { background: #fff; }
-    .contacts-inner { display: grid; grid-template-columns: 1.4fr 0.6fr; gap: 3rem; }
-    .contacts-list { display: flex; flex-direction: column; gap: 1.2rem; }
-    .contact-item { display: flex; align-items: center; gap: 1.2rem; background: linear-gradient(145deg, #fffef5, #fffdf5); border-radius: var(--radius-sm); padding: 1.2rem 1.5rem; border: 1px solid rgba(245,197,24,0.12); box-shadow: var(--shadow-sm); transition: all 0.3s; }
-    .contact-item:hover { transform: translateX(5px); box-shadow: var(--shadow-md); border-color: rgba(245,197,24,0.3); }
-    .contact-icon { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
-    .contact-text h4 { font-family: 'Arial', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--brown); margin-bottom: 0.25rem; }
-    .contact-text p { font-family: 'Arial', sans-serif; font-size: 0.82rem; color: var(--text-light); margin-bottom: 0.2rem; }
-    .contact-text a, .contact-text .no-link { font-family: 'Arial', sans-serif; font-size: 0.9rem; color: var(--gold-warm); font-weight: 600; }
-    .contacts-cta { background: linear-gradient(145deg, var(--brown), #3d2800); border-radius: var(--radius); padding: 2rem; text-align: center; color: white; box-shadow: var(--shadow-lg); }
-    .contacts-cta h3 { font-size: 1.4rem; color: white; margin-bottom: 0.8rem; }
-    .contacts-cta p { font-size: 0.92rem; color: rgba(255,255,255,0.8); line-height: 1.65; margin-bottom: 1.5rem; }
+    .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+    .contacts-list { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem; border-radius: var(--radius-sm); background: linear-gradient(145deg, #fffef5, #fff9d6); border: 1px solid rgba(245,197,24,0.12); transition: all 0.3s; }
+    .contact-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+    .contact-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+    .contact-text h4 { font-size: 1rem; color: var(--brown); font-weight: 700; font-family: 'Arial', sans-serif; margin-bottom: 0.2rem; }
+    .contact-text p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.3rem; }
+    .contact-text a { font-family: 'Arial', sans-serif; font-size: 0.9rem; color: var(--gold-warm); font-weight: 600; }
+    .contact-text a:hover { text-decoration: underline; }
+    .contact-text .no-link { font-family: 'Arial', sans-serif; font-size: 0.9rem; color: var(--text-mid); }
+    .contacts-cta { background: linear-gradient(145deg, #fffef5 0%, #fff9d6 100%); border-radius: var(--radius); padding: 2rem; text-align: center; box-shadow: var(--shadow-sm); border: 1px solid rgba(245,197,24,0.12); display: flex; flex-direction: column; justify-content: center; }
+    .contacts-cta h3 { font-size: 1.3rem; color: var(--brown); margin-bottom: 0.8rem; }
+    .contacts-cta p { font-size: 0.95rem; color: var(--text-mid); margin-bottom: 1.5rem; line-height: 1.6; }
 
     /* FOOTER */
-    .footer { background: linear-gradient(145deg, #2c1d00, #1a1000); padding: 4rem 0 2rem; }
-    .footer-inner { display: grid; grid-template-columns: 1.5fr 0.8fr 0.8fr; gap: 3rem; margin-bottom: 3rem; }
-    .footer-brand { font-size: 1.2rem; font-weight: bold; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
-    .footer-desc { font-family: 'Arial', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 1.5rem; }
+    .footer { background: linear-gradient(135deg, #2c1d00 0%, #3d2800 100%); color: rgba(255,255,255,0.85); padding: 60px 0 0; }
+    .footer-inner { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; }
+    .footer-brand { font-size: 1.2rem; font-weight: bold; color: white; display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+    .footer-desc { font-size: 0.9rem; line-height: 1.7; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; }
     .footer-social { display: flex; gap: 0.8rem; }
-    .footer-social a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); font-size: 1.1rem; transition: all 0.2s; }
-    .footer-social a:hover { background: var(--gold); color: var(--brown); transform: translateY(-3px); }
-    .footer-heading { font-family: 'Arial', sans-serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 1.2rem; }
+    .footer-social a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; transition: all 0.2s; }
+    .footer-social a:hover { background: var(--gold); color: var(--brown); transform: translateY(-2px); }
+    .footer-heading { font-family: 'Arial', sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(245,197,24,0.9); margin-bottom: 1.2rem; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-    .footer-links a { font-family: 'Arial', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.65); transition: color 0.2s; }
+    .footer-links a { font-family: 'Arial', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.7); transition: color 0.2s; }
     .footer-links a:hover { color: var(--gold); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
-    .footer-copy { font-family: 'Arial', sans-serif; font-size: 0.82rem; color: rgba(255,255,255,0.4); }
-    .footer-dev-links { font-family: 'Arial', sans-serif; font-size: 0.82rem; color: rgba(255,255,255,0.4); text-align: right; }
-    .footer-dev-links a { color: rgba(245,197,24,0.7); transition: color 0.2s; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 1.5rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+    .footer-dev-links { font-size: 0.75rem; color: rgba(255,255,255,0.4); text-align: right; }
+    .footer-dev-links a { color: rgba(245,197,24,0.7); }
     .footer-dev-links a:hover { color: var(--gold); }
 
     /* BACK TO TOP */
-    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-warm)); color: var(--brown); border: none; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(245,197,24,0.4); z-index: 800; opacity: 0; pointer-events: none; transition: all 0.3s ease; }
-    .back-to-top.visible { opacity: 1; pointer-events: all; }
-    .back-to-top:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(245,197,24,0.5); }
+    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-warm)); color: var(--brown); border: none; font-size: 1.1rem; cursor: pointer; box-shadow: 0 6px 20px rgba(245,197,24,0.35); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.3s ease; z-index: 998; }
+    .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .back-to-top:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(245,197,24,0.5); }
 
-    /* ANIMATE IN */
-    .animate-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .animate-in.visible { opacity: 1; transform: none; }
+    /* ANIMATIONS */
+    .animate-in { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+    .animate-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* RESPONSIVE */
-    @media (max-width: 1023px) {
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1100px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .hero-inner { grid-template-columns: 1fr; text-align: center; }
-      .hero-image-wrap { max-width: 340px; margin: 0 auto; }
-      .hero-cta { justify-content: center; }
+      .hero-stat-card.top-left { left: -30px; }
+      .hero-stat-card.bottom-right { right: -20px; }
+    }
+    @media (max-width: 900px) {
+      section { padding: 70px 0; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+      .hero-badge { margin: 0 auto 1.6rem; }
       .hero-tagline { justify-content: center; }
-      .hero-stat-card.top-left { top: -10px; left: -10px; }
-      .hero-stat-card.bottom-right { bottom: 20px; right: -10px; }
-      .about-inner { grid-template-columns: 1fr; }
-      .about-img-wrap { max-width: 380px; margin: 0 auto; }
+      .hero-cta { justify-content: center; }
+      .hero-image-wrap { max-width: 320px; margin: 0 auto; }
+      .hero-stat-card.top-left { left: -10px; top: 10px; }
+      .hero-stat-card.bottom-right { right: -10px; bottom: 30px; }
+      .hero-stat-card { padding: 0.6rem 0.9rem; }
+      .stat-text strong { font-size: 0.85rem; }
+      .stat-text span { font-size: 0.68rem; }
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-img-wrap { max-width: 350px; margin: 0 auto; }
       .diplomas-grid { grid-template-columns: repeat(2, 1fr); }
-      .trainer-cards { grid-template-columns: repeat(2, 1fr); }
-      .advantages-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .test-grid { grid-template-columns: 1fr; }
+      .pearl-pane { flex-direction: column; text-align: center; }
+      .trainer-grid { grid-template-columns: repeat(2, 1fr); }
+      .adv-grid { grid-template-columns: 1fr; }
       .team-inner { grid-template-columns: 1fr; }
       .calc-inner { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .review-photos { grid-template-columns: repeat(2, 1fr); }
-      .video-reviews { grid-template-columns: repeat(3, 1fr); }
-      .videos-grid { grid-template-columns: 1fr 1fr; }
-      .signup-inner { grid-template-columns: 1fr; }
-      .contacts-inner { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 639px) {
-      section { padding: 70px 0; }
-      .hero-stat-card { display: none; }
-      .diplomas-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-      .trainer-cards { grid-template-columns: 1fr 1fr; }
-      .advantages-grid { grid-template-columns: 1fr 1fr; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .review-photos { grid-template-columns: repeat(2, 1fr); }
-      .video-reviews { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-      .test-grid { grid-template-columns: 1fr; }
-      .goal-options { grid-template-columns: 1fr 1fr; }
       .videos-grid { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
+      .signup-inner { grid-template-columns: 1fr; }
+      .contacts-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
       .footer-dev-links { text-align: center; }
-      .pearl-pane { flex-direction: column; padding: 1.5rem; }
-      .lightbox-prev { left: 0.5rem; }
-      .lightbox-next { right: 0.5rem; }
-      .diploma-lb-prev { left: 0.5rem; }
-      .diploma-lb-next { right: 0.5rem; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 50px 0; }
+      .container { padding: 0 1rem; }
+      .section-head { margin-bottom: 2.5rem; }
+      .navbar { padding: 0 1rem; }
+      .hero { padding-top: 72px; }
+      .hero-image-wrap { max-width: 260px; }
+      .hero-stat-card { display: none; }
+      .hero-decor-ring { display: none; }
+      .hero-decor-dot { width: 44px; height: 44px; font-size: 1.4rem; left: -10px; bottom: 20px; }
+      .about-badge { position: relative; right: auto; bottom: auto; margin-top: 1rem; display: inline-block; }
+      .diplomas-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .reviews-photo-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .video-reviews-grid { flex-direction: column; align-items: stretch; }
+      .trainer-grid { grid-template-columns: 1fr; }
+      .trainer-quote { padding: 1.5rem; font-size: 1rem; }
+      .adv-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .adv-card { padding: 1.5rem 1.2rem; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+      .goal-options { grid-template-columns: 1fr; }
+      .pearl-tabs { gap: 0.4rem; }
+      .pearl-tab { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
+      .pearl-pane { padding: 1.5rem; }
+      .pearl-icon { width: 70px; height: 70px; font-size: 2.5rem; }
+      .calc-option { padding: 0.8rem; }
+      .calc-detail { padding: 1.5rem; }
+      .btn { padding: 0.75rem 1.4rem; font-size: 0.88rem; }
     }
   </style>
+
 </head>
 
 <body>
@@ -448,15 +465,12 @@
     <li><a href="#videos">Видео</a></li>
     <li><a href="#contacts" class="nav-cta">Консультация</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Меню">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" onclick="closeMobileMenu()">Обо мне</a>
-  <a href="#diplomas" onclick="closeMobileMenu()">Дипломы</a>
   <a href="#reviews" onclick="closeMobileMenu()">Отзывы</a>
   <a href="#test" onclick="closeMobileMenu()">Тест энергии</a>
   <a href="#intensive" onclick="closeMobileMenu()">8 упражнений</a>
@@ -464,26 +478,26 @@
   <a href="#team" onclick="closeMobileMenu()">Команда</a>
   <a href="#gallery" onclick="closeMobileMenu()">Галерея</a>
   <a href="#videos" onclick="closeMobileMenu()">Видео</a>
-  <a href="#contacts" onclick="closeMobileMenu()" style="background:linear-gradient(135deg,var(--gold),var(--gold-warm));color:var(--brown);border-radius:50px;font-weight:700;margin-top:0.5rem;">Консультация</a>
+  <a href="#contacts" onclick="closeMobileMenu()">Консультация</a>
 </div>
 
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="container">
     <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-badge">🌻 Интеллект-тренер · Super Jump</div>
+      <div class="animate-in">
+        <p class="hero-badge">🌻 Интеллект-тренер · Super Jump</p>
         <h1>Наталья<br><span class="name-highlight">Вардая</span></h1>
         <p class="hero-subtitle">Солнечный путь к внутренней опоре — свет, энергия, ясность и рост в каждой сфере жизни</p>
         <p class="hero-tagline">Интеллект-тренер и надёжный проводник к ментальной свободе</p>
         <div class="hero-cta">
-          <a href="#contacts" class="btn btn-primary"><i class="fa-brands fa-telegram"></i> Записаться на курс</a>
-          <a href="#intensive" class="btn btn-outline"><i class="fa-solid fa-gem"></i> 8 жемчужин</a>
+          <a href="#signup" class="btn btn-primary"><i class="fa-brands fa-telegram"></i> Записаться</a>
+          <a href="#test" class="btn btn-outline"><i class="fa-solid fa-bolt"></i> Тест энергии</a>
         </div>
       </div>
-      <div class="hero-image-wrap">
+      <div class="hero-image-wrap animate-in">
         <div class="hero-image-frame">
-          <img src="img/3.jpg" alt="Наталья Вардая — Интеллект-тренер Super Jump" />
+          <img src="img/3.jpg" alt="Наталья Вардая — Интеллект-тренер Super Jump">
         </div>
         <div class="hero-decor-ring"></div>
         <div class="hero-decor-dot">🌻</div>
@@ -508,10 +522,8 @@
 
 <!-- DIVIDER -->
 <div class="sun-divider">
-  <div class="container">
-    <div class="sun-divider-line">
-      <span class="sun-flower-big">🌻</span>
-    </div>
+  <div class="sun-divider-line">
+    <span class="sun-flower-big">🌻</span>
   </div>
 </div>
 
@@ -521,25 +533,25 @@
     <div class="about-inner">
       <div class="about-img-wrap animate-in">
         <div class="about-img">
-          <img src="img/14.jpg" alt="Наталья Вардая" />
+          <img src="img/14.jpg" alt="Наталья Вардая">
         </div>
         <div class="about-badge">🏅 Основатель<br>всемирной ассоциации<br>интеллект-тренеров</div>
       </div>
       <div class="about-content animate-in">
         <span class="section-label">Обо мне и моём призвании</span>
-        <h2 class="about-content">Я Наталья Вардая —<br>твой проводник к ресурсному состоянию</h2>
+        <h2>Я Наталья Вардая —<br>твой проводник к ресурсному состоянию</h2>
         <p class="about-lead">Моя фамилия Вардая переводится как «солнечный цветок» или подсолнух. Это не просто совпадение — это мой путь. Я помогаю людям обрести внутреннее солнце, когда за окном бушуют тучи.</p>
-        <p style="color:var(--text-mid);margin-bottom:1.5rem;line-height:1.75;">Как интеллект-тренер международной системы Super Jump и основатель команды «Жёлтые Подсолнухи», я обучаю системе простых, но гениальных ментальных упражнений. Они занимают минимум времени, но дают колоссальный выброс жизненных сил.</p>
+        <p style="color:var(--text-mid);margin-bottom:1rem;">Как интеллект-тренер международной системы Super Jump и основатель команды «Жёлтые Подсолнухи», я обучаю системе простых, но гениальных ментальных упражнений. Они занимают минимум времени, но дают колоссальный выброс жизненных сил.</p>
         <p class="about-courses-title">Наши 10-дневные онлайн-курсы:</p>
         <ul class="about-list">
-          <li><div class="icon-wrap">⚡</div><span>Заряжают батарейку: уходит хроническая усталость и апатия.</span></li>
-          <li><div class="icon-wrap">🧠</div><span>Ментальная гигиена: полный контроль над тревожными мыслями.</span></li>
-          <li><div class="icon-wrap">🛡️</div><span>Стрессоустойчивость: выстраивание надёжного щита от негатива.</span></li>
-          <li><div class="icon-wrap">🎯</div><span>Ясность фокуса: чёткое понимание своих целей и рост доходов.</span></li>
+          <li><span class="icon-wrap">⚡</span><span>Заряжают батарейку: уходит хроническая усталость и апатия.</span></li>
+          <li><span class="icon-wrap">🧠</span><span>Ментальная гигиена: полный контроль над тревожными мыслями.</span></li>
+          <li><span class="icon-wrap">🛡️</span><span>Стрессоустойчивость: выстраивание надёжного щита от негатива.</span></li>
+          <li><span class="icon-wrap">🎯</span><span>Ясность фокуса: чёткое понимание своих целей и рост доходов.</span></li>
         </ul>
         <div class="about-cta">
-          <a href="#intensive" class="btn btn-primary">Узнать о методике</a>
-          <a href="https://t.me/Nafatia" target="_blank" class="btn btn-tg"><i class="fa-brands fa-telegram"></i> Написать Наталье</a>
+          <a href="#signup" class="btn btn-primary"><i class="fa-brands fa-telegram"></i> Записаться на курс</a>
+          <a href="#intensive" class="btn btn-ghost"><i class="fa-solid fa-list-check"></i> 8 упражнений</a>
         </div>
       </div>
     </div>
@@ -548,8 +560,8 @@
 
 <!-- DIVIDER -->
 <div class="divider">
-  <div class="container">
-    <div class="divider-line"><span class="divider-flower">🌻</span></div>
+  <div class="divider-line">
+    <span class="divider-flower">🌻</span>
   </div>
 </div>
 
@@ -561,21 +573,21 @@
       <h2>Дипломы</h2>
     </div>
     <div class="diplomas-intro animate-in">
-      <div class="diplomas-rank-badge">🏅 Интеллект-тренер 4 ранга</div>
+      <p class="diplomas-rank-badge">🏅 Интеллект-тренер 4 ранга</p>
       <p>Наталья Вардая — сертифицированный интеллект-тренер 4 ранга международной системы Super Jump. Более 2 лет в профессии — это путь практики, роста и подлинной трансформации сотен учеников по всему миру.</p>
     </div>
     <div class="diplomas-grid animate-in">
       <div class="diploma-card" onclick="openDiplomaLightbox(0)">
-        <img src="img/d1.jpg" alt="Диплом 1" />
+        <img src="img/d1.jpg" alt="Диплом 1">
       </div>
       <div class="diploma-card" onclick="openDiplomaLightbox(1)">
-        <img src="img/d2.jpg" alt="Диплом 2" />
+        <img src="img/d2.jpg" alt="Диплом 2">
       </div>
       <div class="diploma-card" onclick="openDiplomaLightbox(2)">
-        <img src="img/d3.jpg" alt="Диплом 3" />
+        <img src="img/d3.jpg" alt="Диплом 3">
       </div>
       <div class="diploma-card" onclick="openDiplomaLightbox(3)">
-        <img src="img/d4.jpg" alt="Диплом 4" />
+        <img src="img/d4.jpg" alt="Диплом 4">
       </div>
     </div>
   </div>
@@ -586,7 +598,7 @@
   <button class="diploma-lightbox-close" onclick="closeDiplomaLightbox()"><i class="fa-solid fa-xmark"></i></button>
   <button class="diploma-lb-nav diploma-lb-prev" onclick="diplomaLbSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
   <div class="diploma-lightbox-inner">
-    <img src="" id="diplomaLightboxImg" alt="Диплом" />
+    <img src="" id="diplomaLightboxImg" alt="Диплом">
   </div>
   <button class="diploma-lb-nav diploma-lb-next" onclick="diplomaLbSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
   <div class="diploma-lb-counter" id="diplomaLbCounter">1 / 4</div>
@@ -594,8 +606,8 @@
 
 <!-- DIVIDER -->
 <div class="divider">
-  <div class="container">
-    <div class="divider-line"><span class="divider-flower">✨</span></div>
+  <div class="divider-line">
+    <span class="divider-flower">✨</span>
   </div>
 </div>
 
@@ -608,95 +620,70 @@
     </div>
 
     <!-- Photo reviews -->
-    <div class="review-photos animate-in">
-      <div class="review-photo" onclick="openReviewLightbox(0)">
-        <img src="img/r1.jpg" alt="Отзыв участницы" />
+    <div class="reviews-photo-grid animate-in">
+      <div class="review-photo-card" onclick="openReviewLightbox(0)">
+        <img src="img/r1.jpg" alt="Отзыв участницы">
       </div>
-      <div class="review-photo" onclick="openReviewLightbox(1)">
-        <img src="img/r2.jpg" alt="Отзыв участницы" />
+      <div class="review-photo-card" onclick="openReviewLightbox(1)">
+        <img src="img/r2.jpg" alt="Отзыв участницы">
       </div>
-      <div class="review-photo" onclick="openReviewLightbox(2)">
-        <img src="img/r3.jpg" alt="Отзыв участницы" />
+      <div class="review-photo-card" onclick="openReviewLightbox(2)">
+        <img src="img/r3.jpg" alt="Отзыв участницы">
       </div>
-      <div class="review-photo" onclick="openReviewLightbox(3)">
-        <img src="img/r4.jpg" alt="Отзыв участницы" />
+      <div class="review-photo-card" onclick="openReviewLightbox(3)">
+        <img src="img/r4.jpg" alt="Отзыв участницы">
       </div>
     </div>
 
     <!-- Video reviews -->
-    <div class="video-reviews animate-in">
-      <div class="video-review-item" onclick="openVideoModal('https://rutube.ru/play/embed/acb4610f50e958a44e35db6b4fbe9c89')">
-        <div class="video-review-thumb">
-          <div class="video-placeholder"><i class="fa-solid fa-play"></i></div>
-          <div class="video-review-play">
-            <div class="video-review-play-icon"><i class="fa-solid fa-play"></i></div>
-          </div>
-        </div>
-        <div class="video-review-label">Видеоотзыв 1</div>
+    <div class="video-reviews-grid animate-in">
+      <div class="video-review-card" onclick="openVideoModal('https://rutube.ru/play/embed/acb4610f50e958a44e35db6b4fbe9c89')">
+        <div class="play-icon-small"><i class="fa-solid fa-play"></i></div>
+        Видеоотзыв 1
       </div>
-      <div class="video-review-item" onclick="openVideoModal('https://rutube.ru/play/embed/26e9450beff8226bd15b3192382012e5')">
-        <div class="video-review-thumb">
-          <div class="video-placeholder"><i class="fa-solid fa-play"></i></div>
-          <div class="video-review-play">
-            <div class="video-review-play-icon"><i class="fa-solid fa-play"></i></div>
-          </div>
-        </div>
-        <div class="video-review-label">Видеоотзыв 2</div>
+      <div class="video-review-card" onclick="openVideoModal('https://rutube.ru/play/embed/26e9450beff8226bd15b3192382012e5')">
+        <div class="play-icon-small"><i class="fa-solid fa-play"></i></div>
+        Видеоотзыв 2
       </div>
-      <div class="video-review-item" onclick="openVideoModal('https://rutube.ru/play/embed/913704925657e785164e17c7b48da2bc')">
-        <div class="video-review-thumb">
-          <div class="video-placeholder"><i class="fa-solid fa-play"></i></div>
-          <div class="video-review-play">
-            <div class="video-review-play-icon"><i class="fa-solid fa-play"></i></div>
-          </div>
-        </div>
-        <div class="video-review-label">Видеоотзыв 3</div>
+      <div class="video-review-card" onclick="openVideoModal('https://rutube.ru/play/embed/913704925657e785164e17c7b48da2bc')">
+        <div class="play-icon-small"><i class="fa-solid fa-play"></i></div>
+        Видеоотзыв 3
       </div>
-      <div class="video-review-item" onclick="openVideoModal('https://rutube.ru/play/embed/f63395866e5a4f8c37407ec48ae78c39')">
-        <div class="video-review-thumb">
-          <div class="video-placeholder"><i class="fa-solid fa-play"></i></div>
-          <div class="video-review-play">
-            <div class="video-review-play-icon"><i class="fa-solid fa-play"></i></div>
-          </div>
-        </div>
-        <div class="video-review-label">Видеоотзыв 4</div>
+      <div class="video-review-card" onclick="openVideoModal('https://rutube.ru/play/embed/f63395866e5a4f8c37407ec48ae78c39')">
+        <div class="play-icon-small"><i class="fa-solid fa-play"></i></div>
+        Видеоотзыв 4
       </div>
-      <div class="video-review-item" onclick="openVideoModal('https://rutube.ru/play/embed/0b9562690ef25bfe73bf1285d2357103')">
-        <div class="video-review-thumb">
-          <div class="video-placeholder"><i class="fa-solid fa-play"></i></div>
-          <div class="video-review-play">
-            <div class="video-review-play-icon"><i class="fa-solid fa-play"></i></div>
-          </div>
-        </div>
-        <div class="video-review-label">Видеоотзыв 5</div>
+      <div class="video-review-card" onclick="openVideoModal('https://rutube.ru/play/embed/0b9562690ef25bfe73bf1285d2357103')">
+        <div class="play-icon-small"><i class="fa-solid fa-play"></i></div>
+        Видеоотзыв 5
       </div>
     </div>
   </div>
 </section>
 
 <!-- REVIEW LIGHTBOX -->
-<div class="lightbox" id="reviewLightbox" onclick="handleReviewLightboxClick(event)">
-  <button class="lightbox-close" onclick="closeReviewLightbox()"><i class="fa-solid fa-xmark"></i></button>
-  <button class="lightbox-nav lightbox-prev" onclick="reviewSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-  <div class="lightbox-inner">
-    <img src="" id="reviewLightboxImg" alt="Отзыв" />
+<div class="review-lightbox" id="reviewLightbox" onclick="handleReviewLightboxClick(event)">
+  <button class="review-lightbox-close" onclick="closeReviewLightbox()"><i class="fa-solid fa-xmark"></i></button>
+  <button class="review-lb-nav review-lb-prev" onclick="reviewSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+  <div class="review-lightbox-inner">
+    <img src="" id="reviewLightboxImg" alt="Отзыв">
   </div>
-  <button class="lightbox-nav lightbox-next" onclick="reviewSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
-  <div class="lightbox-counter" id="reviewLightboxCounter">1 / 4</div>
+  <button class="review-lb-nav review-lb-next" onclick="reviewSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+  <div class="review-lb-counter" id="reviewLightboxCounter">1 / 4</div>
 </div>
 
 <!-- VIDEO MODAL -->
 <div class="video-modal" id="videoModal" onclick="closeVideoModal(event)">
   <div class="video-modal-inner">
-    <button class="video-modal-close" onclick="closeVideoModal({target: document.getElementById('videoModal')})"><i class="fa-solid fa-xmark"></i></button>
-    <iframe id="videoModalIframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <button class="video-modal-close" onclick="closeVideoModal(event)"><i class="fa-solid fa-xmark"></i></button>
+    <iframe id="videoModalIframe" src="" allowfullscreen></iframe>
   </div>
 </div>
 
 <!-- DIVIDER -->
 <div class="divider">
-  <div class="container">
-    <div class="divider-line"><span class="divider-flower">✨</span></div>
+  <div class="divider-line">
+    <span class="divider-flower">✨</span>
   </div>
 </div>
 
@@ -708,7 +695,7 @@
       <h2>Определи свой уровень энергии</h2>
       <p>Выбери утверждения, которые откликаются у тебя прямо сейчас. Наша интерактивная система мгновенно оценит состояние твоего ментального ресурса и подберёт совет.</p>
     </div>
-    <div style="max-width:780px;margin:0 auto;" class="animate-in">
+    <div style="max-width:800px;margin:0 auto;">
       <div class="test-meta">
         <span>Выбрано признаков: <strong id="checkedCount">0</strong> из 8</span>
         <span id="testPercent">0%</span>
@@ -751,12 +738,12 @@
         </div>
       </div>
       <div style="text-align:center;margin-top:1.5rem;">
-        <button class="btn btn-primary" onclick="calculateTestResults()"><i class="fa-solid fa-bolt"></i> Узнать результат</button>
+        <button class="btn btn-primary" onclick="calculateTestResults()"><i class="fa-solid fa-chart-pie"></i> Узнать результат</button>
       </div>
       <div class="test-result-box" id="testResultBox">
         <span class="test-result-badge" id="resultLabel">Баланс гармонии</span>
-        <h3 id="resultTitle" style="color:var(--brown);font-size:1.3rem;margin-bottom:0.8rem;">Отличный потенциал для роста</h3>
-        <p id="resultText" style="color:var(--text-mid);line-height:1.7;margin-bottom:1.2rem;">Вы держитесь неплохо, но у вас есть скрытые ресурсы энергии, которые можно раскрыть на наших тренировках.</p>
+        <h3 id="resultTitle">Отличный потенциал для роста</h3>
+        <p id="resultText">Вы держитесь неплохо, но у вас есть скрытые ресурсы энергии, которые можно раскрыть на наших тренировках.</p>
         <a id="resultTgLink" href="https://t.me/Nafatia" target="_blank" class="btn btn-tg"><i class="fa-brands fa-telegram"></i> Записаться к Наталье</a>
       </div>
     </div>
@@ -765,8 +752,8 @@
 
 <!-- DIVIDER -->
 <div class="divider">
-  <div class="container">
-    <div class="divider-line"><span class="divider-flower">✨</span></div>
+  <div class="divider-line">
+    <span class="divider-flower">✨</span>
   </div>
 </div>
 
@@ -778,7 +765,7 @@
       <h2>8 жемчужин Super Jump</h2>
       <p>Основа методики — 8 простых, но мощнейших интеллектуальных и эмоциональных упражнений, разработанных для современных занятых людей. Кликай по вкладкам ниже, чтобы изучить каждое!</p>
     </div>
-    <div class="pearl-tabs animate-in">
+    <div class="pearl-tabs">
       <button class="pearl-tab active" onclick="switchPearl(1)">🌟 1</button>
       <button class="pearl-tab" onclick="switchPearl(2)">🧠 2</button>
       <button class="pearl-tab" onclick="switchPearl(3)">👑 3</button>
@@ -790,64 +777,64 @@
     </div>
 
     <div class="pearl-pane active" id="pearl-1">
-      <div class="pearl-emoji">🌟</div>
-      <div>
+      <div class="pearl-icon">🌟</div>
+      <div class="pearl-content">
         <h3>«200 улыбок»</h3>
         <p>Ускоряет выработку гормонов счастья, повышает работоспособность и креативность, снимает усталость.</p>
         <span class="pearl-benefit">⚡ Даёт заряд бодрости на весь день</span>
       </div>
     </div>
     <div class="pearl-pane" id="pearl-2">
-      <div class="pearl-emoji">🧠</div>
-      <div>
+      <div class="pearl-icon">🧠</div>
+      <div class="pearl-content">
         <h3>«Я — хозяин своих мыслей»</h3>
         <p>Позволяет снизить поток негативных мыслей и изменить ментальное состояние на более позитивное.</p>
         <span class="pearl-benefit">🧘 Избавляет от 90% фонового стресса</span>
       </div>
     </div>
     <div class="pearl-pane" id="pearl-3">
-      <div class="pearl-emoji">👑</div>
-      <div>
+      <div class="pearl-icon">👑</div>
+      <div class="pearl-content">
         <h3>«Осанка короля и королевы»</h3>
         <p>Повышает уверенность в себе — как с точки зрения внутреннего восприятия, так и в глазах окружающих.</p>
         <span class="pearl-benefit">💎 Возвращает уверенность в себе</span>
       </div>
     </div>
     <div class="pearl-pane" id="pearl-4">
-      <div class="pearl-emoji">💧</div>
-      <div>
+      <div class="pearl-icon">💧</div>
+      <div class="pearl-content">
         <h3>«Будьте здоровы»</h3>
         <p>Стимулирует появление новых, нестандартных идей и креативных решений.</p>
         <span class="pearl-benefit">🌊 Мощный детокс и омоложение</span>
       </div>
     </div>
     <div class="pearl-pane" id="pearl-5">
-      <div class="pearl-emoji">❤️</div>
-      <div>
+      <div class="pearl-icon">❤️</div>
+      <div class="pearl-content">
         <h3>«Я — хозяин своих чувств»</h3>
         <p>Даёт возможность управлять эмоциональными реакциями, делает стрессоустойчивыми, спокойными и открытыми к сотрудничеству.</p>
         <span class="pearl-benefit">💕 Спасает и улучшает отношения с близкими</span>
       </div>
     </div>
     <div class="pearl-pane" id="pearl-6">
-      <div class="pearl-emoji">🎧</div>
-      <div>
+      <div class="pearl-icon">🎧</div>
+      <div class="pearl-content">
         <h3>Аудиотренинг</h3>
         <p>Позволяет работать напрямую с подсознанием, помогает добиться целей.</p>
         <span class="pearl-benefit">🚀 Перепрограммирует на успех и богатство</span>
       </div>
     </div>
     <div class="pearl-pane" id="pearl-7">
-      <div class="pearl-emoji">🛡️</div>
-      <div>
+      <div class="pearl-icon">🛡️</div>
+      <div class="pearl-content">
         <h3>Защита от информационного яда</h3>
         <p>Освобождает мозг от ненужной информации, улучшает внимание и память.</p>
         <span class="pearl-benefit">🧠 Сохраняет ментальное здоровье в хаосе</span>
       </div>
     </div>
     <div class="pearl-pane" id="pearl-8">
-      <div class="pearl-emoji">🌻</div>
-      <div>
+      <div class="pearl-icon">🌻</div>
+      <div class="pearl-content">
         <h3>Сверхцель</h3>
         <p>Помогает стать осознаннее, энергичнее, поменять окружение, проявить таланты и реализовать потенциал.</p>
         <span class="pearl-benefit">🌟 Обретение истинного предназначения</span>
@@ -858,10 +845,8 @@
 
 <!-- DIVIDER -->
 <div class="sun-divider">
-  <div class="container">
-    <div class="sun-divider-line">
-      <span class="sun-flower-big">🌻</span>
-    </div>
+  <div class="sun-divider-line">
+    <span class="sun-flower-big">🌻</span>
   </div>
 </div>
 
@@ -873,11 +858,11 @@
       <h2>Научная основа и сила методики</h2>
       <p>Super Jump — это синергия восточной мудрости и современной западной психотерапии. Никакой эзотерики — только чистая нейробиология и развитие эмоционального интеллекта.</p>
     </div>
-    <div class="trainer-quote animate-in">
+    <blockquote class="trainer-quote animate-in">
       «За 10 дней занятий по 1 часу в день мы создаём новые нейронные связи в вашем мозге. Вы не просто слушаете лекции, а делаете практические упражнения в группе под моим чутким руководством. Это даёт 100% результат».
       <cite>— Наталья Вардая</cite>
-    </div>
-    <div class="trainer-cards animate-in">
+    </blockquote>
+    <div class="trainer-grid animate-in">
       <div class="trainer-card">
         <div class="trainer-card-icon">🧠</div>
         <h4>Нейрокоуч</h4>
@@ -913,8 +898,8 @@
 
 <!-- DIVIDER -->
 <div class="divider">
-  <div class="container">
-    <div class="divider-line"><span class="divider-flower">✨</span></div>
+  <div class="divider-line">
+    <span class="divider-flower">✨</span>
   </div>
 </div>
 
@@ -926,24 +911,24 @@
       <h2>Почему выбирают Super Jump?</h2>
       <p>Уникальность методики состоит в её простоте, скорости получения первых результатов и долгосрочном позитивном эффекте.</p>
     </div>
-    <div class="advantages-grid animate-in">
-      <div class="advantage-card">
-        <div class="advantage-icon">⏱️</div>
+    <div class="adv-grid animate-in">
+      <div class="adv-card">
+        <div class="adv-icon">⏱️</div>
         <h3>Всего 1 час в день</h3>
         <p>Вам не нужно тратить недели на изучение теории. Занятия идут онлайн по 1 часу в день, легко встраиваясь в самый плотный рабочий график.</p>
       </div>
-      <div class="advantage-card">
-        <div class="advantage-icon">⚡</div>
+      <div class="adv-card">
+        <div class="adv-icon">⚡</div>
         <h3>Эффект со 2-го дня</h3>
         <p>Многие чувствуют прилив вдохновения, уход тревоги и нормализацию сна уже на втором практическом занятии смехозарядки.</p>
       </div>
-      <div class="advantage-card">
-        <div class="advantage-icon">👫</div>
+      <div class="adv-card">
+        <div class="adv-icon">👫</div>
         <h3>Поддерживающий Интеллект-клуб</h3>
         <p>После 10 дней вы не остаётесь одни. Мы продолжаем поддерживать форму в нашем клубе единомышленников «Жёлтые Подсолнухи».</p>
       </div>
-      <div class="advantage-card">
-        <div class="advantage-icon">💯</div>
+      <div class="adv-card">
+        <div class="adv-icon">💯</div>
         <h3>Гарантия результата</h3>
         <p>Если вы будете выполнять все упражнения 10 дней и не почувствуете улучшений, мы вернём вам полную стоимость курса без лишних вопросов.</p>
       </div>
@@ -953,10 +938,8 @@
 
 <!-- DIVIDER -->
 <div class="sun-divider">
-  <div class="container">
-    <div class="sun-divider-line">
-      <span class="sun-flower-big">🌻</span>
-    </div>
+  <div class="sun-divider-line">
+    <span class="sun-flower-big">🌻</span>
   </div>
 </div>
 
@@ -969,14 +952,14 @@
       <p>🌻 Международная ассоциация интеллект-тренеров</p>
     </div>
     <div class="team-inner animate-in">
-      <div>
-        <p style="font-size:1.05rem;color:var(--text-mid);line-height:1.75;margin-bottom:1.2rem;">Каждый подсолнух всегда поворачивается к солнцу, ловя его тёплые лучи. Наша команда — это люди, выбравшие путь развития, света, любви к жизни и поддержки друг друга.</p>
-        <p style="font-size:1.05rem;color:var(--text-mid);line-height:1.75;margin-bottom:1.5rem;">Мы объединяем партнёров из разных уголков планеты: Россия, СНГ, Европа, Азия. Мы вместе проводим масштабные встречи, учимся побеждать стресс, зарабатываем и открываем новые школы интеллект-тренеров.</p>
+      <div class="team-desc">
+        <p>Каждый подсолнух всегда поворачивается к солнцу, ловя его тёплые лучи. Наша команда — это люди, выбравшие путь развития, света, любви к жизни и поддержки друг друга.</p>
+        <p>Мы объединяем партнёров из разных уголков планеты: Россия, СНГ, Европа, Азия. Мы вместе проводим масштабные встречи, учимся побеждать стресс, зарабатываем и открываем новые школы интеллект-тренеров.</p>
         <div class="team-values">
-          <span class="team-value">☀️ Искренность</span>
-          <span class="team-value">☀️ Взаимопомощь</span>
-          <span class="team-value">☀️ Постоянный рост</span>
-          <span class="team-value">☀️ Энергия добра</span>
+          <span>☀️ Искренность</span>
+          <span>☀️ Взаимопомощь</span>
+          <span>☀️ Постоянный рост</span>
+          <span>☀️ Энергия добра</span>
         </div>
       </div>
       <div class="team-stats">
@@ -1008,8 +991,8 @@
 
 <!-- DIVIDER -->
 <div class="divider">
-  <div class="container">
-    <div class="divider-line"><span class="divider-flower">✨</span></div>
+  <div class="divider-line">
+    <span class="divider-flower">✨</span>
   </div>
 </div>
 
@@ -1023,7 +1006,7 @@
     </div>
     <div class="calc-inner animate-in">
       <div>
-        <p class="calc-options-label">Варианты обучения:</p>
+        <p class="calc-left-title">Варианты обучения:</p>
         <div class="calc-options">
           <div class="calc-option active" onclick="selectFormat('group', event)">
             <div class="calc-option-icon">👫</div>
@@ -1055,12 +1038,10 @@
           </div>
         </div>
       </div>
-      <div class="calc-result">
+      <div class="calc-detail">
         <h3 id="calcFormatTitle">Групповой интенсив</h3>
-        <div class="calc-meta">
-          <div class="calc-meta-item"><i class="fa-solid fa-clock" style="color:var(--gold-warm);"></i> <span id="calcDuration">10 дней по 1 часу ежедневно</span></div>
-          <div class="calc-meta-item"><i class="fa-solid fa-users" style="color:var(--gold-warm);"></i> <span id="calcGroupSize">До 10 человек в Zoom / Skype / Telegram</span></div>
-        </div>
+        <p class="calc-meta" id="calcDuration">10 дней по 1 часу ежедневно</p>
+        <p class="calc-meta" id="calcGroupSize">До 10 человек в Zoom / Skype / Telegram</p>
         <ul class="calc-features">
           <li id="feat1">8 базовых упражнений Super Jump</li>
           <li id="feat2">Доступ в закрытый чат поддержки навсегда</li>
@@ -1075,10 +1056,8 @@
 
 <!-- DIVIDER -->
 <div class="sun-divider">
-  <div class="container">
-    <div class="sun-divider-line">
-      <span class="sun-flower-big">🌻</span>
-    </div>
+  <div class="sun-divider-line">
+    <span class="sun-flower-big">🌻</span>
   </div>
 </div>
 
@@ -1092,41 +1071,41 @@
     </div>
     <div class="gallery-grid animate-in">
       <div class="gallery-item" onclick="openGalleryLightbox(0)">
-        <img src="img/6.jpg" alt="Золотые поля подсолнухов" />
-        <div class="gallery-overlay"><span class="gallery-caption">Золотые поля подсолнухов</span></div>
+        <img src="img/6.jpg" alt="Золотые поля подсолнухов">
+        <div class="gallery-caption"><span>Золотые поля подсолнухов</span></div>
       </div>
       <div class="gallery-item" onclick="openGalleryLightbox(1)">
-        <img src="img/5.jpg" alt="Энергия солнца" />
-        <div class="gallery-overlay"><span class="gallery-caption">Энергия солнца</span></div>
+        <img src="img/5.jpg" alt="Энергия солнца">
+        <div class="gallery-caption"><span>Энергия солнца</span></div>
       </div>
       <div class="gallery-item" onclick="openGalleryLightbox(2)">
-        <img src="img/8.jpg" alt="Рост разума" />
-        <div class="gallery-overlay"><span class="gallery-caption">Рост разума</span></div>
+        <img src="img/8.jpg" alt="Рост разума">
+        <div class="gallery-caption"><span>Рост разума</span></div>
       </div>
       <div class="gallery-item" onclick="openGalleryLightbox(3)">
-        <img src="img/9.jpg" alt="Внутренний свет" />
-        <div class="gallery-overlay"><span class="gallery-caption">Внутренний свет</span></div>
+        <img src="img/9.jpg" alt="Внутренний свет">
+        <div class="gallery-caption"><span>Внутренний свет</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- GALLERY LIGHTBOX -->
-<div class="lightbox" id="galleryLightbox" onclick="handleGalleryLightboxClick(event)">
-  <button class="lightbox-close" onclick="closeGalleryLightbox()"><i class="fa-solid fa-xmark"></i></button>
-  <button class="lightbox-nav lightbox-prev" onclick="gallerySlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-  <div class="lightbox-inner">
-    <img src="" id="galleryLightboxImg" alt="" />
+<div class="gallery-lightbox" id="galleryLightbox" onclick="handleGalleryLightboxClick(event)">
+  <button class="gallery-lightbox-close" onclick="closeGalleryLightbox()"><i class="fa-solid fa-xmark"></i></button>
+  <button class="gallery-lb-nav gallery-lb-prev" onclick="gallerySlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+  <div class="gallery-lightbox-inner">
+    <img src="" id="galleryLightboxImg" alt="">
   </div>
-  <button class="lightbox-nav lightbox-next" onclick="gallerySlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
-  <div class="lightbox-caption" id="galleryLightboxCaption"></div>
-  <div class="lightbox-counter" id="galleryLightboxCounter">1 / 4</div>
+  <button class="gallery-lb-nav gallery-lb-next" onclick="gallerySlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+  <div class="gallery-lb-caption" id="galleryLightboxCaption"></div>
+  <div class="gallery-lb-counter" id="galleryLightboxCounter">1 / 4</div>
 </div>
 
 <!-- DIVIDER -->
 <div class="divider">
-  <div class="container">
-    <div class="divider-line"><span class="divider-flower">✨</span></div>
+  <div class="divider-line">
+    <span class="divider-flower">✨</span>
   </div>
 </div>
 
@@ -1140,43 +1119,31 @@
     </div>
     <div class="videos-grid animate-in">
       <div class="video-card" onclick="openVideoModal('https://rutube.ru/play/embed/c6e4660768cc75a4820cf6d666aff7ca/?p=lhP7YXwOvLdqm2P95LqGUA')">
-        <div class="video-card-thumb">
-          <div style="width:100%;height:100%;background:linear-gradient(135deg,#f5c51822,#f9a82522);display:flex;align-items:center;justify-content:center;">
-            <i class="fa-solid fa-film" style="font-size:3rem;color:var(--gold-warm);opacity:0.6;"></i>
-          </div>
-          <div class="video-card-play">
-            <div class="video-card-play-icon"><i class="fa-solid fa-play"></i></div>
-          </div>
+        <div class="video-thumb">
+          <div class="video-overlay"></div>
+          <div class="play-btn"><i class="fa-solid fa-play"></i></div>
         </div>
-        <div class="video-card-info">
+        <div class="video-info">
           <h4>Презентация курса</h4>
           <p>Что такое Super Jump за 5 минут? Суть методики</p>
         </div>
       </div>
       <div class="video-card" onclick="openVideoModal('https://rutube.ru/play/embed/98f447bc8b926dffc411370f3a79f124/?p=JfOSfLBfV-Ahxw-nAyWu-g')">
-        <div class="video-card-thumb">
-          <div style="width:100%;height:100%;background:linear-gradient(135deg,#f5c51822,#f9a82522);display:flex;align-items:center;justify-content:center;">
-            <i class="fa-solid fa-film" style="font-size:3rem;color:var(--gold-warm);opacity:0.6;"></i>
-          </div>
-          <div class="video-card-play">
-            <div class="video-card-play-icon"><i class="fa-solid fa-play"></i></div>
-          </div>
+        <div class="video-thumb">
+          <div class="video-overlay"></div>
+          <div class="play-btn"><i class="fa-solid fa-play"></i></div>
         </div>
-        <div class="video-card-info">
+        <div class="video-info">
           <h4>Событие</h4>
           <p>Конгресс интеллект тренеров</p>
         </div>
       </div>
       <div class="video-card" onclick="openVideoModal('https://rutube.ru/play/embed/aaf98aadcbf7cdce5c8b0894ff52e4d5/?p=q4EFnnPL5XitKcEHwgXvUQ')">
-        <div class="video-card-thumb">
-          <div style="width:100%;height:100%;background:linear-gradient(135deg,#f5c51822,#f9a82522);display:flex;align-items:center;justify-content:center;">
-            <i class="fa-solid fa-film" style="font-size:3rem;color:var(--gold-warm);opacity:0.6;"></i>
-          </div>
-          <div class="video-card-play">
-            <div class="video-card-play-icon"><i class="fa-solid fa-play"></i></div>
-          </div>
+        <div class="video-thumb">
+          <div class="video-overlay"></div>
+          <div class="play-btn"><i class="fa-solid fa-play"></i></div>
         </div>
-        <div class="video-card-info">
+        <div class="video-info">
           <h4>Методика</h4>
           <p>8 упражнений для увеличения энергии</p>
         </div>
@@ -1187,10 +1154,8 @@
 
 <!-- DIVIDER -->
 <div class="sun-divider">
-  <div class="container">
-    <div class="sun-divider-line">
-      <span class="sun-flower-big">🌻</span>
-    </div>
+  <div class="sun-divider-line">
+    <span class="sun-flower-big">🌻</span>
   </div>
 </div>
 
@@ -1202,33 +1167,31 @@
       <h2>Запишись на личный разбор</h2>
     </div>
     <div class="signup-inner animate-in">
-      <div>
-        <p class="signup-left-intro">Заполни форму справа: введи своё имя, выбери фокус внимания и нажми кнопку. Система автоматически создаст персонализированное сообщение для отправки Наталье в Telegram.</p>
-        <div class="trainer-mini">
-          <div class="trainer-mini-avatar">🌻</div>
-          <div class="trainer-mini-info">
+      <div class="signup-left">
+        <p>Заполни форму справа: введи своё имя, выбери фокус внимания и нажми кнопку. Система автоматически создаст персонализированное сообщение для отправки Наталье в Telegram.</p>
+        <div class="signup-trainer">
+          <div class="signup-trainer-icon">🌻</div>
+          <div class="signup-trainer-text">
             <strong>Наталья Вардая</strong>
             <span>Твой личный интеллект-тренер</span>
           </div>
         </div>
       </div>
-      <div class="signup-form">
-        <div class="form-group">
+      <div class="signup-right">
+        <div class="signup-field">
           <label>Ваше имя</label>
-          <input type="text" id="userName" placeholder="Введите своё имя..." />
+          <input type="text" id="userName" placeholder="Введите ваше имя">
         </div>
-        <div class="form-group">
+        <div class="signup-field">
           <label>Главный фокус изменений</label>
           <div class="goal-options">
             <div class="goal-option selected" onclick="selectGoal(this, 'Поднять энергию и тонус')">⚡ Больше энергии</div>
-            <div class="goal-option" onclick="selectGoal(this, 'Улучшить отношения с близкими')">❤️ Отношения</div>
-            <div class="goal-option" onclick="selectGoal(this, 'Найти своё предназначение')">🎯 Поиск предназначения</div>
-            <div class="goal-option" onclick="selectGoal(this, 'Повысить доходы и убрать блоки')">📈 Рост доходов</div>
+            <div class="goal-option" onclick="selectGoal(this, 'Улучшить отношения')">❤️ Отношения</div>
+            <div class="goal-option" onclick="selectGoal(this, 'Найти предназначение')">🎯 Поиск предназначения</div>
+            <div class="goal-option" onclick="selectGoal(this, 'Вырасти в доходах')">📈 Рост доходов</div>
           </div>
         </div>
-        <button class="btn btn-primary" onclick="generateCustomMessage()" style="width:100%;justify-content:center;padding:1rem;">
-          <i class="fa-brands fa-telegram"></i> Отправить заявку в Telegram
-        </button>
+        <button class="btn btn-tg" style="width:100%;justify-content:center;" onclick="generateCustomMessage()"><i class="fa-brands fa-telegram"></i> Написать Наталье</button>
       </div>
     </div>
   </div>
@@ -1236,21 +1199,18 @@
 
 <!-- DIVIDER -->
 <div class="divider">
-  <div class="container">
-    <div class="divider-line"><span class="divider-flower">✨</span></div>
+  <div class="divider-line">
+    <span class="divider-flower">✨</span>
   </div>
 </div>
 
 <!-- CTA SECTION -->
 <section class="cta-section" id="cta">
-  <div class="container" style="position:relative;z-index:2;">
-    <span class="section-label" style="color:var(--gold);">Трансформация ждёт</span>
+  <div class="container">
+    <span class="section-label" style="color:var(--brown);">Трансформация ждёт</span>
     <h2>Зажгите своё внутреннее солнце</h2>
     <p>Каждый поток интенсива Super Jump в команде «Жёлтые Подсолнухи» — это десятки счастливых историй людей, которые вернули контроль над жизнью. Сделайте первый шаг уже сегодня!</p>
-    <div class="cta-btns">
-      <a href="https://t.me/Nafatia" target="_blank" class="btn btn-primary"><i class="fa-brands fa-telegram"></i> Записаться на курс</a>
-      <a href="#intensive" class="btn btn-white">Узнать о методике</a>
-    </div>
+    <a href="https://t.me/Nafatia" target="_blank" class="btn btn-white"><i class="fa-brands fa-telegram"></i> Начать трансформацию</a>
   </div>
 </section>
 
@@ -1262,7 +1222,7 @@
       <h2>Официальные контакты</h2>
       <p>Свяжитесь удобным для вас способом, чтобы задать любой интересующий вопрос об интенсивах или вступлении в команду.</p>
     </div>
-    <div class="contacts-inner animate-in">
+    <div class="contacts-grid animate-in">
       <div class="contacts-list">
         <div class="contact-item">
           <div class="contact-icon" style="background:linear-gradient(135deg,rgba(42,171,238,0.15),rgba(42,171,238,0.05));">
